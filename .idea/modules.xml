@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Logbook/Logbook.iml" filepath="$PROJECT_DIR$/Logbook/Logbook.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/swe4305-portfolio-001-SamKynaston.iml" filepath="$PROJECT_DIR$/.idea/swe4305-portfolio-001-SamKynaston.iml" />
     </modules>
   </component>
