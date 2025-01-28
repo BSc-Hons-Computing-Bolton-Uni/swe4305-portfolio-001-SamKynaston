@@ -21,7 +21,7 @@ public class Task3 {
         int perimeter = ((heightValue * 2) + (widthValue * 2));
 
         // Concatenates the area variable into the outputted string
-        System.out.println("The area of this rectangle is: , " + area);
+        System.out.println("The area of this rectangle is: " + area);
 
         // Concatenates the perimeter variable into the outputted string
         System.out.println("The perimeter of this rectangle is: " + perimeter);
