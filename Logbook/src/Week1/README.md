@@ -1,0 +1,1 @@
+For the sake of simplicity, the logbook for this week can be found in the [wiki](https://github.com/BSc-Hons-Computing-Bolton-Uni/swe4305-portfolio-001-SamKynaston/wiki/Logbook#week-one-input--output).
