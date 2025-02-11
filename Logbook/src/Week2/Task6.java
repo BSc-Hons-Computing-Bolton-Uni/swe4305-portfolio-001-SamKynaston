@@ -1,5 +1,6 @@
 package Week2;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Task6 {
@@ -22,8 +23,13 @@ public class Task6 {
                 System.out.println(multiplicationFactor + " x " + x + " = " + (multiplicationFactor * x));
             }
 
-            System.out.println("Do you want to continue (true | false)?");
-            execute = reader.nextBoolean();
+            System.out.println("Do you want to continue (yes | no)?");
+
+            String cont = reader.next();
+
+            if (!Objects.equals(cont, "yes")) {
+                execute = false;
+            }
         }
     }
 }
