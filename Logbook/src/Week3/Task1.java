@@ -12,7 +12,7 @@ class Student {
 
     public void enrol(Course course) {
         this.Course = course;
-    };
+    }
 
     public void printDetails() {
         System.out.println("ID: " + ID);
@@ -28,7 +28,7 @@ class Course {
     public Course(String course, String name) {
         this.Course = course;
         this.Name = name;
-    };
+    }
 
     public void printCourse() {
         System.out.println("Course ID: " + Course);
