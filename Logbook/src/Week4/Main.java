@@ -10,6 +10,11 @@ class Module {
         this.ModuleName = name;
         this.ModuleCode = code;
     }
+
+    public void printModule() {
+        System.out.println("Name:" + ModuleName);
+        System.out.println("Code: " + ModuleCode);
+    }
 }
 
 class Student {
@@ -21,6 +26,9 @@ class Student {
     public Student(int ID, String name, Module module1, Module module2, Module module3, Module module4) {
         this.ID = ID;
         this.Name = name;
+
+        // Add the Modules that get passed into the constructor
+        // Could maybe use an array instead of this? -- SK
         this.Modules.add(module1);
         this.Modules.add(module2);
         this.Modules.add(module3);
@@ -34,6 +42,12 @@ class Student {
     public void printDetails() {
         System.out.println("ID: " + ID);
         System.out.println("Name: " + Name);
+
+        // Use a for loop to pass all of course's modules
+        for (Module Module: Modules) {
+            Module.printModule();
+        }
+
         Course.printCourse();
     }
 }
