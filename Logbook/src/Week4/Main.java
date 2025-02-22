@@ -1,6 +1,7 @@
 package Week4;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 class Module {
     public String ModuleName;
@@ -23,16 +24,12 @@ class Student {
     public Course Course;
     public ArrayList<Module> Modules = new ArrayList<Module>();
 
-    public Student(int ID, String name, Module module1, Module module2, Module module3, Module module4) {
+    public Student(int ID, String name, Module[] modules) {
         this.ID = ID;
         this.Name = name;
 
         // Add the Modules that get passed into the constructor
-        // Could maybe use an array instead of this? -- SK
-        this.Modules.add(module1);
-        this.Modules.add(module2);
-        this.Modules.add(module3);
-        this.Modules.add(module4);
+        this.Modules.addAll(Arrays.asList(modules));
     }
 
     public void enrol(Course course) {
