@@ -49,10 +49,10 @@ public class Task1 {
         student0.enrol(course1); // Enrol Student0 into Course1
 
         Student student1 = new Student(100165218, "Sam Kynaston");
-        student1.enrol(course1);
+        student1.enrol(course1); // Enrol Student1 into Course1
 
         Student student2 = new Student(100165219, "Melissa Anderson");
-        student2.enrol(course3);
+        student2.enrol(course3); // Enrol Student2 into Course3
 
         student0.printDetails();
         System.out.println();
