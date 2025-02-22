@@ -1,7 +1,5 @@
 package Week4;
 
-import Week2.Task7;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -30,7 +28,7 @@ class Student {
     public Student(int ID, String name) {
         this.ID = ID;
         this.Name = name;
-        this.Marks = new ArrayList<ModuleMark>(4);
+        this.Marks = new ArrayList<>(4);
 
         this.Marks.add(new ModuleMark());
         this.Marks.add(new ModuleMark());
@@ -107,7 +105,7 @@ class ModuleMark {
 class Course {
     public String Course;
     public String Name;
-    public ArrayList<Module> Modules = new ArrayList<Module>();
+    public ArrayList<Module> Modules = new ArrayList<>();
 
     public Course(String course, String name, ArrayList<Module> modules) {
         this.Course = course;
@@ -137,7 +135,7 @@ public class Main {
         Module module4 = new Module("Proficient", "P001");
 
         // Modules Object
-        ArrayList<Module> courseModules = new ArrayList<Module>();
+        ArrayList<Module> courseModules = new ArrayList<>();
 
         courseModules.add(module1);
         courseModules.add(module2);
