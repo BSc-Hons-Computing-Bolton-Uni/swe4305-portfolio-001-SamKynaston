@@ -1,8 +1,7 @@
 package Week4;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Random;
 
 class Module {
     public String ModuleName;
@@ -23,14 +22,14 @@ class Student {
     public int ID;
     public String Name;
     public Course Course;
-    public List<Integer> Marks = new ArrayList<Integer>(4);
+    public int[] Marks;
 
-    public Student(int ID, String name, List<Integer> marks) {
+    public Student(int ID, String name, int[] marks) {
         this.ID = ID;
         this.Name = name;
 
         // Add the Modules that get passed into the constructor
-        this.Marks.addAll(marks);
+        this.Marks = marks;
     }
 
     public void enrol(Course course) {
@@ -75,6 +74,9 @@ class Course {
 
 public class Main {
     public static void main(String[] args) {
+        // Random Function
+        Random random = new Random();
+
         // Module Objects
         Module module1 = new Module("Fundamentals", "F001");
         Module module2 = new Module("Personal Development", "PPD");
@@ -95,9 +97,26 @@ public class Main {
         Course course3 = new Course("H001", "History", courseModules);
 
         // Student Objects
-        List<Integer> student0Marks = new ArrayList<Integer>(4);
-        List<Integer> student1Marks = new ArrayList<Integer>(4);
-        List<Integer> student2Marks = new ArrayList<Integer>(4);
+        int[]student0Marks = {
+                random.nextInt(100),
+                random.nextInt(100),
+                random.nextInt(100),
+                random.nextInt(100)
+        };
+
+        int[]student1Marks = {
+                random.nextInt(100),
+                random.nextInt(100),
+                random.nextInt(100),
+                random.nextInt(100)
+        };
+
+        int[]student2Marks = {
+                random.nextInt(100),
+                random.nextInt(100),
+                random.nextInt(100),
+                random.nextInt(100)
+        };
 
         Student student0 = new Student(100165217, "Winston Smith", student0Marks); // Create Student0
         student0.enrol(course1); // Enrol Student0 into Course1
@@ -107,5 +126,15 @@ public class Main {
 
         Student student2 = new Student(100165219, "Melissa Anderson", student2Marks);
         student2.enrol(course3); // Enrol Student2 into Course3
+
+        // Print Details on the Students
+        student0.printDetails();
+        student1.printDetails();
+        student2.printDetails();
+
+        // Print Details on Courses
+        course1.printCourse();
+        course2.printCourse();
+        course3.printCourse();
     }
 }
