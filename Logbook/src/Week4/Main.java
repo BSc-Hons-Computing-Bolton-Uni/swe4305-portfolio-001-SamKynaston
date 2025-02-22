@@ -1,5 +1,7 @@
 package Week4;
 
+import Week2.Task7;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,14 +24,47 @@ class Student {
     public int ID;
     public String Name;
     public Course Course;
-    public int[] Marks;
+    public int[] Grades;
+
+    public enum Marks {
+        A_PLUS(90, 100, "A+", true),
+        A(80, 89, "A", true),
+        B(70, 79, "B", true),
+        C(60, 69, "C", true),
+        D(50, 59, "D", false),
+        E(30, 49, "E", false),
+        F(10, 29, "F", false),
+        U(0, 9, "U", false);
+
+        private final int minMarks;
+        private final int maxMarks;
+        private final String grade;
+        private final boolean hasPassed;
+
+        Marks(int minMarks, int maxMarks, String grade, boolean hasPassed) {
+            this.minMarks = minMarks;
+            this.maxMarks = maxMarks;
+            this.grade = grade;
+            this.hasPassed = hasPassed;
+        }
+    }
+
+    public static void GetGradeForMarks(int studentMarks) {
+        for (Marks mark : Marks.values()) {
+            if (studentMarks >= mark.minMarks && studentMarks <= mark.maxMarks) {
+                if (mark.hasPassed) {
+                    System.out.println("Student has passed with grade " + mark.grade);
+                } else {
+                    System.out.println("Student has failed with grade " + mark.grade);
+                }
+            }
+        }
+    }
 
     public Student(int ID, String name, int[] marks) {
         this.ID = ID;
         this.Name = name;
-
-        // Add the Modules that get passed into the constructor
-        this.Marks = marks;
+        this.Grades = marks;
     }
 
     public void enrol(Course course) {
@@ -40,8 +75,8 @@ class Student {
         System.out.println("ID: " + ID);
         System.out.println("Name: " + Name);
 
-        for (Integer mark: Marks) {
-            System.out.println("Mark: " + mark);
+        for (Integer mark: Grades) {
+            GetGradeForMarks(mark);
         }
 
         Course.printCourse();
