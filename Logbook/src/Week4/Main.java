@@ -3,6 +3,7 @@ package Week4;
 import Week2.Task7;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 class Module {
@@ -24,7 +25,40 @@ class Student {
     public int ID;
     public String Name;
     public Course Course;
-    public int[] Grades;
+    public List<ModuleMark> Marks;
+
+    public Student(int ID, String name) {
+        this.ID = ID;
+        this.Name = name;
+        this.Marks = new ArrayList<ModuleMark>(4);
+
+        this.Marks.add(new ModuleMark());
+        this.Marks.add(new ModuleMark());
+        this.Marks.add(new ModuleMark());
+        this.Marks.add(new ModuleMark());
+    }
+
+    public void enrol(Course course) {
+        this.Course = course;
+    }
+
+    public void printDetails() {
+        System.out.println("ID: " + ID);
+        System.out.println("Name: " + Name);
+
+        for (ModuleMark mark: Marks) {
+            mark.printMarks();
+        }
+
+        Course.printCourse();
+    }
+}
+
+class ModuleMark {
+    // Random Function
+    Random random = new Random();
+
+    public Integer Mark;
 
     public enum Marks {
         A_PLUS(90, 100, "A+", true),
@@ -53,33 +87,20 @@ class Student {
         for (Marks mark : Marks.values()) {
             if (studentMarks >= mark.minMarks && studentMarks <= mark.maxMarks) {
                 if (mark.hasPassed) {
-                    System.out.println("Student has passed with grade " + mark.grade);
+                    System.out.println("Student has passed with grade " + mark.grade + "(" + studentMarks + ")");
                 } else {
-                    System.out.println("Student has failed with grade " + mark.grade);
+                    System.out.println("Student has failed with grade " + mark.grade + "(" + studentMarks + ")");
                 }
             }
         }
     }
 
-    public Student(int ID, String name, int[] marks) {
-        this.ID = ID;
-        this.Name = name;
-        this.Grades = marks;
+    public ModuleMark() {
+        this.Mark = random.nextInt(100);
     }
 
-    public void enrol(Course course) {
-        this.Course = course;
-    }
-
-    public void printDetails() {
-        System.out.println("ID: " + ID);
-        System.out.println("Name: " + Name);
-
-        for (Integer mark: Grades) {
-            GetGradeForMarks(mark);
-        }
-
-        Course.printCourse();
+    public void printMarks() {
+        GetGradeForMarks(Mark);
     }
 }
 
@@ -109,9 +130,6 @@ class Course {
 
 public class Main {
     public static void main(String[] args) {
-        // Random Function
-        Random random = new Random();
-
         // Module Objects
         Module module1 = new Module("Fundamentals", "F001");
         Module module2 = new Module("Personal Development", "PPD");
@@ -132,34 +150,13 @@ public class Main {
         Course course3 = new Course("H001", "History", courseModules);
 
         // Student Objects
-        int[]student0Marks = {
-                random.nextInt(100),
-                random.nextInt(100),
-                random.nextInt(100),
-                random.nextInt(100)
-        };
-
-        int[]student1Marks = {
-                random.nextInt(100),
-                random.nextInt(100),
-                random.nextInt(100),
-                random.nextInt(100)
-        };
-
-        int[]student2Marks = {
-                random.nextInt(100),
-                random.nextInt(100),
-                random.nextInt(100),
-                random.nextInt(100)
-        };
-
-        Student student0 = new Student(100165217, "Winston Smith", student0Marks); // Create Student0
+        Student student0 = new Student(100165217, "Winston Smith"); // Create Student0
         student0.enrol(course1); // Enrol Student0 into Course1
 
-        Student student1 = new Student(100165218, "Sam Kynaston", student1Marks);
+        Student student1 = new Student(100165218, "Sam Kynaston");
         student1.enrol(course1); // Enrol Student1 into Course1
 
-        Student student2 = new Student(100165219, "Melissa Anderson", student2Marks);
+        Student student2 = new Student(100165219, "Melissa Anderson");
         student2.enrol(course3); // Enrol Student2 into Course3
 
         // Print Details on the Students
