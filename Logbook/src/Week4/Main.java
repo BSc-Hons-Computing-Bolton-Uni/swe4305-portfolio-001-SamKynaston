@@ -13,7 +13,7 @@ class Module {
     }
 
     public void printModule() {
-        System.out.println("Name:" + ModuleName);
+        System.out.println("Name: " + ModuleName);
         System.out.println("Code: " + ModuleCode);
     }
 }
@@ -22,14 +22,12 @@ class Student {
     public int ID;
     public String Name;
     public Course Course;
-    public ArrayList<Module> Modules = new ArrayList<Module>();
+    public Integer[] Marks = new Integer[4];
 
-    public Student(int ID, String name, Module[] modules) {
+    public Student(int ID, String name, Integer[] marks) {
         this.ID = ID;
         this.Name = name;
-
-        // Add the Modules that get passed into the constructor
-        this.Modules.addAll(Arrays.asList(modules));
+        this.Marks = marks;
     }
 
     public void enrol(Course course) {
@@ -40,9 +38,8 @@ class Student {
         System.out.println("ID: " + ID);
         System.out.println("Name: " + Name);
 
-        // Use a for loop to pass all of course's modules
-        for (Module Module: Modules) {
-            Module.printModule();
+        for (Integer mark: Marks) {
+            System.out.println("Mark: " + mark);
         }
 
         Course.printCourse();
@@ -52,15 +49,24 @@ class Student {
 class Course {
     public String Course;
     public String Name;
+    public ArrayList<Module> Modules = new ArrayList<Module>();
 
-    public Course(String course, String name) {
+    public Course(String course, String name, Module[] modules) {
         this.Course = course;
         this.Name = name;
+
+        // Add the Modules that get passed into the constructor
+        this.Modules.addAll(Arrays.asList(modules));
     }
 
     public void printCourse() {
         System.out.println("Course ID: " + Course);
         System.out.println("Course Name: " + Name);
+
+        // Use a for loop to pass all of course's modules
+        for (Module Module: Modules) {
+            Module.printModule();
+        }
     }
 }
 
