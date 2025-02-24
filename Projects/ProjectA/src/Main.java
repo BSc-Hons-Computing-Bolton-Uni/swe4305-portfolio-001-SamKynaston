@@ -47,7 +47,7 @@ class Playlist {
 
     public void RemoveSong(Song song) {
         if (!Playlist.contains(song)) {
-            System.out.println(Colours.RED_BACKGROUND + "[ERR] User " + ID + " does not have this song stored in their playlist!" + Colours.ANSI_RESET);
+            System.out.println(Colours.RED_BACKGROUND + "[ERR] Playlist " + ID + " does not have this song stored!" + Colours.ANSI_RESET);
             return;
         }
 
@@ -56,11 +56,11 @@ class Playlist {
 
     public void ShowPlaylist() {
         if (Playlist.isEmpty()) {
-            System.out.println(Colours.RED_BACKGROUND + "[ERR] User " + ID + "'s playlist is empty!" + Colours.ANSI_RESET);
+            System.out.println(Colours.RED_BACKGROUND + "[ERR] Playlist " + ID + " is empty!" + Colours.ANSI_RESET);
             return;
         }
 
-        System.out.println("Playlist for user " + ID);
+        System.out.println("Playlist " + ID);
 
         for (Song song : Playlist) {
             song.ListDetails();
@@ -121,6 +121,46 @@ class PlaylistTest {
         Artists.add(new Artist(5, "Test5"));
     }
 
+    public void AddSongsToPlaylist() {
+        List<Playlist> Playlists = GetSamplePlaylists();
+        List<Song> Songs = GetSampleSongData();
+
+        // Playlist One
+        Playlists.getFirst().AddSong(Songs.getFirst());
+        Playlists.getFirst().AddSong(Songs.get(2));
+        Playlists.getFirst().AddSong(Songs.get(5));
+        Playlists.getFirst().AddSong(Songs.get(9));
+        Playlists.getFirst().AddSong(Songs.get(7));
+
+        // Playlist Two
+        Playlists.get(1).AddSong(Songs.getFirst());
+        Playlists.get(1).AddSong(Songs.get(2));
+        Playlists.get(1).AddSong(Songs.get(5));
+        Playlists.get(1).AddSong(Songs.get(9));
+        Playlists.get(1).AddSong(Songs.get(7));
+
+        // Playlist Three
+        Playlists.get(2).AddSong(Songs.getFirst());
+        Playlists.get(2).AddSong(Songs.get(2));
+        Playlists.get(2).AddSong(Songs.get(7));
+        Playlists.get(2).AddSong(Songs.get(8));
+        Playlists.get(2).AddSong(Songs.get(1));
+
+        // Playlist Four
+        Playlists.get(3).AddSong(Songs.getFirst());
+        Playlists.get(3).AddSong(Songs.get(2));
+        Playlists.get(3).AddSong(Songs.get(5));
+        Playlists.get(3).AddSong(Songs.get(3));
+        Playlists.get(3).AddSong(Songs.get(7));
+
+        // Playlist Five
+        Playlists.get(4).AddSong(Songs.getFirst());
+        Playlists.get(4).AddSong(Songs.get(6));
+        Playlists.get(4).AddSong(Songs.get(1));
+        Playlists.get(4).AddSong(Songs.get(7));
+        Playlists.get(4).AddSong(Songs.get(4));
+    }
+
     // Get Sample Data Functions
     public List<Song> GetSampleSongData() {
         return Songs;
@@ -143,11 +183,13 @@ public class Main {
         Test.GenerateSamplePlaylists();
         Test.GenerateSampleArtists();
         Test.GenerateSampleSongs();
+        Test.AddSongsToPlaylist();
 
         List<Song> Songs = Test.GetSampleSongData();
+        List<Playlist> Playlists = Test.GetSamplePlaylists();
 
-        for (Song song : Songs) {
-            song.ListDetails();
+        for (Playlist playlist : Playlists) {
+            playlist.ShowPlaylist();
         }
     }
 }
