@@ -29,7 +29,20 @@ class Song {
         System.out.println("ID: " + ID);
         System.out.println("Name: " + Name);
         System.out.println("Artist: " + Artist.Name + " (ID: " + Artist.ID + ")"); // Obtain the artist's name and ID
-        System.out.println("Play Count: " + Formatter.Number(Plays)); // Call the main class's format function
+
+        String Colour;
+
+        if (Plays >= 1000 && Plays < 10000) {
+            Colour = Colours.YELLOW_BACKGROUND; // Call the main class's format function
+        } else if (Plays >= 10000 && Plays < 100000) {
+            Colour = Colours.GREEN_BACKGROUND;
+        } else if (Plays >= 100000) {
+            Colour = Colours.PURPLE_BACKGROUND;
+        } else {
+            Colour = Colours.RED_BACKGROUND;
+        }
+
+        System.out.println(Colour + "Listens: " + Formatter.Number(Plays) + Colours.ANSI_RESET); // Call the main class's format function
     }
 }
 
@@ -73,6 +86,9 @@ class Colours {
     // Colours
     public static final String ANSI_RESET = "\u001B[0m"; // Reset any colouring
     public static final String RED_BACKGROUND = "\u001B[41m"; // Display a red background on console text
+    public static final String YELLOW_BACKGROUND = "\u001B[43m";
+    public static final String GREEN_BACKGROUND = "\u001B[42m";
+    public static final String PURPLE_BACKGROUND = "\u001B[45m";
 }
 
 class Formatter {
@@ -102,13 +118,13 @@ class PlaylistTest {
         if (Artists.isEmpty()) {GenerateSampleArtists();}
 
         Songs.add(new Song(1, "Test1", Artists.get(0), 1000));
-        Songs.add(new Song(2, "Test2", Artists.get(0), 1000));
-        Songs.add(new Song(3, "Test3", Artists.get(1), 1000));
-        Songs.add(new Song(4, "Test4", Artists.get(1), 1000));
-        Songs.add(new Song(5, "Test5", Artists.get(2), 1000));
-        Songs.add(new Song(6, "Test6", Artists.get(2), 1000));
-        Songs.add(new Song(7, "Test7", Artists.get(3), 1000));
-        Songs.add(new Song(8, "Test8", Artists.get(3), 1000));
+        Songs.add(new Song(2, "Test2", Artists.get(0), 10000));
+        Songs.add(new Song(3, "Test3", Artists.get(1), 100000));
+        Songs.add(new Song(4, "Test4", Artists.get(1), 1000000));
+        Songs.add(new Song(5, "Test5", Artists.get(2), 1000000));
+        Songs.add(new Song(6, "Test6", Artists.get(2), 1000000));
+        Songs.add(new Song(7, "Test7", Artists.get(3), 100000));
+        Songs.add(new Song(8, "Test8", Artists.get(3), 100000));
         Songs.add(new Song(9, "Test9", Artists.get(4), 1000));
         Songs.add(new Song(10, "Test10", Artists.get(4), 1000));
     }
@@ -185,7 +201,6 @@ public class Main {
         Test.GenerateSampleSongs();
         Test.AddSongsToPlaylist();
 
-        List<Song> Songs = Test.GetSampleSongData();
         List<Playlist> Playlists = Test.GetSamplePlaylists();
 
         for (Playlist playlist : Playlists) {
