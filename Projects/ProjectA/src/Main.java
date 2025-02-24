@@ -79,5 +79,12 @@ public class Main {
         user1.ShowPlaylist();
         System.out.println();
         user2.ShowPlaylist();
+
+        // Remove Songs
+        user1.RemoveSong(song1);
+        user1.RemoveSong(song3);
+
+        // Print User Details to test effectiveness
+        user1.ShowPlaylist();
     }
 }
