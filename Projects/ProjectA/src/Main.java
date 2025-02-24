@@ -84,9 +84,34 @@ class Formatter {
 }
 
 class PlaylistTest {
-    public List<Artist> Artists;
-    public List<Song> Songs;
+    public List<Artist> Artists = new ArrayList<>();
+    public List<Song> Songs = new ArrayList<>();
 
+    // Generate Sample Data Functions
+    public void GenerateSampleSongs() {
+        if (Artists.isEmpty()) {GenerateSampleArtists();}
+
+        Songs.add(new Song(1, "Test1", Artists.get(0), 1000));
+        Songs.add(new Song(1, "Test2", Artists.get(0), 1000));
+        Songs.add(new Song(1, "Test3", Artists.get(1), 1000));
+        Songs.add(new Song(1, "Test4", Artists.get(1), 1000));
+        Songs.add(new Song(1, "Test5", Artists.get(2), 1000));
+        Songs.add(new Song(1, "Test6", Artists.get(2), 1000));
+        Songs.add(new Song(1, "Test7", Artists.get(3), 1000));
+        Songs.add(new Song(1, "Test8", Artists.get(3), 1000));
+        Songs.add(new Song(1, "Test9", Artists.get(4), 1000));
+        Songs.add(new Song(1, "Test10", Artists.get(4), 1000));
+    }
+
+    public void GenerateSampleArtists() {
+        Artists.add(new Artist(1, "Test1"));
+        Artists.add(new Artist(2, "Test2"));
+        Artists.add(new Artist(3, "Test3"));
+        Artists.add(new Artist(4, "Test4"));
+        Artists.add(new Artist(5, "Test5"));
+    }
+
+    // Get Sample Data Functions
     public List<Song> GetSampleSongData() {
         return Songs;
     }
@@ -99,6 +124,15 @@ class PlaylistTest {
 public class Main {
     // Main Function
     public static void main(String[] args) {
-        new PlaylistTest();
+        PlaylistTest Test = new PlaylistTest();
+
+        Test.GenerateSampleArtists();
+        Test.GenerateSampleSongs();
+
+        List<Song> Songs = Test.GetSampleSongData();
+
+        for (Song song : Songs) {
+            song.ListDetails();
+        }
     }
 }
