@@ -46,7 +46,7 @@ class User {
 
     public void RemoveSong(Song song) {
         if (!Playlist.contains(song)) {
-            System.out.println("User does not have this song stored in their playlist!");
+            System.out.println("[ERR] User " + ID + " does not have this song stored in their playlist!");
             return;
         }
 
@@ -55,7 +55,7 @@ class User {
 
     public void ShowPlaylist() {
         if (Playlist.isEmpty()) {
-            System.out.println("User " + ID + "'s playlist is empty!");
+            System.out.println("[ERR] User " + ID + "'s playlist is empty!");
             return;
         }
 
