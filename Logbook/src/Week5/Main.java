@@ -81,6 +81,10 @@ class StockDemo {
     StockList stocks = new StockList();
 
     public StockDemo() {
+        Run();
+    }
+
+    public void Run() {
         CreateTestProducts();
         PrintResults();
 
