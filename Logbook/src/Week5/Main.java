@@ -1,6 +1,7 @@
 package Week5;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 class Product {
     public int ID;
@@ -55,7 +56,10 @@ class StockList {
 
     public Product SearchInventoryBasedOnID(int ID) {
         for (Product product : Products) {
-            if (product.ID == ID) {return product;}
+            if (product.ID == ID) {
+                System.out.println("Found Product with an ID of " + ID);
+                return product;
+            }
         }
 
         return null;
@@ -63,7 +67,10 @@ class StockList {
 
     public Product SearchInventoryBasedOnName(String Name) {
         for (Product product : Products) {
-            if (product.Name == Name) {return product;}
+            if (Objects.equals(product.Name, Name)) {
+                System.out.println("Found Product with Name of " + Name);
+                return product;
+            }
         }
 
         return null;
@@ -75,6 +82,10 @@ class StockDemo {
 
     public StockDemo() {
         CreateTestProducts();
+        PrintResults();
+
+        stocks.SearchInventoryBasedOnID(1);
+        stocks.SearchInventoryBasedOnName("Xbox Series X");
     }
 
     public void CreateTestProducts() {
@@ -93,6 +104,5 @@ class StockDemo {
 public class Main {
     public static void main(String[] args) {
         StockDemo NewDemo = new StockDemo();
-        NewDemo.PrintResults();
     }
 }
