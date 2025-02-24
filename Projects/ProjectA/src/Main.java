@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 class Artist {
@@ -27,7 +28,7 @@ class Song {
         System.out.println("ID: " + ID);
         System.out.println("Name: " + Name);
         System.out.println("Artist: " + Artist.Name + " (" + Artist.ID + ")");
-        System.out.println("Play Count: " + Plays);
+        System.out.println("Play Count: " + Main.formatter(Plays));
     }
 }
 
@@ -66,6 +67,11 @@ class User {
 }
 
 public class Main {
+    public static String formatter(int toFormat) {
+        DecimalFormat newFormat = new DecimalFormat("###,###");
+        return newFormat.format(toFormat);
+    }
+
     public static void main(String[] args) {
         Artist artist1 = new Artist(1, "Anne-Marie");
         Artist artist2 = new Artist(2, "Ed Sheeran");
