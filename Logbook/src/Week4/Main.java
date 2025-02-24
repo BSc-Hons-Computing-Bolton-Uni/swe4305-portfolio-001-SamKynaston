@@ -84,10 +84,20 @@ class ModuleMark {
     public static void GetGradeForMarks(int studentMarks) {
         for (Marks mark : Marks.values()) {
             if (studentMarks >= mark.minMarks && studentMarks <= mark.maxMarks) {
+                // Get the Maximum, Minimum mark based on grade
+                System.out.println("Grade: " + mark.grade);
+                System.out.println("Maximum Mark: " + mark.maxMarks);
+                System.out.println("Minimum Mark: " + mark.minMarks);
+
+                // Calculate the mean between the maxMarks and the minMarks
+                float gradeMean = (float) (mark.minMarks + mark.maxMarks) / 2;
+
+                System.out.println("Mean Marks Required: " + gradeMean);
+
                 if (mark.hasPassed) {
-                    System.out.println("Student has passed with grade " + mark.grade + "(" + studentMarks + ")");
+                    System.out.println("Student has passed with grade " + mark.grade + " (" + studentMarks + ")");
                 } else {
-                    System.out.println("Student has failed with grade " + mark.grade + "(" + studentMarks + ")");
+                    System.out.println("Student has failed with grade " + mark.grade + " (" + studentMarks + ")");
                 }
             }
         }
