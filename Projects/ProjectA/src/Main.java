@@ -14,20 +14,20 @@ class Song {
     public int ID;
     public String Name;
     public Artist Artist;
-    public int Duration;
+    public int Plays;
 
-    public Song(int id, String name, Artist artist, int duration) {
+    public Song(int id, String name, Artist artist, int plays) {
         this.ID = id;
         this.Name = name;
         this.Artist = artist;
-        this.Duration = duration;
+        this.Plays = plays;
     }
 
     public void ListDetails() {
         System.out.println("ID: " + ID);
         System.out.println("Name: " + Name);
         System.out.println("Artist: " + Artist.Name + " (" + Artist.ID + ")");
-        System.out.println("Duration: " + Duration);
+        System.out.println("Play Count: " + Plays);
     }
 }
 
@@ -44,10 +44,20 @@ class User {
     }
 
     public void RemoveSong(Song song) {
+        if (!Playlist.contains(song)) {
+            System.out.println("User does not have this song stored in their playlist!");
+            return;
+        }
+
         Playlist.remove(song);
     }
 
     public void ShowPlaylist() {
+        if (Playlist.isEmpty()) {
+            System.out.println("User " + ID + "'s playlist is empty!");
+            return;
+        }
+
         System.out.println("Playlist for user " + ID);
         for (Song song : Playlist) {
             song.ListDetails();
@@ -57,15 +67,17 @@ class User {
 
 public class Main {
     public static void main(String[] args) {
-        Artist artist1 = new Artist(1, "The Weeknd");
-        Artist artist2 = new Artist(2, "Taylor Swift");
-        Artist artist3 = new Artist(3, "Ed Sheeran");
+        Artist artist1 = new Artist(1, "Anne-Marie");
+        Artist artist2 = new Artist(2, "Ed Sheeran");
+        Artist artist3 = new Artist(3, "Beyonce");
+        Artist artist4 = new Artist(4, "Dave");
+        Artist artist5 = new Artist(5, "Swedish House Mafia");
 
-        Song song1 = new Song(101, "Blinding Lights", artist1, 200);
-        Song song2 = new Song(102, "Save Your Tears", artist1, 215);
-        Song song3 = new Song(103, "Shake It Off", artist2, 210);
-        Song song4 = new Song(104, "Perfect", artist3, 230);
-        Song song5 = new Song(105, "Shape of You", artist3, 240);
+        Song song1 = new Song(101, "Beautiful", artist1, 863015);
+        Song song2 = new Song(102, "Bad Habits", artist2, 127192542);
+        Song song3 = new Song(103, "Halo", artist3, 991888598);
+        Song song4 = new Song(104, "Clash (feat. Stormzy)", artist4, 7070513);
+        Song song5 = new Song(105, "It Gets Better", artist5, 7563930);
 
         User user1 = new User(1);
         user1.AddSong(song1);
@@ -81,6 +93,7 @@ public class Main {
         user2.ShowPlaylist();
 
         // Remove Songs
+        user1.RemoveSong(song4);
         user1.RemoveSong(song1);
         user1.RemoveSong(song3);
 
