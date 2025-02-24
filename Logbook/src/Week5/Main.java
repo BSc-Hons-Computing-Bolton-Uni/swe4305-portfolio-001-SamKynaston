@@ -63,8 +63,10 @@ class StockList {
 
     public Product SearchInventoryBasedOnName(String Name) {
         for (Product product : Products) {
-
+            if (product.Name == Name) {return product;}
         }
+
+        return null;
     }
 }
 
