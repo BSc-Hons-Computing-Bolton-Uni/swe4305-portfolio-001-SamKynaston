@@ -27,8 +27,8 @@ class Song {
     public void ListDetails() {
         System.out.println("ID: " + ID);
         System.out.println("Name: " + Name);
-        System.out.println("Artist: " + Artist.Name + " (ID: " + Artist.ID + ")");
-        System.out.println("Play Count: " + Main.formatter(Plays));
+        System.out.println("Artist: " + Artist.Name + " (ID: " + Artist.ID + ")"); // Obtain the artist's name and ID
+        System.out.println("Play Count: " + Main.formatter(Plays)); // Call the main class's format function
     }
 }
 
@@ -46,7 +46,7 @@ class User {
 
     public void RemoveSong(Song song) {
         if (!Playlist.contains(song)) {
-            System.out.println("[ERR] User " + ID + " does not have this song stored in their playlist!");
+            System.out.println(Main.RED_BACKGROUND + "[ERR] User " + ID + " does not have this song stored in their playlist!" + Main.ANSI_RESET);
             return;
         }
 
@@ -55,7 +55,7 @@ class User {
 
     public void ShowPlaylist() {
         if (Playlist.isEmpty()) {
-            System.out.println("[ERR] User " + ID + "'s playlist is empty!");
+            System.out.println(Main.RED_BACKGROUND + "[ERR] User " + ID + "'s playlist is empty!" + Main.ANSI_RESET);
             return;
         }
 
@@ -69,23 +69,31 @@ class User {
 }
 
 public class Main {
+    // Colours
+    public static final String ANSI_RESET = "\u001B[0m"; // Reset any colouring
+    public static final String RED_BACKGROUND = "\u001B[41m"; // Display a red background on console text
+
+    // Formatting for Large Numbers
     public static String formatter(int toFormat) {
         DecimalFormat newFormat = new DecimalFormat("###,###");
         return newFormat.format(toFormat);
     }
 
+    // Main Function
     public static void main(String[] args) {
-        Artist artist1 = new Artist(1, "Anne-Marie");
-        Artist artist2 = new Artist(2, "Ed Sheeran");
-        Artist artist3 = new Artist(3, "Beyonce");
-        Artist artist4 = new Artist(4, "Dave");
-        Artist artist5 = new Artist(5, "Swedish House Mafia");
+        // Sample Artist Data
+        Artist artist1 = new Artist(1, "Anne-Marie"); // Build an artist object for Anne-Marie with ID 1
+        Artist artist2 = new Artist(2, "Ed Sheeran"); // Build an artist object for Ed Sheeran with ID 2
+        Artist artist3 = new Artist(3, "Beyonce"); // Build an artist object for Beyonce with ID 3
+        Artist artist4 = new Artist(4, "Dave"); // Build an artist object for Dave with ID 4
+        Artist artist5 = new Artist(5, "Swedish House Mafia"); // Build an artist object for SHM with ID 5
 
-        Song song1 = new Song(101, "Beautiful", artist1, 863015);
-        Song song2 = new Song(102, "Bad Habits", artist2, 127192542);
-        Song song3 = new Song(103, "Halo", artist3, 991888598);
-        Song song4 = new Song(104, "Clash (feat. Stormzy)", artist4, 7070513);
-        Song song5 = new Song(105, "It Gets Better", artist5, 7563930);
+        // Sample Song Data
+        Song song1 = new Song(101, "Beautiful", artist1, 863015); // Build a song object for Anne-Marie's song "Beautiful"
+        Song song2 = new Song(102, "Bad Habits", artist2, 127192542); // Build a song object for Ed Sheeran's song "Bad Habits"
+        Song song3 = new Song(103, "Halo", artist3, 991888598); // Build a song object for Beyonce's song "Halo"
+        Song song4 = new Song(104, "Clash (feat. Stormzy)", artist4, 7070513); // Build a song object for Dave's song "Clash"
+        Song song5 = new Song(105, "It Gets Better", artist5, 7563930); // Build a song object for SHM's song "It Gets Better"
 
         User user1 = new User(1);
         user1.AddSong(song1);
