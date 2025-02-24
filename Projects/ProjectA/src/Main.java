@@ -28,7 +28,7 @@ class Song {
         System.out.println("ID: " + ID);
         System.out.println("Name: " + Name);
         System.out.println("Artist: " + Artist.Name + " (ID: " + Artist.ID + ")"); // Obtain the artist's name and ID
-        System.out.println("Play Count: " + Main.formatter(Plays)); // Call the main class's format function
+        System.out.println("Play Count: " + Formatter.Number(Plays)); // Call the main class's format function
     }
 }
 
@@ -46,7 +46,7 @@ class User {
 
     public void RemoveSong(Song song) {
         if (!Playlist.contains(song)) {
-            System.out.println(Main.RED_BACKGROUND + "[ERR] User " + ID + " does not have this song stored in their playlist!" + Main.ANSI_RESET);
+            System.out.println(Colours.RED_BACKGROUND + "[ERR] User " + ID + " does not have this song stored in their playlist!" + Colours.ANSI_RESET);
             return;
         }
 
@@ -55,7 +55,7 @@ class User {
 
     public void ShowPlaylist() {
         if (Playlist.isEmpty()) {
-            System.out.println(Main.RED_BACKGROUND + "[ERR] User " + ID + "'s playlist is empty!" + Main.ANSI_RESET);
+            System.out.println(Colours.RED_BACKGROUND + "[ERR] User " + ID + "'s playlist is empty!" + Colours.ANSI_RESET);
             return;
         }
 
@@ -68,17 +68,21 @@ class User {
     }
 }
 
-public class Main {
+class Colours {
     // Colours
     public static final String ANSI_RESET = "\u001B[0m"; // Reset any colouring
     public static final String RED_BACKGROUND = "\u001B[41m"; // Display a red background on console text
+}
 
+class Formatter {
     // Formatting for Large Numbers
-    public static String formatter(int toFormat) {
+    public static String Number(int toFormat) {
         DecimalFormat newFormat = new DecimalFormat("###,###");
         return newFormat.format(toFormat);
     }
+}
 
+public class Main {
     // Main Function
     public static void main(String[] args) {
         // Sample Artist Data
