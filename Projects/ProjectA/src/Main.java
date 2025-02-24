@@ -1,5 +1,6 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 class Artist {
     public int ID;
@@ -32,7 +33,7 @@ class Song {
     }
 }
 
-class User {
+/*class User {
     public int ID;
     public ArrayList<Song> Playlist = new ArrayList<>();
 
@@ -66,7 +67,7 @@ class User {
             System.out.println();
         }
     }
-}
+}*/
 
 class Colours {
     // Colours
@@ -82,9 +83,22 @@ class Formatter {
     }
 }
 
+class PlaylistTest {
+    public List<Artist> Artists;
+    public List<Song> Songs;
+
+    public List<Song> GetSampleSongData() {
+        return Songs;
+    }
+
+    public List<Artist> GetSampleArtistData() {
+        return Artists;
+    }
+}
+
 public class Main {
     // Main Function
     public static void main(String[] args) {
-
+        new PlaylistTest();
     }
 }
