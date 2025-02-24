@@ -86,7 +86,7 @@ class ModuleMark {
     public static void GetGradeForMarks(int studentMarks) {
         for (Marks mark : Marks.values()) {
             if (studentMarks >= mark.minMarks && studentMarks <= mark.maxMarks) {
-                System.out.println("=====[ Grade Details]=====");
+                System.out.println("=====[ Grade Details ]=====");
                 // Get the Maximum, Minimum mark based on grade
                 System.out.println("Grade: " + mark.grade);
                 System.out.println("Maximum Mark: " + mark.maxMarks);
