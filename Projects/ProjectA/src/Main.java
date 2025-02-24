@@ -27,7 +27,7 @@ class Song {
     public void ListDetails() {
         System.out.println("ID: " + ID);
         System.out.println("Name: " + Name);
-        System.out.println("Artist: " + Artist.Name + " (" + Artist.ID + ")");
+        System.out.println("Artist: " + Artist.Name + " (ID: " + Artist.ID + ")");
         System.out.println("Play Count: " + Main.formatter(Plays));
     }
 }
@@ -60,8 +60,10 @@ class User {
         }
 
         System.out.println("Playlist for user " + ID);
+
         for (Song song : Playlist) {
             song.ListDetails();
+            System.out.println();
         }
     }
 }
