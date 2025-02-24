@@ -33,11 +33,11 @@ class Song {
     }
 }
 
-/*class User {
+class Playlist {
     public int ID;
     public ArrayList<Song> Playlist = new ArrayList<>();
 
-    public User(int ID) {
+    public Playlist(int ID) {
         this.ID = ID;
     }
 
@@ -67,7 +67,7 @@ class Song {
             System.out.println();
         }
     }
-}*/
+}
 
 class Colours {
     // Colours
@@ -86,21 +86,31 @@ class Formatter {
 class PlaylistTest {
     public List<Artist> Artists = new ArrayList<>();
     public List<Song> Songs = new ArrayList<>();
+    public List<Playlist> Playlists = new ArrayList<>();
+
+    // Generate Sample Playlists
+    public void GenerateSamplePlaylists() {
+        Playlists.add(new Playlist(1));
+        Playlists.add(new Playlist(2));
+        Playlists.add(new Playlist(3));
+        Playlists.add(new Playlist(4));
+        Playlists.add(new Playlist(5));
+    }
 
     // Generate Sample Data Functions
     public void GenerateSampleSongs() {
         if (Artists.isEmpty()) {GenerateSampleArtists();}
 
         Songs.add(new Song(1, "Test1", Artists.get(0), 1000));
-        Songs.add(new Song(1, "Test2", Artists.get(0), 1000));
-        Songs.add(new Song(1, "Test3", Artists.get(1), 1000));
-        Songs.add(new Song(1, "Test4", Artists.get(1), 1000));
-        Songs.add(new Song(1, "Test5", Artists.get(2), 1000));
-        Songs.add(new Song(1, "Test6", Artists.get(2), 1000));
-        Songs.add(new Song(1, "Test7", Artists.get(3), 1000));
-        Songs.add(new Song(1, "Test8", Artists.get(3), 1000));
-        Songs.add(new Song(1, "Test9", Artists.get(4), 1000));
-        Songs.add(new Song(1, "Test10", Artists.get(4), 1000));
+        Songs.add(new Song(2, "Test2", Artists.get(0), 1000));
+        Songs.add(new Song(3, "Test3", Artists.get(1), 1000));
+        Songs.add(new Song(4, "Test4", Artists.get(1), 1000));
+        Songs.add(new Song(5, "Test5", Artists.get(2), 1000));
+        Songs.add(new Song(6, "Test6", Artists.get(2), 1000));
+        Songs.add(new Song(7, "Test7", Artists.get(3), 1000));
+        Songs.add(new Song(8, "Test8", Artists.get(3), 1000));
+        Songs.add(new Song(9, "Test9", Artists.get(4), 1000));
+        Songs.add(new Song(10, "Test10", Artists.get(4), 1000));
     }
 
     public void GenerateSampleArtists() {
@@ -119,6 +129,10 @@ class PlaylistTest {
     public List<Artist> GetSampleArtistData() {
         return Artists;
     }
+
+    public List<Playlist> GetSamplePlaylists() {
+        return Playlists;
+    }
 }
 
 public class Main {
@@ -126,6 +140,7 @@ public class Main {
     public static void main(String[] args) {
         PlaylistTest Test = new PlaylistTest();
 
+        Test.GenerateSamplePlaylists();
         Test.GenerateSampleArtists();
         Test.GenerateSampleSongs();
 
