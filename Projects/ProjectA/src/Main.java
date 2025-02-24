@@ -85,6 +85,7 @@ class Formatter {
 public class Main {
     // Main Function
     public static void main(String[] args) {
+        // TBD: REPLACE SAMPLE DATA WITH OWN DATA. ONLY USING FOR TESTING.
         // Sample Artist Data
         Artist artist1 = new Artist(1, "Anne-Marie"); // Build an artist object for Anne-Marie with ID 1
         Artist artist2 = new Artist(2, "Ed Sheeran"); // Build an artist object for Ed Sheeran with ID 2
