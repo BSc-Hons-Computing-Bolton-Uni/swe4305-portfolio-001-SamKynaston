@@ -223,17 +223,18 @@ class PlaylistTest {
 public class Main {
     // Main Function
     public static void main(String[] args) {
-        PlaylistTest Test = new PlaylistTest();
+        PlaylistTest Test = new PlaylistTest(); // Create a new test class
 
-        Test.GenerateSamplePlaylists();
-        Test.GenerateSampleArtists();
-        Test.GenerateSampleSongs();
-        Test.AddSongsToPlaylist();
+        Test.GenerateSamplePlaylists(); // Call the test class's Sample Playlist generator
+        Test.GenerateSampleArtists(); // Call the test class's Sample Artists generator
+        Test.GenerateSampleSongs(); // Call the test class's Sample Songs generator
+        Test.AddSongsToPlaylist(); // Call the test class's function to add sample songs to playlists
 
-        List<Playlist> Playlists = Test.GetSamplePlaylists();
+        List<Playlist> Playlists = Test.GetSamplePlaylists(); // Create an arraylist to store Playlists and call the function that returns all sample playlists
 
+        // Go through all playlists
         for (Playlist playlist : Playlists) {
-            playlist.ShowPlaylist();
+            playlist.ShowPlaylist(); // Call the function that prints out the songs in all playlists
         }
     }
 }
