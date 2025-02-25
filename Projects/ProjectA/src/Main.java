@@ -40,23 +40,23 @@ class Song {
     }
 
     public void ListDetails() {
-        System.out.println("ID: " + ID);
-        System.out.println("Name: " + Name);
+        System.out.println("ID: " + ID); // Print the song's ID
+        System.out.println("Name: " + Name); // Print the song's name
         System.out.println("Artist: " + Artist.Name + " (ID: " + Artist.ID + ")"); // Obtain the artist's name and ID
 
-        String Colour;
+        String Colour; // Create a new string variable to store the colour of the background
 
         if (Plays >= 1000 && Plays < 10000) {
-            Colour = Colours.YELLOW_BACKGROUND; // Call the main class's format function
+            Colour = Colours.YELLOW_BACKGROUND; // Call the colour class and get a yellow background
         } else if (Plays >= 10000 && Plays < 100000) {
-            Colour = Colours.GREEN_BACKGROUND;
+            Colour = Colours.GREEN_BACKGROUND; // Call the colour class and get a green background
         } else if (Plays >= 100000) {
-            Colour = Colours.PURPLE_BACKGROUND;
+            Colour = Colours.PURPLE_BACKGROUND; // Call the colour class and get a purple background
         } else {
-            Colour = Colours.RED_BACKGROUND;
+            Colour = Colours.RED_BACKGROUND; // Call the colour class and get a red background
         }
 
-        System.out.println(Colour + "Listens: " + Formatter.Number(Plays) + Colours.ANSI_RESET); // Call the main class's format function
+        System.out.println(Colour + "Listens: " + Formatter.Number(Plays) + Colours.ANSI_RESET); // Print the amount of listens the song has using the colour obtained in the logic above
     }
 }
 
@@ -71,23 +71,30 @@ class Playlist {
     public ArrayList<Song> Playlist = new ArrayList<>();
 
     public Playlist(int ID) {
+        SetID(ID);
+    }
+
+    public void SetID(int ID) {
         this.ID = ID;
     }
 
     public void AddSong(Song song) {
-        Playlist.add(song);
+        Playlist.add(song); // Adds the song object to the function
     }
 
     public void RemoveSong(Song song) {
+        // If the song doesn't exist in the playlist, print an error and terminate the function
         if (!Playlist.contains(song)) {
             System.out.println(Colours.RED_BACKGROUND + "[ERR] Playlist " + ID + " does not have this song stored!" + Colours.ANSI_RESET);
             return;
         }
 
+        // Remove the song from the Playlist
         Playlist.remove(song);
     }
 
     public void ShowPlaylist() {
+        // If the playlist is empty, print an error and return to terminate the function
         if (Playlist.isEmpty()) {
             System.out.println(Colours.RED_BACKGROUND + "[ERR] Playlist " + ID + " is empty!" + Colours.ANSI_RESET);
             return;
@@ -95,9 +102,10 @@ class Playlist {
 
         System.out.println("Playlist " + ID);
 
+        // Go through every song in the playlist
         for (Song song : Playlist) {
-            song.ListDetails();
-            System.out.println();
+            song.ListDetails(); // Calls the function that gets the song object to print its attributes
+            System.out.println(); // Print a new line to divide outputs
         }
     }
 }
@@ -199,17 +207,16 @@ class PlaylistTest {
         Playlists.get(4).AddSong(Songs.get(4));
     }
 
-    // Get Sample Data Functions
     public List<Song> GetSampleSongData() {
-        return Songs;
+        return Songs; // Return the Songs ArrayList
     }
 
     public List<Artist> GetSampleArtistData() {
-        return Artists;
+        return Artists; // Return the Artists ArrayList
     }
 
     public List<Playlist> GetSamplePlaylists() {
-        return Playlists;
+        return Playlists; // Return the Playlists ArrayList
     }
 }
 
