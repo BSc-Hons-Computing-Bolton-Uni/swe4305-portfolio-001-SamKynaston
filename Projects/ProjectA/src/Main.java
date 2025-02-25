@@ -131,18 +131,27 @@ class Playlist {
     }
 
     public void AddSong(Song song) {
+        if (IsSongInPlaylist(song)) {
+            System.out.println(Colours.RED_BACKGROUND + "[ERR] Playlist " + ID + " already contains this song!" + Colours.ANSI_RESET);
+            return;
+        }
+
         Playlist.add(song); // Adds the song object to the function
     }
 
     public void RemoveSong(Song song) {
         // If the song doesn't exist in the playlist, print an error and terminate the function
-        if (!Playlist.contains(song)) {
+        if (!IsSongInPlaylist(song)) {
             System.out.println(Colours.RED_BACKGROUND + "[ERR] Playlist " + ID + " does not have this song stored!" + Colours.ANSI_RESET);
             return;
         }
 
         // Remove the song from the Playlist
         Playlist.remove(song);
+    }
+
+    public boolean IsSongInPlaylist(Song song) {
+        return Playlist.contains(song);
     }
 
     public void ShowPlaylist() {
@@ -179,7 +188,7 @@ class Formatter {
     }
 }
 
-class PlaylistTest {
+/*class PlaylistTest {
     private final List<Artist> Artists = new ArrayList<>(); // Create an array for all sample artists to be stored in
     private final List<Song> Songs = new ArrayList<>(); // Create an array for all sample songs to be stored in
     private final List<Playlist> Playlists = new ArrayList<>(); // Create an array for all playlists to be stored in
@@ -270,7 +279,7 @@ class PlaylistTest {
     public List<Playlist> GetSamplePlaylists() {
         return Playlists; // Return the Playlists ArrayList
     }
-}
+}*/
 
 public class Main {
     private static final Scanner reader = new Scanner(System.in);
@@ -334,6 +343,9 @@ public class Main {
         while (executeAddSongMenu) {
             for (int x = 1; x < Songs.size(); x++) {
                 Song song = Songs.get(x);
+
+                if (UserPlaylist.IsSongInPlaylist(song)) {continue;}
+
                 System.out.println(x + ". " + song.GetName());
             }
 
@@ -341,12 +353,9 @@ public class Main {
 
             int inp = reader.nextInt();
 
-            switch (inp) {
-                case 0:
-                    executeAddSongMenu = false;
-                    break;
-                default:
-                    UserPlaylist.AddSong(Songs.get(inp-1));
+            if (inp < Songs.size()) {
+                if (inp == 0) {executeAddSongMenu = false;}
+                else {UserPlaylist.AddSong(Songs.get(inp));}
             }
         }
     }
@@ -364,12 +373,9 @@ public class Main {
 
             int inp = reader.nextInt();
 
-            switch (inp) {
-                case 0:
-                    executeRemoveSongMenu = false;
-                    break;
-                default:
-                    UserPlaylist.RemoveSong(Songs.get(inp-1));
+            if (inp < Songs.size()) {
+                if (inp == 0) {executeRemoveSongMenu = false;}
+                else {UserPlaylist.RemoveSong(Songs.get(inp));}
             }
         }
     }
