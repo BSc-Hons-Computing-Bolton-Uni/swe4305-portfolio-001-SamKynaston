@@ -351,6 +351,29 @@ public class Main {
         }
     }
 
+    public static void RemoveSongMenu() {
+        boolean executeRemoveSongMenu = true;
+
+        while (executeRemoveSongMenu) {
+            for (int x = 1; x < Songs.size(); x++) {
+                Song song = Songs.get(x);
+                System.out.println(x + ". " + song.GetName());
+            }
+
+            System.out.println("0. Exit Menu");
+
+            int inp = reader.nextInt();
+
+            switch (inp) {
+                case 0:
+                    executeRemoveSongMenu = false;
+                    break;
+                default:
+                    UserPlaylist.RemoveSong(Songs.get(inp-1));
+            }
+        }
+    }
+
     public static void ManagePlaylistMenu() {
         boolean executePlaylistMenu = true;
 
@@ -371,6 +394,9 @@ public class Main {
                     break;
                 case 2:
                     AddSongMenu();
+                    break;
+                case 3:
+                    RemoveSongMenu();
                     break;
             }
         }
