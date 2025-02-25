@@ -52,7 +52,7 @@ public class Main {
                 System.out.println(x + ". " + song.GetName());
             }
 
-            System.out.println("0. Exit Menu");
+            System.out.println(Colours.RED_TEXT + "0. Exit Menu" + Colours.ANSI_RESET);
 
             int inp = reader.nextInt();
 
@@ -72,7 +72,7 @@ public class Main {
                 System.out.println(x + ". " + song.GetName());
             }
 
-            System.out.println("0. Exit Menu");
+            System.out.println(Colours.RED_TEXT + "0. Exit Menu" + Colours.ANSI_RESET);
 
             int inp = reader.nextInt();
 
@@ -90,7 +90,7 @@ public class Main {
             System.out.println("1. View Your Playlist");
             System.out.println("2. Add a Song");
             System.out.println("3. Remove a Song");
-            System.out.println("0. Exit Menu");
+            System.out.println(Colours.RED_TEXT + "0. Exit Menu" + Colours.ANSI_RESET);
 
             int inp = reader.nextInt();
 
@@ -124,7 +124,7 @@ public class Main {
                 System.out.println("1. Manage Your Playlist");
             }
 
-            System.out.println("0. Terminate Program");
+            System.out.println(Colours.RED_TEXT + "0. Terminate Program" + Colours.ANSI_RESET);
 
             int inp = reader.nextInt();
 
