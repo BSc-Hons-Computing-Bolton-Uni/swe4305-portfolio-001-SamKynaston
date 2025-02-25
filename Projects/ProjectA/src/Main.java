@@ -9,8 +9,8 @@ import java.util.List;
  * - String Name
  * */
 class Artist {
-    public int ID;
-    public String Name;
+    private int ID;
+    private String Name;
 
     public Artist(int ID, String Name) {
         SetID(ID);
@@ -43,10 +43,10 @@ class Artist {
 * - int Plays
 * */
 class Song {
-    public int ID;
-    public String Name;
-    public Artist Artist;
-    public int Plays;
+    private int ID;
+    private String Name;
+    private Artist Artist;
+    private int Plays;
 
     public Song(int id, String name, Artist artist, int plays) {
         SetID(id);
@@ -115,8 +115,8 @@ class Song {
  * - ArrayList<Song> Playlist
  * */
 class Playlist {
-    public int ID;
-    public ArrayList<Song> Playlist = new ArrayList<>();
+    private int ID;
+    private final ArrayList<Song> Playlist = new ArrayList<>();
 
     public Playlist(int ID) {
         SetID(ID);
@@ -180,9 +180,9 @@ class Formatter {
 }
 
 class PlaylistTest {
-    public List<Artist> Artists = new ArrayList<>(); // Create an array for all sample artists to be stored in
-    public List<Song> Songs = new ArrayList<>(); // Create an array for all sample songs to be stored in
-    public List<Playlist> Playlists = new ArrayList<>(); // Create an array for all playlists to be stored in
+    private final List<Artist> Artists = new ArrayList<>(); // Create an array for all sample artists to be stored in
+    private final List<Song> Songs = new ArrayList<>(); // Create an array for all sample songs to be stored in
+    private final List<Playlist> Playlists = new ArrayList<>(); // Create an array for all playlists to be stored in
 
     // Generate Sample Playlists
     public void GenerateSamplePlaylists() {
