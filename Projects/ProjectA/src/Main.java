@@ -24,6 +24,14 @@ class Artist {
     public void SetName(String name) {
         this.Name = name;
     }
+
+    public int GetID() {
+        return ID;
+    }
+
+    public String GetName() {
+        return Name;
+    }
 }
 
 /*
@@ -63,10 +71,26 @@ class Song {
         this.Plays = plays;
     }
 
+    public int GetID() {
+        return ID;
+    }
+
+    public String GetName() {
+        return Name;
+    }
+
+    public Artist GetArtist() {
+        return Artist;
+    }
+
+    public int GetPlays() {
+        return Plays;
+    }
+
     public void ListDetails() {
-        System.out.println("ID: " + ID); // Print the song's ID
-        System.out.println("Name: " + Name); // Print the song's name
-        System.out.println("Artist: " + Artist.Name + " (ID: " + Artist.ID + ")"); // Obtain the artist's name and ID
+        System.out.println("ID: " + GetID()); // Print the song's ID
+        System.out.println("Name: " + GetName()); // Print the song's name
+        System.out.println("Artist: " + GetArtist().GetName() + " (ID: " + Artist.GetID() + ")"); // Obtain the artist's name and ID
 
         String Colour; // Create a new string variable to store the colour of the background
 
@@ -80,7 +104,7 @@ class Song {
             Colour = Colours.RED_BACKGROUND; // Call the colour class and get a red background
         }
 
-        System.out.println(Colour + "Listens: " + Formatter.Number(Plays) + Colours.ANSI_RESET); // Print the amount of listens the song has using the colour obtained in the logic above
+        System.out.println(Colour + "Listens: " + Formatter.Number(GetPlays()) + Colours.ANSI_RESET); // Print the amount of listens the song has using the colour obtained in the logic above
     }
 }
 
@@ -96,6 +120,10 @@ class Playlist {
 
     public Playlist(int ID) {
         SetID(ID);
+    }
+
+    public int GetID() {
+        return ID;
     }
 
     public void SetID(int ID) {
@@ -124,7 +152,7 @@ class Playlist {
             return;
         }
 
-        System.out.println("Playlist " + ID);
+        System.out.println("Playlist " + GetID());
 
         // Go through every song in the playlist
         for (Song song : Playlist) {
@@ -258,6 +286,7 @@ public class Main {
 
         // Go through all playlists
         for (Playlist playlist : Playlists) {
+            System.out.println(Colours.RED_BACKGROUND + "[TEST FOR " + playlist.GetID() + "]" + Colours.ANSI_RESET);
             playlist.ShowPlaylist(); // Call the function that prints out the songs in all playlists
         }
     }
