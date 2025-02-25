@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Scanner;
 /*
  * ===== [ Artist Class ] =====
  * Parameters:
@@ -273,8 +273,13 @@ class PlaylistTest {
 }
 
 public class Main {
+    private static final Scanner reader = new Scanner(System.in);
+    private static Playlist UserPlaylist = null;
+    private static final List<Artist> Artists = new ArrayList<>(); // Create an array for all sample artists to be stored in
+    private static final List<Song> Songs = new ArrayList<>(); // Create an array for all sample songs to be stored in
+
     // Main Function
-    public static void main(String[] args) {
+    /*private static void InitialiseTest() {
         PlaylistTest Test = new PlaylistTest(); // Create a new test class
 
         Test.GenerateSamplePlaylists(); // Call the test class's Sample Playlist generator
@@ -288,6 +293,114 @@ public class Main {
         for (Playlist playlist : Playlists) {
             System.out.println(Colours.RED_BACKGROUND + "[TEST FOR " + playlist.GetID() + "]" + Colours.ANSI_RESET);
             playlist.ShowPlaylist(); // Call the function that prints out the songs in all playlists
+        }
+    }*/
+
+    public static void GenerateSampleSongs() {
+        if (Artists.isEmpty()) {GenerateSampleArtists();}
+
+        Songs.add(new Song(1, "Test1", Artists.get(0), 1000));
+        Songs.add(new Song(2, "Test2", Artists.get(0), 10000));
+        Songs.add(new Song(3, "Test3", Artists.get(1), 100000));
+        Songs.add(new Song(4, "Test4", Artists.get(1), 1000000));
+        Songs.add(new Song(5, "Test5", Artists.get(2), 1000000));
+        Songs.add(new Song(6, "Test6", Artists.get(2), 1000000));
+        Songs.add(new Song(7, "Test7", Artists.get(3), 100000));
+        Songs.add(new Song(8, "Test8", Artists.get(3), 100000));
+        Songs.add(new Song(9, "Test9", Artists.get(4), 1000));
+        Songs.add(new Song(10, "Test10", Artists.get(4), 1000));
+    }
+
+    // Generate Sample Artists
+    public static void GenerateSampleArtists() {
+        Artists.add(new Artist(1, "Test1"));
+        Artists.add(new Artist(2, "Test2"));
+        Artists.add(new Artist(3, "Test3"));
+        Artists.add(new Artist(4, "Test4"));
+        Artists.add(new Artist(5, "Test5"));
+    }
+
+    public static void InitialisePlaylist() {
+        UserPlaylist = new Playlist(1);
+    }
+
+    public static void ViewSongs() {
+        UserPlaylist.ShowPlaylist();
+    }
+
+    public static void AddSongMenu() {
+        boolean executeAddSongMenu = true;
+
+        while (executeAddSongMenu) {
+            for (int x = 1; x < Songs.size(); x++) {
+                Song song = Songs.get(x);
+                System.out.println(x + ". " + song.GetName());
+            }
+
+            System.out.println("0. Exit Menu");
+
+            int inp = reader.nextInt();
+
+            switch (inp) {
+                case 0:
+                    executeAddSongMenu = false;
+                    break;
+                default:
+                    UserPlaylist.AddSong(Songs.get(inp-1));
+            }
+        }
+    }
+
+    public static void ManagePlaylistMenu() {
+        boolean executePlaylistMenu = true;
+
+        while (executePlaylistMenu) {
+            System.out.println("1. View Your Playlist");
+            System.out.println("2. Add a Song");
+            System.out.println("3. Remove a Song");
+            System.out.println("0. Exit Menu");
+
+            int inp = reader.nextInt();
+
+            switch (inp) {
+                case 0:
+                    executePlaylistMenu = false;
+                    break;
+                case 1:
+                    ViewSongs();
+                    break;
+                case 2:
+                    AddSongMenu();
+                    break;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        GenerateSampleArtists();
+        GenerateSampleSongs();
+
+        boolean execute = true;
+
+        while (execute) {
+            if (UserPlaylist == null) {
+                System.out.println("1. Initialise Playlist");
+            } else {
+                System.out.println("1. Manage Your Playlist");
+            }
+
+            System.out.println("0. Terminate Program");
+
+            int inp = reader.nextInt();
+
+            switch (inp) {
+                case 1:
+                    if (UserPlaylist == null) {InitialisePlaylist();} else {ManagePlaylistMenu();}
+                    break;
+                case 0:
+                    execute = false;
+                    break;
+            }
         }
     }
 }
