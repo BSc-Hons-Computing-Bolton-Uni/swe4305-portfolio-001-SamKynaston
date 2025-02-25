@@ -287,24 +287,6 @@ public class Main {
     private static final List<Artist> Artists = new ArrayList<>(); // Create an array for all sample artists to be stored in
     private static final List<Song> Songs = new ArrayList<>(); // Create an array for all sample songs to be stored in
 
-    // Main Function
-    /*private static void InitialiseTest() {
-        PlaylistTest Test = new PlaylistTest(); // Create a new test class
-
-        Test.GenerateSamplePlaylists(); // Call the test class's Sample Playlist generator
-        Test.GenerateSampleArtists(); // Call the test class's Sample Artists generator
-        Test.GenerateSampleSongs(); // Call the test class's Sample Songs generator
-        Test.AddSongsToPlaylist(); // Call the test class's function to add sample songs to playlists
-
-        List<Playlist> Playlists = Test.GetSamplePlaylists(); // Create an arraylist to store Playlists and call the function that returns all sample playlists
-
-        // Go through all playlists
-        for (Playlist playlist : Playlists) {
-            System.out.println(Colours.RED_BACKGROUND + "[TEST FOR " + playlist.GetID() + "]" + Colours.ANSI_RESET);
-            playlist.ShowPlaylist(); // Call the function that prints out the songs in all playlists
-        }
-    }*/
-
     public static void GenerateSampleSongs() {
         if (Artists.isEmpty()) {GenerateSampleArtists();}
 
