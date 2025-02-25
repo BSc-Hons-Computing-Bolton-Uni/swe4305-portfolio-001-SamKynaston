@@ -13,8 +13,16 @@ class Artist {
     public String Name;
 
     public Artist(int ID, String Name) {
-        this.ID = ID;
-        this.Name = Name;
+        SetID(ID);
+        SetName(Name);
+    }
+
+    public void SetID(int id) {
+        this.ID = id;
+    }
+
+    public void SetName(String name) {
+        this.Name = name;
     }
 }
 
@@ -33,9 +41,25 @@ class Song {
     public int Plays;
 
     public Song(int id, String name, Artist artist, int plays) {
+        SetID(id);
+        SetName(name);
+        SetArtist(artist);
+        SetPlays(plays);
+    }
+
+    public void SetID(int id) {
         this.ID = id;
+    }
+
+    public void SetName(String name) {
         this.Name = name;
+    }
+
+    public void SetArtist(Artist artist) {
         this.Artist = artist;
+    }
+
+    public void SetPlays(int plays) {
         this.Plays = plays;
     }
 
