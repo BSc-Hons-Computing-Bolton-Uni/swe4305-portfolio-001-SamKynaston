@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 class Product {
-    public int ID;
-    public String Name;
-    public int Quantity;
+    private int ID;
+    private String Name;
+    private int Quantity;
 
     public Product(int ID, String name, int quantity) {
         SetID(ID);
@@ -40,10 +40,18 @@ class Product {
 }
 
 class StockList {
-    ArrayList<Product> Products = new ArrayList<>();
+    private final ArrayList<Product> Products = new ArrayList<>();
 
     public void AddToInventory(Product product) {
         Products.add(product);
+    }
+
+    public int GetNextID() {
+        return Products.size() + 1;
+    }
+
+    public void CreateNewProduct(String name, int quantity) {
+        AddToInventory(new Product(GetNextID(), name, quantity));
     }
 
     public void PrintInventory() {
@@ -56,7 +64,7 @@ class StockList {
 
     public Product SearchInventoryBasedOnID(int ID) {
         for (Product product : Products) {
-            if (product.ID == ID) {
+            if (product.GetID() == ID) {
                 System.out.println("Found Product with an ID of " + ID);
                 return product;
             }
@@ -67,7 +75,7 @@ class StockList {
 
     public Product SearchInventoryBasedOnName(String Name) {
         for (Product product : Products) {
-            if (Objects.equals(product.Name, Name)) {
+            if (Objects.equals(product.GetName(), Name)) {
                 System.out.println("Found Product with Name of " + Name);
                 return product;
             }
@@ -78,7 +86,7 @@ class StockList {
 }
 
 class StockDemo {
-    StockList stocks = new StockList();
+    private final StockList stocks = new StockList();
 
     public StockDemo() {
         Run();
@@ -93,11 +101,11 @@ class StockDemo {
     }
 
     public void CreateTestProducts() {
-        stocks.AddToInventory(new Product(1, "Xbox Series X", 100));
-        stocks.AddToInventory(new Product(2, "MacBook Pro", 10));
-        stocks.AddToInventory(new Product(3, "MacBook Air", 81));
-        stocks.AddToInventory(new Product(4, "iPhone 16", 76));
-        stocks.AddToInventory(new Product(5, "iPhone 16e", 12));
+        stocks.CreateNewProduct("Xbox Series X", 100);
+        stocks.CreateNewProduct("MacBook Pro", 10);
+        stocks.CreateNewProduct("MacBook Air", 81);
+        stocks.CreateNewProduct("iPhone 16", 76);
+        stocks.CreateNewProduct("iPhone 16e", 12);
     }
 
     public void PrintResults() {
