@@ -2,6 +2,12 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * ===== [ Artist Class ] =====
+ * Parameters:
+ * - int ID
+ * - String Name
+ * */
 class Artist {
     public int ID;
     public String Name;
@@ -12,6 +18,14 @@ class Artist {
     }
 }
 
+/*
+* ===== [ SONG Class ] =====
+* Parameters:
+* - int ID
+* - String Name
+* - Artist Artist
+* - int Plays
+* */
 class Song {
     public int ID;
     public String Name;
@@ -46,6 +60,12 @@ class Song {
     }
 }
 
+/*
+ * ===== [ Playlist Class ] =====
+ * Parameters:
+ * - int ID
+ * - ArrayList<Song> Playlist
+ * */
 class Playlist {
     public int ID;
     public ArrayList<Song> Playlist = new ArrayList<>();
@@ -84,11 +104,11 @@ class Playlist {
 
 class Colours {
     // Colours
-    public static final String ANSI_RESET = "\u001B[0m"; // Reset any colouring
-    public static final String RED_BACKGROUND = "\u001B[41m"; // Display a red background on console text
-    public static final String YELLOW_BACKGROUND = "\u001B[43m";
-    public static final String GREEN_BACKGROUND = "\u001B[42m";
-    public static final String PURPLE_BACKGROUND = "\u001B[45m";
+    public static final String ANSI_RESET = "\u001B[0m"; // Resets any colouring. Must be called after any println function with a colour to prevent it from colouring the entire terminal.
+    public static final String RED_BACKGROUND = "\u001B[41m"; // Display a red background behind console text
+    public static final String YELLOW_BACKGROUND = "\u001B[43m"; // Displays a yellow background behind console text
+    public static final String GREEN_BACKGROUND = "\u001B[42m"; // Displays a green background behind console text
+    public static final String PURPLE_BACKGROUND = "\u001B[45m"; // Displays a purple background behind console text
 }
 
 class Formatter {
@@ -100,9 +120,9 @@ class Formatter {
 }
 
 class PlaylistTest {
-    public List<Artist> Artists = new ArrayList<>();
-    public List<Song> Songs = new ArrayList<>();
-    public List<Playlist> Playlists = new ArrayList<>();
+    public List<Artist> Artists = new ArrayList<>(); // Create an array for all sample artists to be stored in
+    public List<Song> Songs = new ArrayList<>(); // Create an array for all sample songs to be stored in
+    public List<Playlist> Playlists = new ArrayList<>(); // Create an array for all playlists to be stored in
 
     // Generate Sample Playlists
     public void GenerateSamplePlaylists() {
@@ -113,7 +133,7 @@ class PlaylistTest {
         Playlists.add(new Playlist(5));
     }
 
-    // Generate Sample Data Functions
+    // Generate Sample Songs
     public void GenerateSampleSongs() {
         if (Artists.isEmpty()) {GenerateSampleArtists();}
 
@@ -129,6 +149,7 @@ class PlaylistTest {
         Songs.add(new Song(10, "Test10", Artists.get(4), 1000));
     }
 
+    // Generate Sample Artists
     public void GenerateSampleArtists() {
         Artists.add(new Artist(1, "Test1"));
         Artists.add(new Artist(2, "Test2"));
@@ -137,6 +158,7 @@ class PlaylistTest {
         Artists.add(new Artist(5, "Test5"));
     }
 
+    // Function to add songs to playlists
     public void AddSongsToPlaylist() {
         List<Playlist> Playlists = GetSamplePlaylists();
         List<Song> Songs = GetSampleSongData();
