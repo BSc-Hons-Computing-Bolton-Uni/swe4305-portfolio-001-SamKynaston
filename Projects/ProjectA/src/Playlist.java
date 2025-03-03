@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /*
@@ -44,6 +45,14 @@ class Playlist {
 
     public boolean IsSongInPlaylist(Song song) {
         return Playlist.contains(song);
+    }
+
+    public int GetSize() {
+        return Playlist.size();
+    }
+
+    public ArrayList<Song> GetSongs() {
+        return Playlist;
     }
 
     public void ShowPlaylist() {

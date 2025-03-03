@@ -67,8 +67,8 @@ public class Main {
         boolean executeRemoveSongMenu = true;
 
         while (executeRemoveSongMenu) {
-            for (int x = 1; x < Songs.size(); x++) {
-                Song song = Songs.get(x);
+            for (int x = 1; x < UserPlaylist.GetSongs().size(); x++) {
+                Song song = UserPlaylist.GetSongs().get(x-1);
                 System.out.println(x + ". " + song.GetName());
             }
 
