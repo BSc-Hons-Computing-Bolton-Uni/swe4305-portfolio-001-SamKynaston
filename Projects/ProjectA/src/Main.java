@@ -67,9 +67,9 @@ public class Main {
         boolean executeRemoveSongMenu = true;
 
         while (executeRemoveSongMenu) {
-            for (int x = 1; x < UserPlaylist.GetSongs().size(); x++) {
-                Song song = UserPlaylist.GetSongs().get(x-1);
-                System.out.println(x + ". " + song.GetName());
+            for (int x = 0; x < UserPlaylist.GetSize(); x++) {
+                Song song = UserPlaylist.GetSongs().get(x);
+                System.out.println(x+1 + ". " + song.GetName());
             }
 
             System.out.println(Colours.RED_TEXT + "0. Exit Menu" + Colours.ANSI_RESET);
@@ -78,7 +78,7 @@ public class Main {
 
             if (inp < Songs.size()) {
                 if (inp == 0) {executeRemoveSongMenu = false;}
-                else {UserPlaylist.RemoveSong(Songs.get(inp));}
+                else {UserPlaylist.RemoveSong(UserPlaylist.GetSongs().get(inp-1));}
             }
         }
     }
