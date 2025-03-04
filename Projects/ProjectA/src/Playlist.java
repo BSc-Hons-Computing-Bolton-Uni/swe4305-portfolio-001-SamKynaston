@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /*
@@ -25,7 +24,7 @@ class Playlist {
 
     public void AddSong(Song song) {
         if (IsSongInPlaylist(song)) {
-            System.out.println(Colours.RED_BACKGROUND + "[ERR] Playlist " + ID + " already contains this song!" + Colours.ANSI_RESET);
+            System.out.println(Colours.RED_BACKGROUND + "[ERR] PLAYLIST " + ID + " ALREADY CONTAINS THIS SONG" + Colours.ANSI_RESET);
             return;
         }
 
@@ -35,7 +34,7 @@ class Playlist {
     public void RemoveSong(Song song) {
         // If the song doesn't exist in the playlist, print an error and terminate the function
         if (!IsSongInPlaylist(song)) {
-            System.out.println(Colours.RED_BACKGROUND + "[ERR] Playlist " + ID + " does not have this song stored!" + Colours.ANSI_RESET);
+            System.out.println(Colours.RED_BACKGROUND + "[ERR] PLAYLIST " + ID + " DOES NOT HAVE THIS SONG STORED" + Colours.ANSI_RESET);
             return;
         }
 
@@ -58,7 +57,7 @@ class Playlist {
     public void ShowPlaylist() {
         // If the playlist is empty, print an error and return to terminate the function
         if (Playlist.isEmpty()) {
-            System.out.println(Colours.RED_BACKGROUND + "[ERR] Playlist " + ID + " is empty!" + Colours.ANSI_RESET);
+            System.out.println(Colours.RED_BACKGROUND + "[ERR] PLAYLIST " + ID + " IS EMPTY" + Colours.ANSI_RESET);
             return;
         }
 

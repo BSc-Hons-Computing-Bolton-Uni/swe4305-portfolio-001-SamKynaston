@@ -59,6 +59,8 @@ public class Main {
             if (inp < Songs.size()) {
                 if (inp == 0) {executeAddSongMenu = false;}
                 else {UserPlaylist.AddSong(Songs.get(inp));}
+            } else {
+                System.out.println(Colours.RED_BACKGROUND + "[ERR] INPUT EXCEEDS SIZE OF SONGS LIBRARY" + Colours.ANSI_RESET);
             }
         }
     }
@@ -76,9 +78,14 @@ public class Main {
 
             int inp = reader.nextInt();
 
-            if (inp < Songs.size()) {
-                if (inp == 0) {executeRemoveSongMenu = false;}
-                else {UserPlaylist.RemoveSong(UserPlaylist.GetSongs().get(inp-1));}
+            if (inp < UserPlaylist.GetSize()) {
+                if (inp == 0) {
+                    executeRemoveSongMenu = false;
+                } else {
+                    UserPlaylist.RemoveSong(UserPlaylist.GetSongs().get(inp-1));
+                }
+            } else {
+                System.out.println(Colours.RED_BACKGROUND + "[ERR] INPUT EXCEEDS SIZE OF PLAYLIST" + Colours.ANSI_RESET);
             }
         }
     }
