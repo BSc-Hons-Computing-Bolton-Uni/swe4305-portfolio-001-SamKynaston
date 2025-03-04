@@ -56,7 +56,7 @@ public class Main {
 
             int inp = reader.nextInt();
 
-            if (inp < Songs.size()) {
+            if (inp <= Songs.size()) {
                 if (inp == 0) {executeAddSongMenu = false;}
                 else {UserPlaylist.AddSong(Songs.get(inp));}
             } else {
@@ -78,7 +78,7 @@ public class Main {
 
             int inp = reader.nextInt();
 
-            if (inp < UserPlaylist.GetSize()) {
+            if (inp <= UserPlaylist.GetSize()) {
                 if (inp == 0) {
                     executeRemoveSongMenu = false;
                 } else {
