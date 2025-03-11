@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Logbook/Logbook.iml" filepath="$PROJECT_DIR$/Logbook/Logbook.iml" />
       <module fileurl="file://$PROJECT_DIR$/Projects/ProjectA/ProjectA.iml" filepath="$PROJECT_DIR$/Projects/ProjectA/ProjectA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Projects/ProjectATest/ProjectATest.iml" filepath="$PROJECT_DIR$/Projects/ProjectATest/ProjectATest.iml" />
       <module fileurl="file://$PROJECT_DIR$/Projects/ProjectB/ProjectB.iml" filepath="$PROJECT_DIR$/Projects/ProjectB/ProjectB.iml" />
       <module fileurl="file://$PROJECT_DIR$/Projects/Projects.iml" filepath="$PROJECT_DIR$/Projects/Projects.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/swe4305-portfolio-001-SamKynaston.iml" filepath="$PROJECT_DIR$/.idea/swe4305-portfolio-001-SamKynaston.iml" />
