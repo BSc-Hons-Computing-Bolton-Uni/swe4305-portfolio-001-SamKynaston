@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProjectA {
+    // Artist Tests
     @Test
     void createArtistAndTestID() {
         var artist = new Artist(1, "John Smith");
@@ -46,4 +47,7 @@ public class ProjectA {
 
         assertEquals(100, song.GetPlays());
     }
+
+    // Song Tests
+
 }

@@ -41,8 +41,20 @@ public class Main {
         UserPlaylist = new Playlist(1);
     }
 
-    public static void ViewSongs() {
+    public static void ViewPlaylistSongs() {
         UserPlaylist.ShowPlaylist();
+    }
+
+    public static void ViewSongs(int MinimumPlaysRequired) {
+        for (Song song : Songs) {
+            if (song.GetPlays() < MinimumPlaysRequired) { continue; }
+
+            System.out.println("===== [" + song.GetID() + "] =====");
+            System.out.println("Song ID: " + song.GetID());
+            System.out.println("Song Name: " + song.GetName());
+            System.out.println("Song Plays: " + song.GetPlays());
+            System.out.println("Song Artist: " + song.GetArtist().GetName());
+        }
     }
 
     public static void AddSongMenu() {
@@ -111,7 +123,7 @@ public class Main {
                     executePlaylistMenu = false;
                     break;
                 case 1:
-                    ViewSongs();
+                    ViewPlaylistSongs();
                     break;
                 case 2:
                     AddSongMenu();
@@ -120,6 +132,22 @@ public class Main {
                     RemoveSongMenu();
                     break;
             }
+        }
+    }
+
+    public static void GetPlaysRequired() {
+        boolean executeMenu = true;
+
+        while (executeMenu) {
+            System.out.println("Enter the minimum number of views required to display a song:");
+
+            int inp = reader.nextInt();
+
+            if (inp > 0) {
+                ViewSongs(inp);
+            }
+
+            executeMenu = false;
         }
     }
 
@@ -136,6 +164,9 @@ public class Main {
                 System.out.println("1. Manage Your Playlist");
             }
 
+            System.out.println("2. View All Songs");
+            System.out.println("3. View Songs Based On Plays");
+
             System.out.println(Colours.RED_TEXT + "0. Terminate Program" + Colours.ANSI_RESET);
 
             int inp = reader.nextInt();
@@ -143,6 +174,12 @@ public class Main {
             switch (inp) {
                 case 1:
                     if (UserPlaylist == null) {InitialisePlaylist();} else {ManagePlaylistMenu();}
+                    break;
+                case 2:
+                    ViewSongs(0);
+                    break;
+                case 3:
+                    GetPlaysRequired();
                     break;
                 case 0:
                     execute = false;
