@@ -52,7 +52,7 @@ public class Main {
             System.out.println("===== [" + song.GetID() + "] =====");
             System.out.println("Song ID: " + song.GetID());
             System.out.println("Song Name: " + song.GetName());
-            System.out.println("Song Plays: " + song.GetPlays());
+            System.out.println("Song Plays: " + Formatter.Number(song.GetPlays()));
             System.out.println("Song Artist: " + song.GetArtist().GetName());
         }
     }
