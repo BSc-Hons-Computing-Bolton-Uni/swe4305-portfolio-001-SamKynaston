@@ -11,25 +11,30 @@ public class Main {
     public static void GenerateSampleSongs() {
         if (Artists.isEmpty()) {GenerateSampleArtists();}
 
-        Songs.add(new Song(1, "Test1", Artists.get(0), 1000));
-        Songs.add(new Song(2, "Test2", Artists.get(0), 10000));
-        Songs.add(new Song(3, "Test3", Artists.get(1), 100000));
-        Songs.add(new Song(4, "Test4", Artists.get(1), 1000000));
-        Songs.add(new Song(5, "Test5", Artists.get(2), 1000000));
-        Songs.add(new Song(6, "Test6", Artists.get(2), 1000000));
-        Songs.add(new Song(7, "Test7", Artists.get(3), 100000));
-        Songs.add(new Song(8, "Test8", Artists.get(3), 100000));
-        Songs.add(new Song(9, "Test9", Artists.get(4), 1000));
-        Songs.add(new Song(10, "Test10", Artists.get(4), 1000));
+        Songs.add(new Song(1, "Midnight Echo", Artists.get(0), 3200));
+        Songs.add(new Song(2, "Neon Dreams", Artists.get(1), 2800));
+        Songs.add(new Song(3, "Lost in Time", Artists.get(2), 3500));
+        Songs.add(new Song(4, "Electric Pulse", Artists.get(3), 2900));
+        Songs.add(new Song(5, "Echoes of You", Artists.get(4), 3100));
+        Songs.add(new Song(6, "Shattered Illusions", Artists.get(5), 3300));
+        Songs.add(new Song(7, "Celestial Voyage", Artists.get(6), 3700));
+        Songs.add(new Song(8, "Waves of Serenity", Artists.get(7), 3000));
+        Songs.add(new Song(9, "Crimson Horizon", Artists.get(8), 3400));
+        Songs.add(new Song(10, "Starlit Reverie", Artists.get(9), 3600));
     }
 
     // Generate Sample Artists
     public static void GenerateSampleArtists() {
-        Artists.add(new Artist(1, "Test1"));
-        Artists.add(new Artist(2, "Test2"));
-        Artists.add(new Artist(3, "Test3"));
-        Artists.add(new Artist(4, "Test4"));
-        Artists.add(new Artist(5, "Test5"));
+        Artists.add(new Artist(1, "Luna Shadows"));
+        Artists.add(new Artist(2, "Neon Mirage"));
+        Artists.add(new Artist(3, "Echo Phantom"));
+        Artists.add(new Artist(4, "Synth Horizon"));
+        Artists.add(new Artist(5, "Velvet Echoes"));
+        Artists.add(new Artist(6, "Astral Drift"));
+        Artists.add(new Artist(7, "Celeste Nova"));
+        Artists.add(new Artist(8, "Serenity Waves"));
+        Artists.add(new Artist(9, "Crimson Tide"));
+        Artists.add(new Artist(10, "Starlight Reverie"));
     }
 
     public static void InitialisePlaylist() {
