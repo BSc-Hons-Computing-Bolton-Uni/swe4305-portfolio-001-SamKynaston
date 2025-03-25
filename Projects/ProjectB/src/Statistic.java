@@ -1,12 +1,8 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Statistic {
-    ArrayList<Mark> Marks;
-    double MeanMark;
-    double MinimumMark;
-    double MaximumMark;
-
-    private double GetTotalMarks(String operation) {
+    private double GetTotalMarks(String operation, ArrayList<Mark> Marks) {
         double toReturn = 0;
 
         for (Mark mark : Marks) {
@@ -20,22 +16,18 @@ public class Statistic {
         return toReturn;
     }
 
-    public double UpdateMeanMark() {
-        double TotalMarks = GetTotalMarks(null);
+    public double UpdateMeanMark(ArrayList<Mark> Marks) {
+        double TotalMarks = GetTotalMarks(null, Marks);
         double TotalStudents = Marks.size();
 
         return (TotalMarks / TotalStudents);
     }
 
-    public void UpdateMaximumMark() {
-        this.MaximumMark = GetTotalMarks("Maximum");
+    public double UpdateMaximumMark(ArrayList<Mark> Marks) {
+        return GetTotalMarks("Maximum", Marks);
     }
 
-    public void UpdateMinimumMark() {
-        this.MinimumMark = GetTotalMarks("Minimum");
-    }
-
-    public void RegisterGrade(Mark mark) {
-        Marks.add(mark);
+    public double UpdateMinimumMark(ArrayList<Mark> Marks) {
+        return GetTotalMarks("Minimum", Marks);
     }
 }

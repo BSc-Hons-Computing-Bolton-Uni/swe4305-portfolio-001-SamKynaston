@@ -54,6 +54,8 @@ public class Mark {
         return true; // Return true to signify completion
     }
 
+    public String GetGrade() { return this.Grade; }
+
     public Student GetStudent() {
         return this.Student; // Return the associated student
     }
