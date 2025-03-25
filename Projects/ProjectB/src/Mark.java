@@ -1,6 +1,35 @@
 public class Mark {
     private Student Student;
     private double Mark;
+    private String Grade;
+
+    public enum GradeLetter {
+        FIRST_CLASS(70, 100, "First Class"),
+        UPPER_SECOND_CLASS(60, 69, "Upper Second Class"),
+        LOWER_SECOND_CLASS(50, 59, "Lower Second Class"),
+        THIRD_CLASS(40, 49, "Third Class"),
+        FAIL(0, 39, "Fail");
+
+        private final double MinMarks;
+        private final double MaxMarks;
+        private final String Grade;
+
+        GradeLetter(double minMarks, double maxMarks, String grade) {
+            this.MinMarks = minMarks;
+            this.MaxMarks = maxMarks;
+            this.Grade = grade;
+        }
+
+        public static String GetGradeForMarks(double marks) {
+            for (GradeLetter grade : values()) {
+                if (marks >= grade.MinMarks && marks <= grade.MaxMarks) {
+                    return grade.Grade;
+                }
+            }
+
+            return "Invalid";
+        }
+    }
 
     public Mark(Student student, Double mark) {
         SetStudent(student);
@@ -12,6 +41,7 @@ public class Mark {
         if (mark < 0 || mark > 100) { return false; } // If a value less than 0 or greater than 100 is submitted, then end the function and return false
 
         this.Mark = mark; // Set the student's mark
+        this.Grade = GradeLetter.GetGradeForMarks(mark); // Set the student's grade
 
         return true; // Return true to signify completion
     }
