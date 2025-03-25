@@ -9,7 +9,9 @@ public class Student {
 
     private ArrayList<Course> Courses;
 
-    public Student() {}
+    public Student(int ID) {
+        SetID(ID);
+    }
 
     // Set Functions
     public boolean SetID(int ID) {
