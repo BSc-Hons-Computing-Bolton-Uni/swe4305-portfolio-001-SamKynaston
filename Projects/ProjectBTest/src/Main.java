@@ -62,4 +62,20 @@ public class Main {
 
         assertTrue(student.RemoveCourse(course));
     }
+
+    @Test
+    void CreateCourseAndTestModuleAddition() {
+        Course course = new Course("C001");
+        Module module = new Module("CM001");
+    }
+
+    @Test
+    void CreateCourseAndAddModuleAndTestItContains() {
+
+    }
+
+    @Test
+    void CreateCourseAndTestModuleRemoval() {
+
+    }
 }

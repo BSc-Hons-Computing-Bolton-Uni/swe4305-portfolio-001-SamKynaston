@@ -5,6 +5,8 @@ public class Module {
     private ArrayList<Mark> Marks;
 
     public Module(String code) {
+        this.Marks = new ArrayList<>();
+
         SetCode(code);
     }
 

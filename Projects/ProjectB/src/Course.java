@@ -8,6 +8,8 @@ public class Course {
 
     public Course(String code) {
         SetCode(code);
+
+        this.Modules = new ArrayList<>();
     }
 
     public void SetCode(String code) {
@@ -43,5 +45,9 @@ public class Course {
         this.Modules.remove(module); // Remove the module
 
         return true; // Return true
+    }
+
+    public ArrayList<Module> GetModules() {
+        return this.Modules;
     }
 }
