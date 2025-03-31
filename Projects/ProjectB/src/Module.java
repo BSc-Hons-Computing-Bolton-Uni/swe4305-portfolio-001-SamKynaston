@@ -17,8 +17,12 @@ public class Module {
     public void DisplayGradeProfile() {}
     public void DisplayGradeStatistics() {}
 
-    public Mark AddMark(Student student, double mark) {
-        return new Mark(student, mark);
+    public boolean AddMark(Student student, double mark) {
+        return false; // TO BE REWRITTEN
+    }
+
+    public ArrayList<Mark> GetMarks() {
+        return this.Marks;
     }
 
     public Mark UpdateMark(Student student, double mark) {

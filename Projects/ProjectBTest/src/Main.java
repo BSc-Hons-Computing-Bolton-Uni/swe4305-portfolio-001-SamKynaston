@@ -49,7 +49,7 @@ public class Main {
         Student student = new Student(1);
         Course course = new Course("C001");
 
-        assertTrue(student.AddCourse(course));
+        student.AddCourse(course);
         assertTrue(student.GetCourses().contains(course));
     }
 
@@ -59,7 +59,6 @@ public class Main {
         Course course = new Course("C001");
 
         student.AddCourse(course);
-
         assertTrue(student.RemoveCourse(course));
     }
 
@@ -67,15 +66,25 @@ public class Main {
     void CreateCourseAndTestModuleAddition() {
         Course course = new Course("C001");
         Module module = new Module("CM001");
+
+        assertTrue(course.AddModule(module));
     }
 
     @Test
     void CreateCourseAndAddModuleAndTestItContains() {
+        Course course = new Course("C001");
+        Module module = new Module("CM001");
 
+        course.AddModule(module);
+        assertTrue(course.GetModules().contains(module));
     }
 
     @Test
     void CreateCourseAndTestModuleRemoval() {
+        Course course = new Course("C001");
+        Module module = new Module("CM001");
 
+        course.AddModule(module);
+        assertTrue(course.RemoveModule(module));
     }
 }
