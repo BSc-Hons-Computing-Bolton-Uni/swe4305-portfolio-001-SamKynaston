@@ -7,10 +7,11 @@ public class Student {
     private String Forename;
     private String Surname;
 
-    private ArrayList<Course> Courses;
+    private final ArrayList<Course> Courses;
 
     public Student(int ID) {
         SetID(ID);
+        this.Courses = new ArrayList<Course>();
     }
 
     // Set Functions
@@ -44,17 +45,17 @@ public class Student {
     }
 
     public boolean AddCourse(Course course) {
-        if (Courses.contains(course)) { return false; } // If the student is already a member of the provided course, then return false and close the function
+        if (GetCourses().contains(course)) { return false; } // If the student is already a member of the provided course, then return false and close the function
 
-        Courses.add(course); // Add the course to the student's course list
+        this.Courses.add(course); // Add the course to the student's course list
 
         return true; // Return true to signify completion
     }
 
     public boolean RemoveCourse(Course course) {
-        if (!Courses.contains(course)) { return false; } // If the course doesn't exist in the student's courses or has already been removed, then return false and close the function
+        if (!this.Courses.contains(course)) { return false; } // If the course doesn't exist in the student's courses or has already been removed, then return false and close the function
 
-        Courses.remove(course); // Remove the course
+        this.Courses.remove(course); // Remove the course
 
         return true; // Return true to signify completion
     }

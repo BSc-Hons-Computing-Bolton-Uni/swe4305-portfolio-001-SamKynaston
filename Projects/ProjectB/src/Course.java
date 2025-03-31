@@ -6,6 +6,10 @@ public class Course {
     private String Name;
     private ArrayList<Module> Modules;
 
+    public Course(String code) {
+        SetCode(code);
+    }
+
     public void SetCode(String code) {
         if (this.HasCodeBeenSet) { return; } // If the code has already been set, then do not allow it to be changed
 
