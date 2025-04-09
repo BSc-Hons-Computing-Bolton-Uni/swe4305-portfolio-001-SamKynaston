@@ -10,10 +10,16 @@ public class MainMenu extends AbstractMenu {
         super(MenuActionContext.GetContext().GetReader(), "University Manager");
 
         // Manage Students Option
-        MenuOption ManageStudents = new MenuOption("Manage a Student");
-        MainMenuAction ManageStudentsAction = new MainMenuAction("MANAGE_STUDENTS");
-        ManageStudents.SetAction(ManageStudentsAction);
+        MenuOption ManageStudents = new MenuOption("Manage Students", new MainMenuAction("MANAGE_STUDENTS"));
 
+        // Manage Courses Option
+        MenuOption ManageCourses = new MenuOption("Manage Courses", null);
+
+        // Manage Modules Option
+        MenuOption ManageModules = new MenuOption("Manage Modules", null);
+
+        AddOption(ManageCourses);
+        AddOption(ManageModules);
         AddOption(ManageStudents);
     }
 }

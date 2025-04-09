@@ -18,8 +18,7 @@ public abstract class AbstractMenu implements Menu {
         this.UserInput = Input;
         this.Name = name;
 
-        MenuOption CloseOption = new MenuOption("Exit");
-
+        MenuOption CloseOption = new MenuOption("Exit", null);
         AddOption(CloseOption);
     }
 

@@ -5,17 +5,16 @@ import java.util.Stack;
 
 public class MenuManager {
     private static final Stack<Menu> Menus = new Stack<>();
-    private static Menu CurrentMenu;
 
-    public static void SetMenu(Menu menu) {
+    public static void AddMenu(Menu menu) {
        Menus.push(menu);
     }
 
     public static void GoToFirstPage() {
         Menu MainMenu = Menus.firstElement();
 
-        Exit();
-        SetMenu(MainMenu);
+        Clear();
+        AddMenu(MainMenu);
 
         Start();
     }
@@ -33,7 +32,7 @@ public class MenuManager {
         }
     }
 
-    public static void Exit() {
+    public static void Clear() {
         Menus.clear();
     }
 }

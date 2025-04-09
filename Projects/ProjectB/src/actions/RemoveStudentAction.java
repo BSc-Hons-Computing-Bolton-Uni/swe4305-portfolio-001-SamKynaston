@@ -22,7 +22,7 @@ public class RemoveStudentAction implements MenuAction {
 
         MenuManager.GoBack();
         MenuManager.GoBack();
-        MenuManager.SetMenu(new menus.StudentListMenu(Context.GetReader()));
+        MenuManager.AddMenu(new menus.StudentListMenu(Context.GetReader()));
 
         System.out.println("Student has been removed from the system.");
     }

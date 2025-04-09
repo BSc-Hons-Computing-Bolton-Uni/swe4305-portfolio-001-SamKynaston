@@ -16,19 +16,12 @@ public class StudentListMenu extends AbstractMenu {
         super(Input, "Manage a Student");
 
         for (Student student : Students) {
-            MenuOption StudentHandler = new MenuOption(student.GetForename() + " " + student.GetSurname());
-
-            MenuAction StudentManagerAction = new StudentManagerAction(student);
-            StudentHandler.SetAction(StudentManagerAction);
-
+            MenuOption StudentHandler = new MenuOption(student.GetForename() + " " + student.GetSurname(), new StudentManagerAction(student));
             AddOption(StudentHandler);
         }
 
-        // Add a new Student Action
-        MenuOption AddStudentOption = new MenuOption("Add a new Student");
-        MenuAction AddStudentAction = new AddStudentAction();
-        AddStudentOption.SetAction(AddStudentAction);
-
+        // Add a new Student Option
+        MenuOption AddStudentOption = new MenuOption("Add a new Student", new AddStudentAction());
         AddOption(AddStudentOption);
     }
 }

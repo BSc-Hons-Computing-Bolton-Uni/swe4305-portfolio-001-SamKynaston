@@ -16,7 +16,7 @@ public class MainMenuAction implements MenuAction {
     @Override
     public void Execute() {
         if (Objects.equals(Action, "MANAGE_STUDENTS")) {
-            MenuManager.SetMenu(new StudentListMenu(Context.GetReader()));
+            MenuManager.AddMenu(new StudentListMenu(Context.GetReader()));
         }
     }
 }

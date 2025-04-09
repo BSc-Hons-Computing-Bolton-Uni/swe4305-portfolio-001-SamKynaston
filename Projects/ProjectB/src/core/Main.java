@@ -31,10 +31,10 @@ public class Main {
     public static void main(String[] args) {
         DeployTestData();
 
-        // Initialize menus.Menu Context
+        // Initialize Menu Context
         MenuActionContext.New(reader);
 
-        MenuManager.SetMenu(new MainMenu());
+        MenuManager.AddMenu(new MainMenu());
         MenuManager.Start();
 
         /*
