@@ -34,14 +34,8 @@ public class Main {
         // Initialize menus.Menu Context
         MenuActionContext.New(reader);
 
-        // Set the Menu
-        Menu = new MainMenu();
-
-        // Set the Main Menu's isMain boolean to true
-        Menu.isMain = true;
-
-        // Display the main menu
-        Menu.Display();
+        MenuManager.SetMenu(new MainMenu());
+        MenuManager.Start();
 
         /*
         // Manage objects.Student menus.Menu Option

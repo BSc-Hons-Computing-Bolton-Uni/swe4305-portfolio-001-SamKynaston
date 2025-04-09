@@ -1,6 +1,6 @@
 package menus;
 
-import actions.InitialStudentAction;
+import actions.MainMenuAction;
 import objects.*;
 
 import static core.Main.Students;
@@ -9,13 +9,11 @@ public class MainMenu extends AbstractMenu {
     public MainMenu() {
         super(MenuActionContext.GetContext().GetReader(), "University Manager");
 
-        for (Student student : Students) {
-            MenuOption StudentHandler = new MenuOption(student.GetForename() + " " + student.GetSurname());
+        // Manage Students Option
+        MenuOption ManageStudents = new MenuOption("Manage a Student");
+        MainMenuAction ManageStudentsAction = new MainMenuAction("MANAGE_STUDENTS");
+        ManageStudents.SetAction(ManageStudentsAction);
 
-            MenuAction StudentAction = new InitialStudentAction(student);
-            StudentHandler.SetAction(StudentAction);
-
-            AddOption(StudentHandler);
-        }
+        AddOption(ManageStudents);
     }
 }

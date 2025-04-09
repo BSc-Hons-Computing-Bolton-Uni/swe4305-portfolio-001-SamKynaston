@@ -9,7 +9,6 @@ import objects.Student;
 import java.util.Scanner;
 
 public class ManageStudentMenu extends AbstractMenu {
-
     public ManageStudentMenu(Scanner Input, Student student, String name) {
         super(Input, name);
 

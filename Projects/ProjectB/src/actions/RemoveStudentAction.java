@@ -18,6 +18,10 @@ public class RemoveStudentAction implements MenuAction {
 
         Main.Students.remove(Student);
 
+        core.MenuManager.GoBack();
+        core.MenuManager.GoBack();
+        core.MenuManager.SetMenu(new menus.StudentListMenu(Context.GetReader()));
+
         System.out.println("Student has been removed from the system.");
     }
 }

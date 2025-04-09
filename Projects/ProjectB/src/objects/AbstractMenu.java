@@ -1,6 +1,8 @@
 package objects;
 
 import core.Main;
+import core.MenuManager;
+import menus.MainMenu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -49,7 +51,9 @@ public abstract class AbstractMenu implements Menu {
     }
 
     private boolean UserDecisionHandler(int choice) {
-        if (choice > 0 && choice < Options.size()) {
+        if (choice == 0) {
+            MenuManager.GoBack();
+        } else if (choice > 0 && choice < Options.size()) {
             MenuOption option = Options.get(choice);
             option.ExecuteAction();
         }
@@ -62,9 +66,9 @@ public abstract class AbstractMenu implements Menu {
             System.out.println("Select an option from one of the choices above.");
             int choice = UserInput.nextInt();
 
-            if (UserDecisionHandler(choice)) {
-                Quit = true;
-            }
+            UserDecisionHandler(choice);
+
+            break;
         }
     }
 }

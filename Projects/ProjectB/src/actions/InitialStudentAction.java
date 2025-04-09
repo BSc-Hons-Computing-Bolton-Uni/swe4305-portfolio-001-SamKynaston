@@ -1,5 +1,6 @@
 package actions;
 
+import core.MenuManager;
 import menus.ManageStudentMenu;
 import objects.*;
 
@@ -13,6 +14,6 @@ public class InitialStudentAction implements MenuAction {
     @Override
     public void Execute() {
         MenuActionContext Context = GetContext();
-        new ManageStudentMenu(Context.GetReader(), Student, "Manage Student " + Student.GetForename() + " " + Student.GetSurname() + "(" + Student.GetID() + ")").Display();
+        MenuManager.SetMenu(new ManageStudentMenu(Context.GetReader(), Student, "Manage Student " + Student.GetForename() + " " + Student.GetSurname() + "(" + Student.GetID() + ")"));
     }
 }
