@@ -1,3 +1,5 @@
+package core;
+
 import menus.*;
 import objects.*;
 
@@ -6,16 +8,40 @@ import java.util.Scanner;
 
 public class Main {
     public static final Scanner reader = new Scanner(System.in);
-    private static final ArrayList<Student> Students = new ArrayList<>();
-    private static final ArrayList<Student> Modules = new ArrayList<>();
-    private static final ArrayList<Student> Courses = new ArrayList<>();
+    public static final ArrayList<Student> Students = new ArrayList<>();
+    public static final ArrayList<Student> Modules = new ArrayList<>();
+    public static final ArrayList<Student> Courses = new ArrayList<>();
+    public static AbstractMenu Menu;
+
+    private static void DeployTestData() {
+        // Student 1
+        Student student1 = new Student(1001);
+        student1.SetForename("Sam");
+        student1.SetSurname("Kynaston");
+
+        // Student 2
+        Student student2 = new Student(1002);
+        student2.SetForename("Melissa");
+        student2.SetSurname("Stephens");
+
+        Students.add(student1);
+        Students.add(student2);
+    }
 
     public static void main(String[] args) {
+        DeployTestData();
+
         // Initialize menus.Menu Context
         MenuActionContext.New(reader);
 
-        // Just testing new menu class
-        Menu BaseMenu = new MainMenu(reader);
+        // Set the Menu
+        Menu = new MainMenu();
+
+        // Set the Main Menu's isMain boolean to true
+        Menu.isMain = true;
+
+        // Display the main menu
+        Menu.Display();
 
         /*
         // Manage objects.Student menus.Menu Option
@@ -54,7 +80,5 @@ public class Main {
         BaseMenu.AddOption(ManageStudents);
         BaseMenu.AddOption(ManageCourse);
         BaseMenu.AddOption(ManageModules);*/
-
-        BaseMenu.Display();
     }
 }

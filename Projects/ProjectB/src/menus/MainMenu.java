@@ -1,12 +1,21 @@
 package menus;
 
-import objects.AbstractMenu;
-import objects.MenuOption;
+import actions.InitialStudentAction;
+import objects.*;
 
-import java.util.Scanner;
+import static core.Main.Students;
 
 public class MainMenu extends AbstractMenu {
-    public MainMenu(Scanner Input) {
-        super(Input, "University Manager");
+    public MainMenu() {
+        super(MenuActionContext.GetContext().GetReader(), "University Manager");
+
+        for (Student student : Students) {
+            MenuOption StudentHandler = new MenuOption(student.GetForename() + " " + student.GetSurname());
+
+            MenuAction StudentAction = new InitialStudentAction(student);
+            StudentHandler.SetAction(StudentAction);
+
+            AddOption(StudentHandler);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package objects;
 
+import core.Main;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,6 +10,7 @@ public abstract class AbstractMenu implements Menu {
     private String Name;
     private Scanner UserInput;
     private boolean Quit = false;
+    public boolean isMain = false;
 
     public AbstractMenu(Scanner Input, String name) {
         this.UserInput = Input;
@@ -31,6 +34,7 @@ public abstract class AbstractMenu implements Menu {
     @Override
     public void Display() {
         System.out.println(Name);
+        System.out.println("");
 
         for (int choice = 1; choice < Options.size() ;choice++) {
             MenuOption Option = Options.get(choice);
@@ -39,6 +43,7 @@ public abstract class AbstractMenu implements Menu {
 
         MenuOption Close = Options.getFirst();
         System.out.println("0. " + Close.GetName());
+        System.out.println("");
 
         InputHandler();
     }
