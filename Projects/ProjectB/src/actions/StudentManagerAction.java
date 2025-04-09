@@ -4,10 +4,10 @@ import core.MenuManager;
 import menus.ManageStudentMenu;
 import objects.*;
 
-public class InitialStudentAction implements MenuAction {
+public class StudentManagerAction implements MenuAction {
     Student Student;
 
-    public InitialStudentAction(Student student) {
+    public StudentManagerAction(Student student) {
         this.Student = student;
     }
 

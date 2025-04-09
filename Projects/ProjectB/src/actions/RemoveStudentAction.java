@@ -5,6 +5,8 @@ import objects.MenuAction;
 import objects.MenuActionContext;
 import objects.Student;
 
+import core.MenuManager;
+
 public class RemoveStudentAction implements MenuAction {
     Student Student;
 
@@ -18,9 +20,9 @@ public class RemoveStudentAction implements MenuAction {
 
         Main.Students.remove(Student);
 
-        core.MenuManager.GoBack();
-        core.MenuManager.GoBack();
-        core.MenuManager.SetMenu(new menus.StudentListMenu(Context.GetReader()));
+        MenuManager.GoBack();
+        MenuManager.GoBack();
+        MenuManager.SetMenu(new menus.StudentListMenu(Context.GetReader()));
 
         System.out.println("Student has been removed from the system.");
     }
