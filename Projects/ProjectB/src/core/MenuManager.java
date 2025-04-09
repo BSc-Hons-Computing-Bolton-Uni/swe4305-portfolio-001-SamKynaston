@@ -11,6 +11,15 @@ public class MenuManager {
        Menus.push(menu);
     }
 
+    public static void GoToFirstPage() {
+        Menu MainMenu = Menus.firstElement();
+
+        Exit();
+        SetMenu(MainMenu);
+
+        Start();
+    }
+
     public static void GoBack() {
         if (!Menus.isEmpty()) {
             Menus.pop();

@@ -27,6 +27,6 @@ public class AddStudentAction implements MenuAction {
         Students.add(newStudent);
         System.out.println("Student added to system.");
 
-        MenuManager.GoBack();
+        MenuManager.GoToFirstPage();
     }
 }
