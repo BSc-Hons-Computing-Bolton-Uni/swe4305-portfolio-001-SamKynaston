@@ -1,29 +1,37 @@
+package objects;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Menu {
+public abstract class AbstractMenu implements Menu {
     private final ArrayList<MenuOption> Options = new ArrayList<>();
+    private String Name;
     private Scanner UserInput;
     private boolean Quit = false;
 
-    public Menu(Scanner Input) {
+    public AbstractMenu(Scanner Input, String name) {
         this.UserInput = Input;
+        this.Name = name;
 
-        MenuOption CloseOption = new MenuOption();
-        CloseOption.SetName("Exit");
+        MenuOption CloseOption = new MenuOption("Exit");
 
         AddOption(CloseOption);
     }
 
+    @Override
     public void AddOption(MenuOption option) {
         Options.add(option);
     }
 
+    @Override
     public void RemoveOption(MenuOption option) {
         Options.remove(option);
     }
 
+    @Override
     public void Display() {
+        System.out.println(Name);
+
         for (int choice = 1; choice < Options.size() ;choice++) {
             MenuOption Option = Options.get(choice);
             System.out.println(choice + ". " + Option.GetName());
@@ -36,9 +44,9 @@ public class Menu {
     }
 
     private boolean UserDecisionHandler(int choice) {
-        if (choice >= 0 && choice < Options.size()) {
+        if (choice > 0 && choice < Options.size()) {
             MenuOption option = Options.get(choice);
-            option.Execute(UserInput);
+            option.ExecuteAction();
         }
 
         return true;

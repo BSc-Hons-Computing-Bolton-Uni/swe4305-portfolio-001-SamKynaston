@@ -1,3 +1,5 @@
+package objects;
+
 public class Mark {
     private Student Student;
     private double Mark;

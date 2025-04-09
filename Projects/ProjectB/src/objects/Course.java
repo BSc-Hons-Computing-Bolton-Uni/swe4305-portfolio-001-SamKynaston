@@ -1,3 +1,5 @@
+package objects;
+
 import java.util.ArrayList;
 
 public class Course {
@@ -15,7 +17,7 @@ public class Course {
     public void SetCode(String code) {
         if (this.HasCodeBeenSet) { return; } // If the code has already been set, then do not allow it to be changed
 
-        this.Code = code; // Set the Course's code
+        this.Code = code; // Set the objects.Course's code
         this.HasCodeBeenSet = true; // Set the HasCodeBeenSet flag to true
     }
 

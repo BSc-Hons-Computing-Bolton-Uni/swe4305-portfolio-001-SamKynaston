@@ -1,8 +1,12 @@
-import java.util.Scanner;
+package objects;
 
 public class MenuOption {
     private String name;
     private MenuAction action;
+
+    public MenuOption(String name) {
+        SetName(name);
+    }
 
     public void SetName(String newName) {
         this.name = newName;
@@ -16,7 +20,7 @@ public class MenuOption {
         this.action = action;
     }
 
-    public void Execute(Scanner input) {
-        action.execute(input);
+    public void ExecuteAction() {
+        action.Execute();
     }
 }

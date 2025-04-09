@@ -1,39 +1,60 @@
+import menus.*;
+import objects.*;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    private static final Scanner reader = new Scanner(System.in);
+    public static final Scanner reader = new Scanner(System.in);
+    private static final ArrayList<Student> Students = new ArrayList<>();
+    private static final ArrayList<Student> Modules = new ArrayList<>();
+    private static final ArrayList<Student> Courses = new ArrayList<>();
 
     public static void main(String[] args) {
+        // Initialize menus.Menu Context
+        MenuActionContext.New(reader);
+
         // Just testing new menu class
-        Menu BaseMenu = new Menu(reader);
+        Menu BaseMenu = new MainMenu(reader);
 
-        // Debug Option 1
-        MenuOption Debug1 = new MenuOption();
-        Debug1.SetName("Multiply");
+        /*
+        // Manage objects.Student menus.Menu Option
+        MenuOption ManageStudents = new MenuOption("Manage Students");
+        ManageStudents.SetAction(() -> {
 
-        Debug1.SetAction((reader) -> {
-            System.out.println("DEBUG MULTIPLY MENU");
+            // menus.Menu for objects.Student Management
+            Menu ManageStudentsMenu = new Menu(reader);
 
-            int num1 = reader.nextInt();
-            int num2 = reader.nextInt();
+            for (Student student : Students) {
+                MenuOption StudentOption = new MenuOption(student.GetForename() + " " + student.GetSurname());
 
-            System.out.println(num1 * num2);
+                StudentOption.SetAction(() -> {});
+
+                ManageStudentsMenu.AddOption(StudentOption);
+            }
+
+            // menus.Menu Options
+            MenuOption RemoveStudent = new MenuOption("Remove objects.Student");
         });
 
-        MenuOption Debug2 = new MenuOption();
-        Debug2.SetName("Divide");
+        // Manage objects.Course menus.Menu Option
+        MenuOption ManageCourse = new MenuOption("Manage Courses");
+        ManageCourse.SetAction(() -> {
+            Menu ManageStudentsMenu = new Menu(reader);
 
-        Debug2.SetAction((reader) -> {
-            System.out.println("DEBUG DIVIDE MENU");
-
-            int num1 = reader.nextInt();
-            int num2 = reader.nextInt();
-
-            System.out.println(num1 / num2);
         });
 
-        BaseMenu.AddOption(Debug1);
-        BaseMenu.AddOption(Debug2);
+        // Manage objects.Module menus.Menu Option
+        MenuOption ManageModules = new MenuOption("Manage Modules");
+        ManageModules.SetAction(() -> {
+            Menu ManageStudentsMenu = new Menu(reader);
+
+        });
+
+        BaseMenu.AddOption(ManageStudents);
+        BaseMenu.AddOption(ManageCourse);
+        BaseMenu.AddOption(ManageModules);*/
+
         BaseMenu.Display();
     }
 }

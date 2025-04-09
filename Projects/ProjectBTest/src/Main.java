@@ -1,8 +1,7 @@
+import objects.Course;
+import objects.Module;
+import objects.Student;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class Main {
     @Test
@@ -65,7 +64,7 @@ public class Main {
     @Test
     void CreateCourseAndTestModuleAddition() {
         Course course = new Course("C001");
-        Module module = new Module("CM001");
+        Module module = new objects.Module("CM001");
 
         assertTrue(course.AddModule(module));
     }
@@ -73,7 +72,7 @@ public class Main {
     @Test
     void CreateCourseAndAddModuleAndTestItContains() {
         Course course = new Course("C001");
-        Module module = new Module("CM001");
+        objects.Module module = new objects.Module("CM001");
 
         course.AddModule(module);
         assertTrue(course.GetModules().contains(module));
@@ -82,7 +81,7 @@ public class Main {
     @Test
     void CreateCourseAndTestModuleRemoval() {
         Course course = new Course("C001");
-        Module module = new Module("CM001");
+        objects.Module module = new objects.Module("CM001");
 
         course.AddModule(module);
         assertTrue(course.RemoveModule(module));
