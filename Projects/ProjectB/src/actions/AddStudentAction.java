@@ -12,10 +12,10 @@ public class AddStudentAction implements MenuAction {
     public void Execute() {
         MenuActionContext Context = GetContext();
 
-        System.out.println("What is this student's first name?");
+        System.out.print("First Name: ");
         String Forename = Context.GetReader().next();
 
-        System.out.println("What is this student's surname?");
+        System.out.print("Second Name: ");
         String Surname = Context.GetReader().next();
 
         int latestStudentID = Students.getLast().GetID();

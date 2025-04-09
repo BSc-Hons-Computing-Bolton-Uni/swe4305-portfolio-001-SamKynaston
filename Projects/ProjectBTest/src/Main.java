@@ -2,6 +2,7 @@ import objects.Course;
 import objects.Module;
 import objects.Student;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Main {
     @Test

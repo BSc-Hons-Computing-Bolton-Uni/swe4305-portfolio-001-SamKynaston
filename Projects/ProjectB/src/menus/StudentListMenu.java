@@ -21,7 +21,7 @@ public class StudentListMenu extends AbstractMenu {
         }
 
         // Add a new Student Option
-        MenuOption AddStudentOption = new MenuOption("Add a new Student", new AddStudentAction());
+        MenuOption AddStudentOption = new MenuOption("Add a New Student", new AddStudentAction());
         AddOption(AddStudentOption);
     }
 }
