@@ -34,7 +34,7 @@ public class Main {
         // Initialize Menu Context
         MenuActionContext.New(reader);
 
-        MenuManager.AddMenu(new MainMenu());
+        new MainMenu();
         MenuManager.Start();
 
         /*

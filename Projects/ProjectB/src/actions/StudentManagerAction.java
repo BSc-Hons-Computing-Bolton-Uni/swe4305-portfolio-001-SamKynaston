@@ -14,6 +14,6 @@ public class StudentManagerAction implements MenuAction {
     @Override
     public void Execute() {
         MenuActionContext Context = GetContext();
-        MenuManager.AddMenu(new ManageStudentMenu(Context.GetReader(), Student, "Manage Student " + Student.GetForename() + " " + Student.GetSurname() + "(" + Student.GetID() + ")"));
+        new ManageStudentMenu(Context.GetReader(), Student, "Manage Student " + Student.GetForename() + " " + Student.GetSurname() + "(" + Student.GetID() + ")");
     }
 }

@@ -20,6 +20,8 @@ public abstract class AbstractMenu implements Menu {
 
         MenuOption CloseOption = new MenuOption("Exit", null);
         AddOption(CloseOption);
+
+        MenuManager.AddMenu(this);
     }
 
     @Override
@@ -62,7 +64,7 @@ public abstract class AbstractMenu implements Menu {
 
     private void InputHandler() {
         while (!Quit) {
-            System.out.println("Select an option from one of the choices above.");
+            System.out.print("Select an option from one of the choices above: ");
             int choice = UserInput.nextInt();
 
             UserDecisionHandler(choice);
