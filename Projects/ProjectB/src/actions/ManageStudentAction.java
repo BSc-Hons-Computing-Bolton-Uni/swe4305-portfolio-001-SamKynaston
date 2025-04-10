@@ -7,7 +7,15 @@ import objects.Student;
 
 import static core.Main.Students;
 
-public class AddStudentAction implements MenuAction {
+public class ManageStudentAction implements MenuAction {
+    Student Student;
+
+    public ManageStudentAction(Student student) {
+        if (student != null) {
+            this.Student = student;
+        }
+    }
+
     @Override
     public void Execute() {
         MenuActionContext Context = GetContext();
@@ -24,9 +32,12 @@ public class AddStudentAction implements MenuAction {
             latestStudentID = Students.getLast().GetID();
         }
 
-        Student newStudent = new Student(latestStudentID+1);
-        newStudent.SetForename(Forename);
-        newStudent.SetSurname(Surname);
+        if (Student == null) {
+            Student = new Student(latestStudentID+1);
+        }
+
+        Student.SetForename(Forename);
+        Student.SetSurname(Surname);
 
         System.out.println("Student added to system.");
         MenuManager.GoToFirstPage();

@@ -10,6 +10,10 @@ public class MenuManager {
        Menus.push(menu);
     }
 
+    public static int GetCurrentPages() {
+        return Menus.size();
+    }
+
     public static void GoToFirstPage() {
         Menu MainMenu = Menus.firstElement();
 

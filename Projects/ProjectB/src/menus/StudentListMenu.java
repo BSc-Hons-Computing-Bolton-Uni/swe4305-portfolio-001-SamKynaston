@@ -1,9 +1,8 @@
 package menus;
 
-import actions.AddStudentAction;
+import actions.ManageStudentAction;
 import actions.StudentManagerAction;
 import objects.AbstractMenu;
-import objects.MenuAction;
 import objects.MenuOption;
 import objects.Student;
 
@@ -16,12 +15,12 @@ public class StudentListMenu extends AbstractMenu {
         super(Input, "Manage a Student");
 
         for (Student student : Students) {
-            MenuOption StudentHandler = new MenuOption("Manage Student " + student.GetForename() + " " + student.GetSurname() + " (" + student.GetID() + ")", new StudentManagerAction(student));
+            MenuOption StudentHandler = new MenuOption(student.GetForename() + " " + student.GetSurname() + " (" + student.GetID() + ")", new StudentManagerAction(student));
             AddOption(StudentHandler);
         }
 
         // Add a new Student Option
-        MenuOption AddStudentOption = new MenuOption("Add a New Student", new AddStudentAction());
+        MenuOption AddStudentOption = new MenuOption("Add a New Student", new ManageStudentAction(null));
         AddOption(AddStudentOption);
     }
 }

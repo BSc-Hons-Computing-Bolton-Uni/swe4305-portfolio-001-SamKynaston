@@ -18,8 +18,14 @@ public abstract class AbstractMenu implements Menu {
         this.UserInput = Input;
         this.Name = name;
 
-        MenuOption CloseOption = new MenuOption("Exit", null);
-        AddOption(CloseOption);
+        String quitOptionText = "Quit";
+
+        if (MenuManager.GetCurrentPages() > 0) {
+            quitOptionText = "Go Back";
+        }
+
+        MenuOption QuitOption = new MenuOption(quitOptionText, null);
+        AddOption(QuitOption);
 
         MenuManager.AddMenu(this);
     }

@@ -12,7 +12,6 @@ public class Main {
     public static final ArrayList<Student> Students = new ArrayList<>();
     public static final ArrayList<objects.Module> Modules = new ArrayList<>();
     public static final ArrayList<Course> Courses = new ArrayList<>();
-    public static AbstractMenu Menu;
 
     private static void DeploySampleData() {
         // Student 1

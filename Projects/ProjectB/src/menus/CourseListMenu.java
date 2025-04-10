@@ -1,8 +1,6 @@
 package menus;
 
-import actions.AddStudentAction;
 import actions.CourseManagerAction;
-import actions.StudentManagerAction;
 import objects.*;
 
 import java.util.Scanner;
