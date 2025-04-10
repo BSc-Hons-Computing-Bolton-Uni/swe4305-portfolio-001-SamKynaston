@@ -8,10 +8,10 @@ import objects.Student;
 
 import core.MenuManager;
 
-public class RemoveStudentAction implements MenuAction {
+public class DeleteStudentAction implements MenuAction {
     Student Student;
 
-    public RemoveStudentAction(Student student) {
+    public DeleteStudentAction(Student student) {
         this.Student = student;
     }
 

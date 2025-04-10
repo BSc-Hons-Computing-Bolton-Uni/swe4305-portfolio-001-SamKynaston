@@ -47,12 +47,16 @@ public class Course {
     }
 
     public boolean AddStudent(Student student) {
+        if (this.Students.contains(student)) { System.out.println("Student is already registered on this course!"); return false; }
+
         this.Students.add(student);
 
         return true;
     }
 
     public boolean RemoveStudent(Student student) {
+        if (!this.Students.contains(student)) { System.out.println("Student is not registered on this course!"); return false; }
+
         this.Students.remove(student);
 
         return true;
