@@ -30,6 +30,9 @@ public class Main {
         Course course1 = new Course("G400");
         course1.SetName("BSc (Hons) Computing");
 
+        student1.AddCourse(course1);
+        student2.AddCourse(course1);
+
         // Computing (G400) Modules
         course1.AddModule(new objects.Module("COM4301")); // Maths for Computing
         course1.AddModule(new objects.Module("COM4302")); // Computer Science Fundamentals

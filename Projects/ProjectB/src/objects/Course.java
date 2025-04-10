@@ -9,11 +9,13 @@ public class Course {
     public boolean HasCodeBeenSet = false;
     private String Name;
     private ArrayList<Module> Modules;
+    private ArrayList<Student> Students;
 
     public Course(String code) {
         SetCode(code);
 
         this.Modules = new ArrayList<>();
+        this.Students = new ArrayList<>();
 
         // Add to the main Courses ArrayList
         Main.Courses.add(this);
@@ -42,6 +44,22 @@ public class Course {
         this.Modules = modules;
 
         return true;
+    }
+
+    public boolean AddStudent(Student student) {
+        this.Students.add(student);
+
+        return true;
+    }
+
+    public boolean RemoveStudent(Student student) {
+        this.Students.remove(student);
+
+        return true;
+    }
+
+    public ArrayList<Student> GetStudents() {
+        return Students;
     }
 
     public boolean AddModule(Module module) {

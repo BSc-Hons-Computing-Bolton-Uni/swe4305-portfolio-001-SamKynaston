@@ -1,6 +1,7 @@
 package menus;
 
 import actions.AddStudentAction;
+import actions.CourseManagerAction;
 import actions.StudentManagerAction;
 import objects.*;
 
@@ -13,7 +14,7 @@ public class CourseListMenu extends AbstractMenu {
         super(Input, "Manage a Course");
 
         for (Course course : Courses) {
-            MenuOption CourseHandler = new MenuOption(course.GetName() + " (" + course.GetCode() + ")", null);
+            MenuOption CourseHandler = new MenuOption(course.GetName() + " (" + course.GetCode() + ")", new CourseManagerAction(course));
             AddOption(CourseHandler);
         }
     }

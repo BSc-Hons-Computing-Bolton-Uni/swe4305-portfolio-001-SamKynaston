@@ -55,6 +55,7 @@ public class Student {
         if (GetCourses().contains(course)) { return false; } // If the student is already a member of the provided course, then return false and close the function
 
         this.Courses.add(course); // Add the course to the student's course list
+        course.AddStudent(this);
 
         return true; // Return true to signify completion
     }
@@ -63,6 +64,7 @@ public class Student {
         if (!this.Courses.contains(course)) { return false; } // If the course doesn't exist in the student's courses or has already been removed, then return false and close the function
 
         this.Courses.remove(course); // Remove the course
+        course.RemoveStudent(this);
 
         return true; // Return true to signify completion
     }
