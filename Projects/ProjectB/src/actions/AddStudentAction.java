@@ -18,7 +18,11 @@ public class AddStudentAction implements MenuAction {
         System.out.print("Second Name: ");
         String Surname = Context.GetReader().next();
 
-        int latestStudentID = Students.getLast().GetID();
+        int latestStudentID = 999;
+
+        if (!Students.isEmpty()) {
+            latestStudentID = Students.getLast().GetID();
+        }
 
         Student newStudent = new Student(latestStudentID+1);
         newStudent.SetForename(Forename);

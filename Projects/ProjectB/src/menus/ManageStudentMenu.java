@@ -13,7 +13,7 @@ public class ManageStudentMenu extends AbstractMenu {
 
         MenuOption ModifyStudentName = new MenuOption("Modify student's name", null);
         MenuOption AddStudentToCourse = new MenuOption("Register student to course", null);
-        MenuOption AddMarkToStudent = new MenuOption("Register student's mark", null);
+        MenuOption AddMarkToStudent = new MenuOption("Register student grade", null);
         MenuOption RemoveStudentOption = new MenuOption("Remove this Student", new RemoveStudentAction(student));
 
         // Add Options

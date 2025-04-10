@@ -4,10 +4,6 @@ import core.MenuManager;
 import objects.Course;
 import objects.MenuAction;
 import objects.MenuActionContext;
-import objects.Student;
-
-import static core.Main.Courses;
-import static core.Main.Students;
 
 public class AddCourseAction implements MenuAction {
 
@@ -24,7 +20,7 @@ public class AddCourseAction implements MenuAction {
         Course newCourse = new Course(CourseCode);
         newCourse.SetName(CourseName);
 
-        System.out.println("Student added to system.");
+        System.out.println("Course added to system.");
         MenuManager.GoToFirstPage();
     }
 }

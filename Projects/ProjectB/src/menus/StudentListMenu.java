@@ -16,7 +16,7 @@ public class StudentListMenu extends AbstractMenu {
         super(Input, "Manage a Student");
 
         for (Student student : Students) {
-            MenuOption StudentHandler = new MenuOption(student.GetForename() + " " + student.GetSurname(), new StudentManagerAction(student));
+            MenuOption StudentHandler = new MenuOption("Manage Student " + student.GetForename() + " " + student.GetSurname() + " (" + student.GetID() + ")", new StudentManagerAction(student));
             AddOption(StudentHandler);
         }
 

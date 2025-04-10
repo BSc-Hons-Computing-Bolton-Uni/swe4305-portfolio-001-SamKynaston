@@ -1,6 +1,7 @@
 package menus;
 
 import actions.AddStudentAction;
+import actions.ModuleManagerAction;
 import actions.StudentManagerAction;
 import objects.*;
 import objects.Module;
@@ -14,7 +15,7 @@ public class ModuleListMenu extends AbstractMenu {
         super(Input, "Manage a Module");
 
         for (Module module : Modules) {
-            MenuOption ModuleHandler = new MenuOption(module.GetCode() + " (" + module.GetCourse().GetCode() + ")", null);
+            MenuOption ModuleHandler = new MenuOption(module.GetCode() + " (" + module.GetCourse().GetCode() + ")", new ModuleManagerAction(module));
             AddOption(ModuleHandler);
         }
     }
