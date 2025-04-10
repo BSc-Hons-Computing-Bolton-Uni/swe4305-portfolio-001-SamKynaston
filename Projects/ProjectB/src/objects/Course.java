@@ -1,5 +1,7 @@
 package objects;
 
+import core.Main;
+
 import java.util.ArrayList;
 
 public class Course {
@@ -12,6 +14,9 @@ public class Course {
         SetCode(code);
 
         this.Modules = new ArrayList<>();
+
+        // Add to the main Courses ArrayList
+        Main.Courses.add(this);
     }
 
     public void SetCode(String code) {
@@ -33,9 +38,16 @@ public class Course {
         return this.Name; // Return the class's name
     }
 
+    public boolean SetModules(ArrayList<Module> modules) {
+        this.Modules = modules;
+
+        return true;
+    }
+
     public boolean AddModule(Module module) {
         if (Modules.contains(module)) { return false; } // If the course already has the provided module, then return false
 
+        module.SetCourse(this);
         this.Modules.add(module); // Add the module to the course
 
         return true; // Return true once complete

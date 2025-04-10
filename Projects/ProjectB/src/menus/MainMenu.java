@@ -13,10 +13,10 @@ public class MainMenu extends AbstractMenu {
         MenuOption ManageStudents = new MenuOption("Manage Students", new MainMenuAction("MANAGE_STUDENTS"));
 
         // Manage Courses Option
-        MenuOption ManageCourses = new MenuOption("Manage Courses", null);
+        MenuOption ManageCourses = new MenuOption("Manage Courses", new MainMenuAction("MANAGE_COURSES"));
 
         // Manage Modules Option
-        MenuOption ManageModules = new MenuOption("Manage Modules", null);
+        MenuOption ManageModules = new MenuOption("Manage Modules", new MainMenuAction("MANAGE_MODULES"));
 
         AddOption(ManageCourses);
         AddOption(ManageModules);

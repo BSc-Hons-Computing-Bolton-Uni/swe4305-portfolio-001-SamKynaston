@@ -1,5 +1,7 @@
 package objects;
 
+import core.Main;
+
 import java.util.ArrayList;
 
 public class Student {
@@ -14,6 +16,9 @@ public class Student {
     public Student(int ID) {
         SetID(ID);
         this.Courses = new ArrayList<Course>();
+
+        // Add to the main Students ArrayList
+        Main.Students.add(this);
     }
 
     // Set Functions

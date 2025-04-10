@@ -24,9 +24,7 @@ public class AddStudentAction implements MenuAction {
         newStudent.SetForename(Forename);
         newStudent.SetSurname(Surname);
 
-        Students.add(newStudent);
         System.out.println("Student added to system.");
-
         MenuManager.GoToFirstPage();
     }
 }

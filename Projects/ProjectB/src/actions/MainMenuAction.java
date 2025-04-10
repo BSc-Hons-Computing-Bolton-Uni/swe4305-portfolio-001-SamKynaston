@@ -1,6 +1,8 @@
 package actions;
 
 import core.MenuManager;
+import menus.CourseListMenu;
+import menus.ModuleListMenu;
 import menus.StudentListMenu;
 import objects.MenuAction;
 
@@ -17,6 +19,10 @@ public class MainMenuAction implements MenuAction {
     public void Execute() {
         if (Objects.equals(Action, "MANAGE_STUDENTS")) {
             new StudentListMenu(Context.GetReader());
+        } else if (Objects.equals(Action, "MANAGE_COURSES")) {
+            new CourseListMenu(Context.GetReader());
+        } else if (Objects.equals(Action, "MANAGE_MODULES")) {
+            new ModuleListMenu(Context.GetReader());
         }
     }
 }
