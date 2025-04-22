@@ -1,9 +1,7 @@
 package core;
 
-import menus.*;
 import objects.*;
 
-import java.lang.Module;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -58,12 +56,6 @@ public class Main {
 
     public static void main(String[] args) {
         DeploySampleData();
-
-        // Initialize Menu Context
-        MenuActionContext.New(reader);
-
-        new MainMenu();
-        MenuManager.Start();
 
         /*
         // Manage objects.Student menus.Menu Option
