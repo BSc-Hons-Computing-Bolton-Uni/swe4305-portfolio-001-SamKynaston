@@ -1,10 +1,11 @@
 package Objects;
 
 import Core.Main;
+import Interfaces.ExtendedT;
 
 import java.util.ArrayList;
 
-public class Module {
+public class Module implements ExtendedT {
     private String Code;
     private ArrayList<Mark> Marks;
     private Course AssociatedCourse;
@@ -64,5 +65,9 @@ public class Module {
                 return;
             }
         }
+    }
+
+    public String Print() {
+        return Code;
     }
 }

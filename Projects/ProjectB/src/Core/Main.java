@@ -56,5 +56,9 @@ public class Main {
 
     public static void main(String[] args) {
         DeploySampleData();
+
+        Student chosenStudent = new SelectionMenu<Student>("Student Manager", Students).Execute();
+
+        System.out.println(chosenStudent.GetID());
     }
 }

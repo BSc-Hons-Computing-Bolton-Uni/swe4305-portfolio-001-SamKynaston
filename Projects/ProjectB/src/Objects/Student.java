@@ -1,10 +1,11 @@
 package Objects;
 
 import Core.Main;
+import Interfaces.ExtendedT;
 
 import java.util.ArrayList;
 
-public class Student {
+public class Student implements ExtendedT {
     private int ID;
     private boolean IsIDSet = false;
 
@@ -71,5 +72,9 @@ public class Student {
 
     public ArrayList<Course> GetCourses() {
         return this.Courses;
+    }
+
+    public String Print() {
+        return Forename + " " + Surname;
     }
 }

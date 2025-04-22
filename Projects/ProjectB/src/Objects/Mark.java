@@ -1,6 +1,8 @@
 package Objects;
 
-public class Mark {
+import Interfaces.ExtendedT;
+
+public class Mark implements ExtendedT {
     private Student Student;
     private double Mark;
     private String Grade;
@@ -67,4 +69,8 @@ public class Mark {
     }
 
     public void PrintStatistics() {}
+
+    public String Print() {
+        return Student.GetForename() + " " + Student.GetSurname() + "'s Marks";
+    }
 }
