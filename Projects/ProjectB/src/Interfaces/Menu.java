@@ -1,6 +1,7 @@
 package Interfaces;
 
 import Core.Main;
+import Objects.Action;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -27,6 +28,12 @@ public interface Menu<T extends ExtendedT> {
             int choice = reader.nextInt();
 
             if (choice <= Options.size() && choice >= 1) {
+                T selected = Options.get(choice-1);
+
+                if (selected instanceof Action action) {
+                    action.Execute();
+                }
+
                 return Options.get(choice-1);
             } else if (choice <= 0) {
                 return null;

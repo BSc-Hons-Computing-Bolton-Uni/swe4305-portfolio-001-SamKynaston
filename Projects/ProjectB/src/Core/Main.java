@@ -58,12 +58,19 @@ public class Main {
     public static void main(String[] args) {
         DeploySampleData();
 
-        Student chosenStudent = new SelectionMenu<>("Student Manager", Students).Execute();
+        // Test Option Menu
+        OptionMenu<Action> menu = new OptionMenu<>("Main Menu");
+
+        menu.AddAction(new Action("Say Hello", () -> System.out.println("Hello!")));
+
+        menu.Execute();
+
+        /*Student chosenStudent = new SelectionMenu<>("Student Manager", Students).Execute();
         Course chosenCourse = new SelectionMenu<>("Course Manager", Courses).Execute();
         Module chosenModule = new SelectionMenu<>("Module Manager", Modules).Execute();
 
         System.out.println(chosenStudent.Print());
         System.out.println(chosenCourse.Print());
-        System.out.println(chosenModule.Print());
+        System.out.println(chosenModule.Print());*/
     }
 }
