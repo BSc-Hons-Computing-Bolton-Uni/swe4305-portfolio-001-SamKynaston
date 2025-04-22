@@ -1,6 +1,6 @@
-package objects;
+package Objects;
 
-import core.Main;
+import Core.Main;
 
 import java.util.ArrayList;
 

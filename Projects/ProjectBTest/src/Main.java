@@ -1,6 +1,6 @@
-import objects.Course;
-import objects.Module;
-import objects.Student;
+import Objects.Course;
+import Objects.Module;
+import Objects.Student;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
