@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class SelectionMenu<T extends ExtendedT> implements Menu<T> {
     private String Name;
     private final ArrayList<T> Options;
-    private boolean isQuitting = false;
 
     public SelectionMenu(String name, ArrayList<T> options) {
         SetName(name);
@@ -24,28 +23,11 @@ public class SelectionMenu<T extends ExtendedT> implements Menu<T> {
     }
 
     @Override
-    public void DisplayOptions() {
-        for (T option : Options) {
-            System.out.println(option.Print());
-        }
-    }
-
-    @Override
-    public T UserInput() {
-        return null;
-    }
-
-    @Override
     public T Execute() {
         System.out.println(Name);
+        DisplayOptions(Options);
 
-        DisplayOptions();
-
-        while (!isQuitting) {
-            this.isQuitting = true;
-        }
-
-        return Options.get(1);
+        return UserInput(Options);
     }
 
     @Override

@@ -75,6 +75,6 @@ public class Student implements ExtendedT {
     }
 
     public String Print() {
-        return Forename + " " + Surname;
+        return GetForename() + " " + GetSurname() + " (" + GetID() + ")";
     }
 }

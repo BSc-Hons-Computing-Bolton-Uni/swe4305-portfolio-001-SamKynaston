@@ -1,11 +1,38 @@
 package Interfaces;
 
-public interface Menu<T> {
-    boolean isQuitting = false;
+import Core.Main;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public interface Menu<T extends ExtendedT> {
     void SetName(String name);
-    void DisplayOptions();
-    T UserInput();
-    T Execute();
     String GetName();
+
+    default void DisplayOptions(ArrayList<T> Options) {
+        for (int option = 0; option < Options.size(); option++) {
+            T OptionClass = Options.get(option);
+
+            System.out.println(option+1 + ". " + OptionClass.Print());
+        }
+
+        System.out.println("0. Exit");
+    }
+
+    default T UserInput(ArrayList<T> Options) {
+        Scanner reader = Main.reader;
+
+        while (true) {
+            System.out.print("Select an option: ");
+            int choice = reader.nextInt();
+
+            if (choice <= Options.size() && choice >= 1) {
+                return Options.get(choice-1);
+            } else if (choice <= 0) {
+                return null;
+            }
+        }
+    }
+
+    T Execute();
 }
