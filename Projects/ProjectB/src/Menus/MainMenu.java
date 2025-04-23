@@ -1,0 +1,88 @@
+package Menus;
+
+import Core.Main;
+import Objects.*;
+
+import java.util.ArrayList;
+
+public class MainMenu extends OptionMenu<Action> {
+    public MainMenu() {
+        super("University Manager");
+
+        AddAction(new Action("Student Management", () -> {
+            Student chosenStudent = new StudentSelection(Main.Students).Execute();
+
+            if (chosenStudent == null) {
+                return;
+            }
+
+            OptionMenu<Action> studentMenu = new OptionMenu<>("Manage " + chosenStudent.GetForename() + " " + chosenStudent.GetSurname());
+
+            // Remove from Course Option
+            studentMenu.AddAction(new Action("Remove from Course", () -> {
+                Course chosenCourse = new CourseSelection(chosenStudent.GetCourses()).Execute();
+
+                if (chosenCourse != null) {
+                    chosenStudent.RemoveCourse(chosenCourse);
+                }
+            }));
+
+            // Remove Student Option
+            studentMenu.AddAction(new Action("Delete Entry", () -> {
+                for (Course course : new ArrayList<>(chosenStudent.GetCourses())) {
+                    chosenStudent.RemoveCourse(course);
+                }
+
+                Main.Students.remove(chosenStudent);
+            }));
+
+            studentMenu.Execute();
+        }));
+
+        AddAction(new Action("Course Management", () -> {
+            Course chosenCourse = new CourseSelection(Main.Courses).Execute();
+
+            if (chosenCourse == null) {
+                return;
+            }
+
+            OptionMenu<Action> courseMenu = new OptionMenu<>("Manage " + chosenCourse.GetName() + " (" + chosenCourse.GetCode() + ")");
+
+            System.out.println();
+            System.out.println("Course Information: ");
+            System.out.println("- " + chosenCourse.GetStudents().size() + " Course Students");
+            System.out.println("- " + chosenCourse.GetModules().size() + " Course Modules");
+            System.out.println();
+
+            // Remove Student Option
+            courseMenu.AddAction(new Action("Delete Entry", () -> {
+                Main.Courses.remove(chosenCourse);
+
+                for (Student student : new ArrayList<>(chosenCourse.GetStudents())) {
+                    chosenCourse.RemoveStudent(student);
+                }
+            }));
+
+            courseMenu.AddAction(new Action("Add a Student", () -> {
+                ArrayList<Student> unregisteredStudents = new ArrayList<>(Main.Students);
+                unregisteredStudents.removeAll(chosenCourse.GetStudents());
+
+                Student chosenStudent = new StudentSelection(unregisteredStudents).Execute();
+
+                if (chosenStudent != null) {
+                    chosenStudent.AddCourse(chosenCourse);
+                }
+            }));
+
+            courseMenu.AddAction(new Action("Remove a Student", () -> {
+                Student chosenStudent = new StudentSelection(chosenCourse.GetStudents()).Execute();
+
+                if (chosenStudent != null) {
+                    chosenStudent.RemoveCourse(chosenCourse);
+                }
+            }));
+
+            courseMenu.Execute();
+        }));
+    }
+}

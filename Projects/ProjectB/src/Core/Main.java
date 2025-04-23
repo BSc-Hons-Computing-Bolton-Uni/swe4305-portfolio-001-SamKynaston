@@ -1,5 +1,6 @@
 package Core;
 
+import Menus.MainMenu;
 import Objects.*;
 import Objects.Module;
 
@@ -7,10 +8,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static final Scanner reader = new Scanner(System.in);
     public static final ArrayList<Student> Students = new ArrayList<>();
     public static final ArrayList<Module> Modules = new ArrayList<>();
     public static final ArrayList<Course> Courses = new ArrayList<>();
+
+    public static void ClearScreen() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
 
     private static void DeploySampleData() {
         // Student 1
@@ -59,18 +65,21 @@ public class Main {
         DeploySampleData();
 
         // Test Option Menu
-        OptionMenu<Action> menu = new OptionMenu<>("Main Menu");
+        OptionMenu<Action> menu = new MainMenu();
 
-        menu.AddAction(new Action("Say Hello", () -> System.out.println("Hello!")));
+        while (true) {
+            ClearScreen();
+            System.out.println();
+            System.out.println("- " + Students.size() + " University Students");
+            System.out.println("- " + Courses.size() + " University Courses");
+            System.out.println("- " + Modules.size() + " Total University Modules");
+            System.out.println();
 
-        menu.Execute();
+            Action result = menu.Execute(); // menu.Execute() runs once
 
-        /*Student chosenStudent = new SelectionMenu<>("Student Manager", Students).Execute();
-        Course chosenCourse = new SelectionMenu<>("Course Manager", Courses).Execute();
-        Module chosenModule = new SelectionMenu<>("Module Manager", Modules).Execute();
-
-        System.out.println(chosenStudent.Print());
-        System.out.println(chosenCourse.Print());
-        System.out.println(chosenModule.Print());*/
+            if (result == null) {
+                break;
+            }
+        }
     }
 }

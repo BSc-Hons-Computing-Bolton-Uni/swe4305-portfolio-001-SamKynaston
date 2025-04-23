@@ -2,6 +2,7 @@ package Interfaces;
 
 import Core.Main;
 import Objects.Action;
+import Objects.Input;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,11 +22,8 @@ public interface Menu<T extends ExtendedT> {
     }
 
     default T UserInput(ArrayList<T> Options) {
-        Scanner reader = Main.reader;
-
         while (true) {
-            System.out.print("Select an option: ");
-            int choice = reader.nextInt();
+            int choice = Input.ReadIntInRange("Select an option: ", 0, Options.size());
 
             if (choice <= Options.size() && choice >= 1) {
                 T selected = Options.get(choice-1);

@@ -58,6 +58,7 @@ public class Course implements ExtendedT {
     public boolean RemoveStudent(Student student) {
         if (!this.Students.contains(student)) { System.out.println("Student is not registered on this course!"); return false; }
 
+        student.RemoveCourse(this);
         this.Students.remove(student);
 
         return true;
