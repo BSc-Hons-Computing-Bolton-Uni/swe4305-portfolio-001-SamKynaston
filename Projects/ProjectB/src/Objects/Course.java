@@ -4,6 +4,7 @@ import Core.Main;
 import Interfaces.ExtendedT;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Course implements ExtendedT {
     private String Code;
@@ -49,6 +50,13 @@ public class Course implements ExtendedT {
 
     public boolean AddStudent(Student student) {
         if (this.Students.contains(student)) { System.out.println("Student is already registered on this course!"); return false; }
+        Random random = new Random();
+
+        for (Module module : Modules) {
+            if (!module.GetMandatoryStatus()) { continue; } // If it's not a mandatory module, then do not create a mark for student onto it by default
+
+            module.AddMark(student, random.nextInt(0, 100));
+        }
 
         this.Students.add(student);
 

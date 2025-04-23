@@ -1,7 +1,11 @@
 package Menus;
 
 import Core.Main;
-import Objects.*;
+import Objects.OptionMenu;
+import Objects.Module;
+import Objects.Action;
+import Objects.Student;
+import Objects.Course;
 
 import java.util.ArrayList;
 
@@ -83,6 +87,17 @@ public class MainMenu extends OptionMenu<Action> {
             }));
 
             courseMenu.Execute();
+        }));
+
+        AddAction(new Action("Module Management", () -> {
+            Module chosenModule = new ModuleSelection(Main.Modules).Execute();
+
+            chosenModule.UpdateGradeStatistics();
+
+            System.out.println("- Average Grade: " + chosenModule.GetAverageGrade());
+            System.out.println("- Average Mark: " + chosenModule.GetAverageMark());
+            System.out.println("- Highest Mark: " + chosenModule.GetHighestMark());
+            System.out.println("- Lowest Mark: " + chosenModule.GetLowestMark());
         }));
     }
 }

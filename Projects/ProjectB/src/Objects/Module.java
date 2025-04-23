@@ -9,13 +9,31 @@ public class Module implements ExtendedT {
     private String Code;
     private ArrayList<Mark> Marks;
     private Course AssociatedCourse;
+    private boolean isMandatory;
 
-    public Module(String code) {
+    // mark statistics
+    private double AverageMark = 0.00;
+    private String AverageGrade = "UNKNOWN";
+    private double LowestMark = 0.00;
+    private double HighestMark = 0.00;
+
+    public Module(String code, boolean isMandatory) {
         this.Marks = new ArrayList<>();
+
+        SetMandatoryStatus(isMandatory);
         SetCode(code);
 
         // Add to the main Modules ArrayList
         Main.Modules.add(this);
+    }
+
+
+    public void SetMandatoryStatus(boolean newStatus) {
+        this.isMandatory = newStatus;
+    }
+
+    public boolean GetMandatoryStatus() {
+        return this.isMandatory;
     }
 
     public void SetCode(String code) {
@@ -34,11 +52,45 @@ public class Module implements ExtendedT {
         return AssociatedCourse;
     }
 
-    public void DisplayGradeProfile() {}
-    public void DisplayGradeStatistics() {}
+    public String GetAverageGrade() {
+        return this.AverageGrade;
+    }
+
+    public Double GetAverageMark() {
+        return this.AverageMark;
+    }
+
+    public Double GetHighestMark() {
+        return this.HighestMark;
+    }
+
+    public Double GetLowestMark() {
+        return this.LowestMark;
+    }
+
+    public void UpdateGradeStatistics() {
+        for (Mark mark : Marks) {
+            if (mark.GetMark() > this.HighestMark) { // If the mark is higher than the highest mark
+                this.HighestMark = mark.GetMark(); // Set the highest mark to this mark
+            }
+
+            if (mark.GetMark() < this.LowestMark) { // If the mark is lower than the lowest mark
+                this.LowestMark = mark.GetMark(); // Set the lowest mark to this mark
+            }
+
+            this.AverageMark += mark.GetMark(); // Add the mark to the average
+        }
+
+        // Divide the average mark by how many marks there are
+        this.AverageMark = this.AverageMark / Marks.size();
+        this.AverageGrade = Mark.GradeLetter.GetGradeForMarks(this.AverageMark);
+    }
 
     public boolean AddMark(Student student, double mark) {
-        return false; // TO BE REWRITTEN
+
+        Marks.add(new Mark(this, student, mark));
+
+        return true;
     }
 
     public ArrayList<Mark> GetMarks() {

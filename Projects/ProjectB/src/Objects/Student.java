@@ -13,10 +13,13 @@ public class Student implements ExtendedT {
     private String Surname;
 
     private final ArrayList<Course> Courses;
+    private final ArrayList<Mark> Marks;
 
     public Student(int ID) {
         SetID(ID);
+
         this.Courses = new ArrayList<Course>();
+        this.Marks = new ArrayList<Mark>();
 
         // Add to the main Students ArrayList
         Main.Students.add(this);
@@ -50,6 +53,29 @@ public class Student implements ExtendedT {
 
     public String GetSurname() {
         return this.Surname; // Get the student's surname and return it
+    }
+
+    public ArrayList<Mark> GetMarks() {
+        return this.Marks;
+    }
+
+    public boolean AddMark(Mark mark) {
+        if (GetMarks().contains(mark)) { return false; } // If the student already has a mark that matches the input, then return false
+        if (mark.GetStudent() != this) { return false; }
+
+        this.Marks.add(mark);
+
+        return true;
+    }
+
+    public boolean RemoveMark(Mark mark) {
+        if (GetMarks().contains(mark)) { return false; } // If the student already has a mark that matches the input, then return false
+        if (mark.GetStudent() != this) { return false; }
+
+        this.Marks.remove(mark);
+        mark.GetModule().RemoveMark(this);
+
+        return true;
     }
 
     public boolean AddCourse(Course course) {

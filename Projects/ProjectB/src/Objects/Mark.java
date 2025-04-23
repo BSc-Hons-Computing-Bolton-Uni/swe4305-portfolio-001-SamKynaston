@@ -4,6 +4,7 @@ import Interfaces.ExtendedT;
 
 public class Mark implements ExtendedT {
     private Student Student;
+    private Module Module;
     private double Mark;
     private String Grade;
 
@@ -35,24 +36,34 @@ public class Mark implements ExtendedT {
         }
     }
 
-    public Mark(Student student, Double mark) {
+    public Mark(Module module, Student student, Double mark) {
+        SetModule(module);
         SetStudent(student);
         SetMark(mark);
     }
 
     // Functions to set class attributes
     public boolean SetMark(double mark) {
-        if (mark < 0 || mark > 100) { return false; } // If a value less than 0 or greater than 100 is submitted, then end the function and return false
+        if (mark <= 0 || mark >= 100) { return false; } // If a value less than 0 or greater than 100 is submitted, then end the function and return false
 
         this.Mark = mark; // Set the student's mark
         this.Grade = GradeLetter.GetGradeForMarks(mark); // Set the student's grade
 
         return true; // Return true to signify completion
     }
+
+    public boolean SetModule(Module module) {
+        if (this.Module != null) { return false; } // If there's already a set module, then end the function
+
+        this.Module = module; // Set the module
+
+        return true; // Return true to signify completion
+    }
+
     public boolean SetStudent(Student student) {
-        if (student == null) { return false; } // If no student is provided, end the function
         if (this.Student != null) { return false; } // If there's already a student, then end the function
 
+        student.AddMark(this);
         this.Student = student; // Set the student
 
         return true; // Return true to signify completion
@@ -62,6 +73,10 @@ public class Mark implements ExtendedT {
 
     public Student GetStudent() {
         return this.Student; // Return the associated student
+    }
+
+    public Module GetModule() {
+        return this.Module; // Return the associated module
     }
 
     public Double GetMark() {
