@@ -17,6 +17,8 @@ public class Student implements ExtendedT {
     private final ArrayList<Mark> Marks;
 
     public Student() {
+        System.out.println("Student Created.");
+
         SetID(nextID++);
 
         this.Courses = new ArrayList<Course>();

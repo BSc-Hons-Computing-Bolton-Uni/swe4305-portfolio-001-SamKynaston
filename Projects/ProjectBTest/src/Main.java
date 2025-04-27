@@ -7,13 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Main {
     @Test
     void CreateStudentAndTestID() {
-        Student student = new Student(1);
+        Student student = new Student();
         assertEquals(1, student.GetID());
     }
 
     @Test
     void CreateStudentAndTestIDOverwrite() {
-        Student student = new Student(1);
+        Student student = new Student();
 
         student.SetID(2);
 
@@ -22,7 +22,7 @@ public class Main {
 
     @Test
     void CreateStudentAndTestForename() {
-        Student student = new Student(1);
+        Student student = new Student();
         student.SetForename("John");
 
         assertEquals("John", student.GetForename());
@@ -30,7 +30,7 @@ public class Main {
 
     @Test
     void CreateStudentAndTestSurname() {
-        Student student = new Student(1);
+        Student student = new Student();
         student.SetSurname("Smith");
 
         assertEquals("Smith", student.GetSurname());
@@ -38,7 +38,7 @@ public class Main {
 
     @Test
     void CreateStudentAndCourseAndTestAddition() {
-        Student student = new Student(1);
+        Student student = new Student();
         Course course = new Course("C001");
 
         assertTrue(student.AddCourse(course));
@@ -46,7 +46,7 @@ public class Main {
 
     @Test
     void CreateStudentAndCourseAndTestItContains() {
-        Student student = new Student(1);
+        Student student = new Student();
         Course course = new Course("C001");
 
         student.AddCourse(course);
@@ -55,7 +55,7 @@ public class Main {
 
     @Test
     void CreateStudentAndCourseAndTestRemoval() {
-        Student student = new Student(1);
+        Student student = new Student();
         Course course = new Course("C001");
 
         student.AddCourse(course);

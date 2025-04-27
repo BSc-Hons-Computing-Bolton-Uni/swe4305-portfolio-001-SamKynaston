@@ -32,7 +32,7 @@ public interface Menu<T extends ExtendedT> {
                     action.Execute();
                 }
 
-                return Options.get(choice-1);
+                return selected;
             } else if (choice <= 0) {
                 return null;
             }

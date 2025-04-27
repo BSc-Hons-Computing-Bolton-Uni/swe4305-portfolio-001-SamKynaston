@@ -15,13 +15,11 @@ public class MainMenu extends OptionMenu<Action> {
 
             CreationPrompt.AddAction(new Action("Create a New Student", () -> {
                 String forename = Input.ReadStringWithLength("First Name: ", 0, 32);
-                String surname = Input.ReadStringWithLength("First Name: ", 0, 32);
+                String surname = Input.ReadStringWithLength("Surname Name: ", 0, 32);
 
                 Student newStudent = new Student();
                 newStudent.SetForename(forename);
                 newStudent.SetSurname(surname);
-
-                Main.Students.add(newStudent);
             }));
 
             CreationPrompt.AddAction(new Action("Create a New Course", () -> {
@@ -30,8 +28,6 @@ public class MainMenu extends OptionMenu<Action> {
 
                 Course newCourse = new Course(code);
                 newCourse.SetName(name);
-
-                Main.Courses.add(newCourse);
             }));
 
             CreationPrompt.AddAction(new Action("Create a New Module", () -> {
@@ -41,8 +37,6 @@ public class MainMenu extends OptionMenu<Action> {
 
                 Module newModule = new Module(code, isMandatory);
                 newModule.SetCourse(assignedCourse);
-
-                Main.Modules.add(newModule);
             }));
 
             CreationPrompt.Execute();
