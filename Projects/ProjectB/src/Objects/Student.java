@@ -6,6 +6,7 @@ import Interfaces.ExtendedT;
 import java.util.ArrayList;
 
 public class Student implements ExtendedT {
+    private static int nextID = 1000;
     private int ID;
     private boolean IsIDSet = false;
 
@@ -15,8 +16,8 @@ public class Student implements ExtendedT {
     private final ArrayList<Course> Courses;
     private final ArrayList<Mark> Marks;
 
-    public Student(int ID) {
-        SetID(ID);
+    public Student() {
+        SetID(nextID++);
 
         this.Courses = new ArrayList<Course>();
         this.Marks = new ArrayList<Mark>();

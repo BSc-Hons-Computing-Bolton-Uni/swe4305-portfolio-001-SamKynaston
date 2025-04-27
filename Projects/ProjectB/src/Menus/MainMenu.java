@@ -1,17 +1,52 @@
 package Menus;
 
 import Core.Main;
-import Objects.OptionMenu;
+import Objects.*;
 import Objects.Module;
-import Objects.Action;
-import Objects.Student;
-import Objects.Course;
 
 import java.util.ArrayList;
 
 public class MainMenu extends OptionMenu<Action> {
     public MainMenu() {
         super("University Manager");
+
+        AddAction(new Action("Create a New Entity", () -> {
+            OptionMenu<Action> CreationPrompt = new OptionMenu<>("Create a New Entity");
+
+            CreationPrompt.AddAction(new Action("Create a New Student", () -> {
+                String forename = Input.ReadStringWithLength("First Name: ", 0, 32);
+                String surname = Input.ReadStringWithLength("First Name: ", 0, 32);
+
+                Student newStudent = new Student();
+                newStudent.SetForename(forename);
+                newStudent.SetSurname(surname);
+
+                Main.Students.add(newStudent);
+            }));
+
+            CreationPrompt.AddAction(new Action("Create a New Course", () -> {
+                String code = Input.ReadStringWithLength("Code: ", 0, 5);
+                String name = Input.ReadStringWithLength("Course Name: ", 0, 128);
+
+                Course newCourse = new Course(code);
+                newCourse.SetName(name);
+
+                Main.Courses.add(newCourse);
+            }));
+
+            CreationPrompt.AddAction(new Action("Create a New Module", () -> {
+                Course assignedCourse = new CourseSelection(Main.Courses).Execute();
+                String code = Input.ReadStringWithLength("Module Code: ", 0, 5);
+                boolean isMandatory = Input.ReadYesNo("Is this module important?");
+
+                Module newModule = new Module(code, isMandatory);
+                newModule.SetCourse(assignedCourse);
+
+                Main.Modules.add(newModule);
+            }));
+
+            CreationPrompt.Execute();
+        }));
 
         AddAction(new Action("Student Management", () -> {
             Student chosenStudent = new StudentSelection(Main.Students).Execute();

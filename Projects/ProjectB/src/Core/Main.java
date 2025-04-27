@@ -20,12 +20,12 @@ public class Main {
 
     private static void DeploySampleData() {
         // Student 1
-        Student student1 = new Student(1001);
+        Student student1 = new Student();
         student1.SetForename("Sam");
         student1.SetSurname("Kynaston");
 
         // Student 2
-        Student student2 = new Student(1002);
+        Student student2 = new Student();
         student2.SetForename("Melissa");
         student2.SetSurname("Stephens");
 
