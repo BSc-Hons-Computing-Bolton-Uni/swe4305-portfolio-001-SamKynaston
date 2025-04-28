@@ -73,6 +73,8 @@ public class Input {
                 System.out.println("- You didn't input anything");
                 System.out.println("- You didn't input a number");
                 System.out.println();
+            } catch (Exception e) {
+                System.out.println("Unknown exception.");
             }
         }
     }
@@ -97,6 +99,8 @@ public class Input {
                 System.out.println("- You didn't input anything");
                 System.out.println("- You didn't input a number");
                 System.out.println();
+            } catch (Exception e) {
+                System.out.println("Unknown exception.");
             }
         }
     }
