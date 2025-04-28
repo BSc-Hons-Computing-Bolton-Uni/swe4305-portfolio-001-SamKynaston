@@ -126,25 +126,25 @@ public class MainMenu extends OptionMenu<Action> {
                 }
             }));
 
+            courseMenu.AddAction(new Action("Module Management", () -> {
+                ArrayList<Module> ModulesList = new ArrayList<Module>(chosenCourse.GetModules());
+                ModulesList.removeIf(module -> module.GetMarks().isEmpty());
+
+                Module chosenModule = new ModuleSelection(ModulesList).Execute();
+
+                if (chosenModule == null) {
+                    return;
+                }
+
+                chosenModule.UpdateGradeStatistics();
+
+                System.out.println("- Average Grade: " + chosenModule.GetAverageGrade());
+                System.out.println("- Average Mark: " + chosenModule.GetAverageMark());
+                System.out.println("- Highest Mark: " + chosenModule.GetHighestMark());
+                System.out.println("- Lowest Mark: " + chosenModule.GetLowestMark());
+            }));
+
             courseMenu.Execute();
-        }));
-
-        AddAction(new Action("Module Management", () -> {
-            ArrayList<Module> ModulesList = new ArrayList<Module>(Repository.GetModules());
-            ModulesList.removeIf(module -> module.GetMarks().isEmpty());
-
-            Module chosenModule = new ModuleSelection(ModulesList).Execute();
-
-            if (chosenModule == null) {
-                   return;
-            }
-
-            chosenModule.UpdateGradeStatistics();
-
-            System.out.println("- Average Grade: " + chosenModule.GetAverageGrade());
-            System.out.println("- Average Mark: " + chosenModule.GetAverageMark());
-            System.out.println("- Highest Mark: " + chosenModule.GetHighestMark());
-            System.out.println("- Lowest Mark: " + chosenModule.GetLowestMark());
         }));
     }
 }
