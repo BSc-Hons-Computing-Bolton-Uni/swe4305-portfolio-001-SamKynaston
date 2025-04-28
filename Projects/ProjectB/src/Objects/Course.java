@@ -5,7 +5,6 @@ import Core.Repository;
 import Interfaces.ExtendedT;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Course implements ExtendedT {
     private String Code;
@@ -84,7 +83,7 @@ public class Course implements ExtendedT {
 
         if (module.GetMandatoryStatus()) { // If the new module is a mandatory module
             for (Student student: Students) { // Go through all students
-                module.SetMark(student, new Random().nextInt(0, 100)); // Set their default mark to 0
+                module.SetMark(student, 0); // Set their default mark to 0
             }
         }
 
