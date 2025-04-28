@@ -11,8 +11,8 @@ public class MainMenu extends OptionMenu<Action> {
     public MainMenu() {
         super("University Manager");
 
-        AddAction(new Action("Create a New Entity", () -> {
-            OptionMenu<Action> CreationPrompt = new OptionMenu<>("Create a New Entity");
+        AddAction(new Action("Create a New Student/Course/Module", () -> {
+            OptionMenu<Action> CreationPrompt = new OptionMenu<>("Create a New Student/Course/Module");
 
             CreationPrompt.AddAction(new Action("Create a New Student", () -> {
                 String forename = Input.ReadStringWithLength("First Name: ", 0, 32);
@@ -35,7 +35,7 @@ public class MainMenu extends OptionMenu<Action> {
                 Course assignedCourse = new CourseSelection(Repository.GetCourses()).Execute();
                 String code = Input.ReadStringWithLength("Module Code: ", 0, 5);
                 String name = Input.ReadStringWithLength("Module Name: ", 0, 64);
-                boolean isMandatory = Input.ReadYesNo("Is this module important?");
+                boolean isMandatory = Input.ReadYesNo("Is this module mandatory?");
 
                 Module newModule = new Module(code, name, isMandatory);
                 newModule.SetCourse(assignedCourse);
@@ -101,12 +101,12 @@ public class MainMenu extends OptionMenu<Action> {
             System.out.println();
 
             // Rename Options
-            courseMenu.AddAction(new Action("Assign a New Name", () -> {
+            courseMenu.AddAction(new Action("Update Course Name", () -> {
                 String newName = Input.ReadStringWithLength("Proposed Name: ", 0, 64);
                 chosenCourse.SetName(newName);
             }));
 
-            courseMenu.AddAction(new Action("Update Code", () -> {
+            courseMenu.AddAction(new Action("Update Course Code", () -> {
                 String newCode = Input.ReadStringWithLength("Proposed Code: ", 0, 64);
                 chosenCourse.SetCode(newCode);
             }));
@@ -141,29 +141,30 @@ public class MainMenu extends OptionMenu<Action> {
 
             courseMenu.AddAction(new Action("Module Management", () -> {
                 ArrayList<Module> ModulesList = new ArrayList<Module>(chosenCourse.GetModules());
-                ModulesList.removeIf(module -> module.GetMarks().isEmpty());
-
                 Module chosenModule = new ModuleSelection(ModulesList).Execute();
 
                 if (chosenModule == null) { return; }
 
                 OptionMenu<Action> moduleMenu = new OptionMenu<>("Manage " + chosenModule.GetName() + " (" + chosenModule.GetCode() + ")");
 
-                chosenModule.UpdateGradeStatistics();
-                chosenModule.DisplayGradeProfile();
+                if (!chosenModule.GetMarks().isEmpty()) {
+                    chosenModule.UpdateGradeStatistics();
+                    chosenModule.DisplayGradeProfile();
+                }
+
                 System.out.println(" ");
 
-                moduleMenu.AddAction(new Action("Assign a New Name", () -> {
+                moduleMenu.AddAction(new Action("Update Module Name", () -> {
                     String newName = Input.ReadStringWithLength("Proposed Name: ", 0, 64);
                     chosenModule.SetName(newName);
                 }));
 
-                moduleMenu.AddAction(new Action("Update Code", () -> {
+                moduleMenu.AddAction(new Action("Update Module Code", () -> {
                     String newCode = Input.ReadStringWithLength("Proposed Code: ", 0, 64);
                     chosenModule.SetCode(newCode);
                 }));
 
-                moduleMenu.AddAction(new Action("Update Mandatory Status", () -> {
+                moduleMenu.AddAction(new Action("Update Module's Priority", () -> {
                     boolean newStatus = Input.ReadYesNo("Is this a mandatory subject?");
                     chosenModule.SetMandatoryStatus(newStatus);
                 }));
