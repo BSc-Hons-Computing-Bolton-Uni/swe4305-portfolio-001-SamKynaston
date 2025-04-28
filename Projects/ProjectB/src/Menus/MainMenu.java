@@ -15,31 +15,54 @@ public class MainMenu extends OptionMenu<Action> {
             OptionMenu<Action> CreationPrompt = new OptionMenu<>("Create a New Student/Course/Module");
 
             CreationPrompt.AddAction(new Action("Create a New Student", () -> {
-                String forename = Input.ReadStringWithLength("First Name: ", 0, 32);
-                String surname = Input.ReadStringWithLength("Surname: ", 0, 32);
+                int amountToLoop = Input.ReadIntInRange("Amount of Student(s) to Create: ", 1, 100);
+                int currentIndex = 1;
 
-                Student newStudent = new Student();
-                newStudent.SetForename(forename);
-                newStudent.SetSurname(surname);
+                while(amountToLoop >= currentIndex) {
+                    System.out.println("Student " + currentIndex + "/" + amountToLoop);
+
+                    String forename = Input.ReadStringWithLength("First Name: ", 1, 32);
+                    String surname = Input.ReadStringWithLength("Surname: ", 1, 32);
+
+                    Student newStudent = new Student();
+                    newStudent.SetForename(forename);
+                    newStudent.SetSurname(surname);
+
+                    currentIndex += 1; // Increment Index by one
+                }
             }));
 
             CreationPrompt.AddAction(new Action("Create a New Course", () -> {
-                String code = Input.ReadStringWithLength("Code: ", 0, 5);
-                String name = Input.ReadStringWithLength("Course Name: ", 0, 128);
+                int amountToLoop = Input.ReadIntInRange("Amount of Course(s) to Create: ", 1, 100);
+                int currentIndex = 1;
 
-                Course newCourse = new Course(code);
-                newCourse.SetName(name);
+                while(amountToLoop >= currentIndex) {
+                    String code = Input.ReadStringWithLength("Code: ", 0, 5);
+                    String name = Input.ReadStringWithLength("Course Name: ", 0, 128);
+
+                    Course newCourse = new Course(code);
+                    newCourse.SetName(name);
+
+                    currentIndex += 1; // Increment index by one
+                }
             }));
 
             CreationPrompt.AddAction(new Action("Create a New Module", () -> {
-                Course assignedCourse = new CourseSelection(Repository.GetCourses()).Execute();
-                String code = Input.ReadStringWithLength("Module Code: ", 0, 5);
-                String name = Input.ReadStringWithLength("Module Name: ", 0, 64);
-                boolean isMandatory = Input.ReadYesNo("Is this module mandatory?");
+                int amountToLoop = Input.ReadIntInRange("Amount of Module(s) to Create: ", 1, 100);
+                int currentIndex = 1;
 
-                Module newModule = new Module(code, name, isMandatory);
-                newModule.SetCourse(assignedCourse);
-                assignedCourse.AddModule(newModule);
+                while(amountToLoop >= currentIndex) {
+                    Course assignedCourse = new CourseSelection(Repository.GetCourses()).Execute();
+                    String code = Input.ReadStringWithLength("Module Code: ", 0, 5);
+                    String name = Input.ReadStringWithLength("Module Name: ", 0, 64);
+                    boolean isMandatory = Input.ReadYesNo("Is this module mandatory?");
+
+                    Module newModule = new Module(code, name, isMandatory);
+                    newModule.SetCourse(assignedCourse);
+                    assignedCourse.AddModule(newModule);
+
+                    currentIndex += 1; // Increment index by one
+                }
             }));
 
             CreationPrompt.Execute();

@@ -7,7 +7,7 @@ import Objects.Module;
 public class Main {
     public static void ClearScreen() {
         for (int i = 0; i < 50; i++) {
-            System.out.println();
+            System.out.println(); // Create 50 new lines to emulate clearing the screen
         }
     }
 
