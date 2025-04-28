@@ -51,12 +51,11 @@ public class Course implements ExtendedT {
 
     public boolean AddStudent(Student student) {
         if (this.Students.contains(student)) { System.out.println("Student is already registered on this course!"); return false; }
-        Random random = new Random();
 
         for (Module module : Modules) {
             if (!module.GetMandatoryStatus()) { continue; } // If it's not a mandatory module, then do not create a mark for student onto it by default
 
-            module.AddMark(student, random.nextInt(0, 100));
+            module.SetMark(student, 0);
         }
 
         this.Students.add(student);
@@ -82,6 +81,12 @@ public class Course implements ExtendedT {
 
         module.SetCourse(this);
         this.Modules.add(module); // Add the module to the course
+
+        if (module.GetMandatoryStatus()) { // If the new module is a mandatory module
+            for (Student student: Students) { // Go through all students
+                module.SetMark(student, 0); // Set their default mark to 0
+            }
+        }
 
         return true; // Return true once complete
     }

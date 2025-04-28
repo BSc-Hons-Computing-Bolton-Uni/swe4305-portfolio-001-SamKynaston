@@ -37,7 +37,7 @@ public class Input {
                 } else if (input.length() < MinLength) {
                     System.out.println("Your input is less than " + MinLength);
                 } else {
-                    System.out.println("Your input is greater than " + MinLength);
+                    System.out.println("Your input is greater than " + MaxLength);
                 }
 
             } catch(Exception e) {

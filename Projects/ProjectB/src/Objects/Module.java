@@ -83,13 +83,25 @@ public class Module implements ExtendedT {
         }
 
         // Divide the average mark by how many marks there are
+        System.out.println(Marks.size());
         this.AverageMark = this.AverageMark / Marks.size();
         this.AverageGrade = Mark.GradeLetter.GetGradeForMarks(this.AverageMark);
     }
 
-    public boolean AddMark(Student student, double mark) {
+    public boolean SetMark(Student student, double mark) {
+        boolean markExists = false;
 
-        Marks.add(new Mark(this, student, mark));
+        for (Mark markObject: Marks) {
+            if (markObject.GetStudent().equals(student)) {
+                markObject.SetMark(mark);
+                markExists = true;
+                break;
+            }
+        }
+
+        if (!markExists) {
+            Marks.add(new Mark(this, student, mark));
+        }
 
         return true;
     }

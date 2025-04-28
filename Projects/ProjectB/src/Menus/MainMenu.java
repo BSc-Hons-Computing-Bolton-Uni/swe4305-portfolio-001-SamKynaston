@@ -38,6 +38,7 @@ public class MainMenu extends OptionMenu<Action> {
 
                 Module newModule = new Module(code, isMandatory);
                 newModule.SetCourse(assignedCourse);
+                assignedCourse.AddModule(newModule);
             }));
 
             CreationPrompt.Execute();
@@ -132,9 +133,9 @@ public class MainMenu extends OptionMenu<Action> {
 
                 Module chosenModule = new ModuleSelection(ModulesList).Execute();
 
-                if (chosenModule == null) {
-                    return;
-                }
+                if (chosenModule == null) { return; }
+
+                OptionMenu<Action> moduleMenu = new OptionMenu<>("Manage " + chosenModule.GetCode());
 
                 chosenModule.UpdateGradeStatistics();
 
@@ -142,6 +143,17 @@ public class MainMenu extends OptionMenu<Action> {
                 System.out.println("- Average Mark: " + chosenModule.GetAverageMark());
                 System.out.println("- Highest Mark: " + chosenModule.GetHighestMark());
                 System.out.println("- Lowest Mark: " + chosenModule.GetLowestMark());
+
+                moduleMenu.AddAction(new Action("Set a Mark", () -> {
+                    Student chosenStudent = new StudentSelection(chosenCourse.GetStudents()).Execute();
+                    int mark = Input.ReadIntInRange("Mark: ", 0, 100);
+
+                    if (chosenStudent == null) { return; }
+
+                    chosenModule.SetMark(chosenStudent, mark);
+                }));
+
+                moduleMenu.Execute();
             }));
 
             courseMenu.Execute();
