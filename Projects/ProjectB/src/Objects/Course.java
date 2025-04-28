@@ -1,6 +1,7 @@
 package Objects;
 
 import Core.Main;
+import Core.Repository;
 import Interfaces.ExtendedT;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Course implements ExtendedT {
         this.Students = new ArrayList<>();
 
         // Add to the main Courses ArrayList
-        Main.Courses.add(this);
+        Repository.AddCourse(this);
     }
 
     public void SetCode(String code) {
@@ -95,6 +96,17 @@ public class Course implements ExtendedT {
 
     public ArrayList<Module> GetModules() {
         return this.Modules;
+    }
+
+    public int GetMandatoryModuleCount() {
+        int valueToReturn = 0;
+
+        for (Module module : Modules) {
+            if (!module.GetMandatoryStatus()) { continue; }
+            valueToReturn += 1;
+        }
+
+        return valueToReturn;
     }
 
     public String Print() {

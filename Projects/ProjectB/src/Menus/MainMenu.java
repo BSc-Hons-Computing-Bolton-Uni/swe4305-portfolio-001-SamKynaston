@@ -1,6 +1,7 @@
 package Menus;
 
 import Core.Main;
+import Core.Repository;
 import Objects.*;
 import Objects.Module;
 
@@ -31,7 +32,7 @@ public class MainMenu extends OptionMenu<Action> {
             }));
 
             CreationPrompt.AddAction(new Action("Create a New Module", () -> {
-                Course assignedCourse = new CourseSelection(Main.Courses).Execute();
+                Course assignedCourse = new CourseSelection(Repository.GetCourses()).Execute();
                 String code = Input.ReadStringWithLength("Module Code: ", 0, 5);
                 boolean isMandatory = Input.ReadYesNo("Is this module important?");
 
@@ -43,13 +44,21 @@ public class MainMenu extends OptionMenu<Action> {
         }));
 
         AddAction(new Action("Student Management", () -> {
-            Student chosenStudent = new StudentSelection(Main.Students).Execute();
+            Student chosenStudent = new StudentSelection(Repository.GetStudents()).Execute();
 
             if (chosenStudent == null) {
                 return;
             }
 
             OptionMenu<Action> studentMenu = new OptionMenu<>("Manage " + chosenStudent.GetForename() + " " + chosenStudent.GetSurname());
+
+            studentMenu.AddAction(new Action("Change Name", () -> {
+                String forename = Input.ReadStringWithLength("First Name: ", 0, 32);
+                String surname = Input.ReadStringWithLength("Surname Name: ", 0, 32);
+
+                chosenStudent.SetForename(forename);
+                chosenStudent.SetSurname(surname);
+            }));
 
             // Remove from Course Option
             studentMenu.AddAction(new Action("Remove from Course", () -> {
@@ -66,14 +75,14 @@ public class MainMenu extends OptionMenu<Action> {
                     chosenStudent.RemoveCourse(course);
                 }
 
-                Main.Students.remove(chosenStudent);
+                Repository.RemoveStudent(chosenStudent);
             }));
 
             studentMenu.Execute();
         }));
 
         AddAction(new Action("Course Management", () -> {
-            Course chosenCourse = new CourseSelection(Main.Courses).Execute();
+            Course chosenCourse = new CourseSelection(Repository.GetCourses()).Execute();
 
             if (chosenCourse == null) {
                 return;
@@ -84,12 +93,14 @@ public class MainMenu extends OptionMenu<Action> {
             System.out.println();
             System.out.println("Course Information: ");
             System.out.println("- " + chosenCourse.GetStudents().size() + " Course Students");
-            System.out.println("- " + chosenCourse.GetModules().size() + " Course Modules");
+            System.out.println("- Course Modules");
+            System.out.println("  - Mandatory Modules: " + chosenCourse.GetMandatoryModuleCount());
+            System.out.println("  - Optional Modules: " + (chosenCourse.GetModules().size() - chosenCourse.GetMandatoryModuleCount()));
             System.out.println();
 
             // Remove Student Option
             courseMenu.AddAction(new Action("Delete Entry", () -> {
-                Main.Courses.remove(chosenCourse);
+                Repository.RemoveCourse(chosenCourse);
 
                 for (Student student : new ArrayList<>(chosenCourse.GetStudents())) {
                     chosenCourse.RemoveStudent(student);
@@ -97,7 +108,7 @@ public class MainMenu extends OptionMenu<Action> {
             }));
 
             courseMenu.AddAction(new Action("Add a Student", () -> {
-                ArrayList<Student> unregisteredStudents = new ArrayList<>(Main.Students);
+                ArrayList<Student> unregisteredStudents = new ArrayList<>(Repository.GetStudents());
                 unregisteredStudents.removeAll(chosenCourse.GetStudents());
 
                 Student chosenStudent = new StudentSelection(unregisteredStudents).Execute();
@@ -119,7 +130,14 @@ public class MainMenu extends OptionMenu<Action> {
         }));
 
         AddAction(new Action("Module Management", () -> {
-            Module chosenModule = new ModuleSelection(Main.Modules).Execute();
+            ArrayList<Module> ModulesList = new ArrayList<Module>(Repository.GetModules());
+            ModulesList.removeIf(module -> module.GetMarks().isEmpty());
+
+            Module chosenModule = new ModuleSelection(ModulesList).Execute();
+
+            if (chosenModule == null) {
+                   return;
+            }
 
             chosenModule.UpdateGradeStatistics();
 

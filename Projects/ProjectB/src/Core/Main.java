@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static final ArrayList<Student> Students = new ArrayList<>();
-    public static final ArrayList<Module> Modules = new ArrayList<>();
-    public static final ArrayList<Course> Courses = new ArrayList<>();
-
     public static void ClearScreen() {
         for (int i = 0; i < 50; i++) {
             System.out.println();
@@ -71,9 +67,9 @@ public class Main {
         while (true) {
             ClearScreen();
             System.out.println();
-            System.out.println("- " + Students.size() + " University Students");
-            System.out.println("- " + Courses.size() + " University Courses");
-            System.out.println("- " + Modules.size() + " Total University Modules");
+            System.out.println("- " + Repository.GetStudents().size() + " University Students");
+            System.out.println("- " + Repository.GetCourses().size() + " University Courses");
+            System.out.println("- " + Repository.GetModules().size() + " Total University Modules");
             System.out.println();
 
             Action result = menu.Execute(); // menu.Execute() runs once

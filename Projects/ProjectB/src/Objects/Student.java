@@ -1,6 +1,7 @@
 package Objects;
 
 import Core.Main;
+import Core.Repository;
 import Interfaces.ExtendedT;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class Student implements ExtendedT {
         this.Marks = new ArrayList<Mark>();
 
         // Add to the main Students ArrayList
-        Main.Students.add(this);
+        Repository.AddStudent(this);
     }
 
     // Set Functions

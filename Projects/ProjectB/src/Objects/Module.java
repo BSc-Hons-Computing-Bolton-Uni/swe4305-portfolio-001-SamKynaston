@@ -1,6 +1,7 @@
 package Objects;
 
 import Core.Main;
+import Core.Repository;
 import Interfaces.ExtendedT;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class Module implements ExtendedT {
         SetCode(code);
 
         // Add to the main Modules ArrayList
-        Main.Modules.add(this);
+        Repository.AddModule(this);
     }
 
 
