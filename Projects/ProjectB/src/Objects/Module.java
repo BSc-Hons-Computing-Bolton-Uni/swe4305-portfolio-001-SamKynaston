@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class Module implements ExtendedT {
     private String Code;
+    public String Name;
     private ArrayList<Mark> Marks;
     private Course AssociatedCourse;
     private boolean isMandatory;
@@ -20,11 +21,12 @@ public class Module implements ExtendedT {
     private double LowestMark = 0.00;
     private double HighestMark = 0.00;
 
-    public Module(String code, boolean isMandatory) {
+    public Module(String code, String name, boolean isMandatory) {
         this.Marks = new ArrayList<>();
 
         SetMandatoryStatus(isMandatory);
         SetCode(code);
+        SetName(name);
 
         // Add to the main Modules ArrayList
         Repository.AddModule(this);
@@ -39,10 +41,12 @@ public class Module implements ExtendedT {
         return this.isMandatory;
     }
 
+    public void SetName(String name) { this.Name = name; }
     public void SetCode(String code) {
         this.Code = code;
     }
 
+    public String GetName() { return this.Name; }
     public String GetCode() {
         return Code;
     }
@@ -144,6 +148,6 @@ public class Module implements ExtendedT {
     }
 
     public String Print() {
-        return Code;
+        return this.GetName() + " (" + this.GetCode() + ")";
     }
 }

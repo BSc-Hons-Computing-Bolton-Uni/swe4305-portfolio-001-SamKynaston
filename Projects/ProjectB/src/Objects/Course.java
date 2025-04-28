@@ -115,6 +115,6 @@ public class Course implements ExtendedT {
     }
 
     public String Print() {
-        return this.Name + "(" + this.Code + ")";
+        return this.Name + " (" + this.Code + ")";
     }
 }

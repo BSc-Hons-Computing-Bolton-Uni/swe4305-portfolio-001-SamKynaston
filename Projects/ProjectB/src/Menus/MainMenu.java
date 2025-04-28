@@ -34,9 +34,10 @@ public class MainMenu extends OptionMenu<Action> {
             CreationPrompt.AddAction(new Action("Create a New Module", () -> {
                 Course assignedCourse = new CourseSelection(Repository.GetCourses()).Execute();
                 String code = Input.ReadStringWithLength("Module Code: ", 0, 5);
+                String name = Input.ReadStringWithLength("Module Name: ", 0, 64);
                 boolean isMandatory = Input.ReadYesNo("Is this module important?");
 
-                Module newModule = new Module(code, isMandatory);
+                Module newModule = new Module(code, name, isMandatory);
                 newModule.SetCourse(assignedCourse);
                 assignedCourse.AddModule(newModule);
             }));
@@ -99,6 +100,17 @@ public class MainMenu extends OptionMenu<Action> {
             System.out.println("  - Optional Modules: " + (chosenCourse.GetModules().size() - chosenCourse.GetMandatoryModuleCount()));
             System.out.println();
 
+            // Rename Options
+            courseMenu.AddAction(new Action("Assign a New Name", () -> {
+                String newName = Input.ReadStringWithLength("Proposed Name: ", 0, 64);
+                chosenCourse.SetName(newName);
+            }));
+
+            courseMenu.AddAction(new Action("Update Code", () -> {
+                String newCode = Input.ReadStringWithLength("Proposed Code: ", 0, 64);
+                chosenCourse.SetCode(newCode);
+            }));
+
             // Remove Student Option
             courseMenu.AddAction(new Action("Delete Entry", () -> {
                 Repository.RemoveCourse(chosenCourse);
@@ -135,11 +147,26 @@ public class MainMenu extends OptionMenu<Action> {
 
                 if (chosenModule == null) { return; }
 
-                OptionMenu<Action> moduleMenu = new OptionMenu<>("Manage " + chosenModule.GetCode());
+                OptionMenu<Action> moduleMenu = new OptionMenu<>("Manage " + chosenModule.GetName() + " (" + chosenModule.GetCode() + ")");
 
                 chosenModule.UpdateGradeStatistics();
                 chosenModule.DisplayGradeProfile();
                 System.out.println(" ");
+
+                moduleMenu.AddAction(new Action("Assign a New Name", () -> {
+                    String newName = Input.ReadStringWithLength("Proposed Name: ", 0, 64);
+                    chosenModule.SetName(newName);
+                }));
+
+                moduleMenu.AddAction(new Action("Update Code", () -> {
+                    String newCode = Input.ReadStringWithLength("Proposed Code: ", 0, 64);
+                    chosenModule.SetCode(newCode);
+                }));
+
+                moduleMenu.AddAction(new Action("Update Mandatory Status", () -> {
+                    boolean newStatus = Input.ReadYesNo("Is this a mandatory subject?");
+                    chosenModule.SetMandatoryStatus(newStatus);
+                }));
 
                 moduleMenu.AddAction(new Action("Set a Mark", () -> {
                     Student chosenStudent = new StudentSelection(chosenCourse.GetStudents()).Execute();

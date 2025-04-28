@@ -28,27 +28,27 @@ public class Main {
         course1.SetName("BSc (Hons) Computing");
 
         // Computing (G400) Modules
-        course1.AddModule(new Module("COM4301", true)); // Maths for Computing
-        course1.AddModule(new Module("COM4302", true)); // Computer Science Fundamentals
-        course1.AddModule(new Module("SWE4303", true)); // Computing Infrastructure
-        course1.AddModule(new Module("SWE4304", true)); // Databases
-        course1.AddModule(new Module("SWE4305", true)); // Object Oriented Programming
-        course1.AddModule(new Module("SWE5306", true)); // Systems Analysis and Design
-        course1.AddModule(new Module("SWE5307", true)); // Web Design and Programming
-        course1.AddModule(new Module("SWE5308", true)); // Cloud Technologies
-        course1.AddModule(new Module("COM6300", true)); // Research and Professional Issues
-        course1.AddModule(new Module("COM6301", true)); // Undergraduate Project
-        course1.AddModule(new Module("SWE6304", true)); // Emerging Technologies
+        course1.AddModule(new Module("COM4301", "Maths for Computing", true));
+        course1.AddModule(new Module("COM4302", "Computer Science Fundamentals", true));
+        course1.AddModule(new Module("SWE4303", "Computing Infrastructure", true));
+        course1.AddModule(new Module("SWE4304", "Databases", true));
+        course1.AddModule(new Module("SWE4305", "Object Oriented Programming", true));
+        course1.AddModule(new Module("SWE5306", "Systems Analysis and Design", true));
+        course1.AddModule(new Module("SWE5307", "Web Design and Programming", true));
+        course1.AddModule(new Module("SWE5308", "Cloud Technologies", true));
+        course1.AddModule(new Module("COM6300", "Research and Professional Issues", true));
+        course1.AddModule(new Module("COM6301", "Undergraduate Project", true));
+        course1.AddModule(new Module("SWE6304", "Emerging Technologies", true));
 
         // Optional modules (O)
-        course1.AddModule(new Module("SWE5304", false)); // Advanced Databases and Big Data
-        course1.AddModule(new Module("SEC5304", false)); // Advanced Operating Systems
-        course1.AddModule(new Module("AIN5301", false)); // Introduction to AI
-        course1.AddModule(new Module("AIN6301", false)); // Natural Language Processing
-        course1.AddModule(new Module("SEC6302", false)); // Information Security Management
-        course1.AddModule(new Module("SEC6305", false)); // Operations Management
-        course1.AddModule(new Module("SWE6302", false)); // Applied Machine Learning
-        course1.AddModule(new Module("SWE6303", false)); // Software Quality Management
+        course1.AddModule(new Module("SWE5304", "Advanced Databases and Big Data", false));
+        course1.AddModule(new Module("SEC5304", "Advanced Operating Systems", false));
+        course1.AddModule(new Module("AIN5301", "Introduction to AI", false));
+        course1.AddModule(new Module("AIN6301", "Natural Language Processing", false));
+        course1.AddModule(new Module("SEC6302", "Information Security Management", false));
+        course1.AddModule(new Module("SEC6305", "Operations Management", false));
+        course1.AddModule(new Module("SWE6302", "Applied Machine Learning", false));
+        course1.AddModule(new Module("SWE6303", "Software Quality Management", false));
 
         // Add Students to Course
         student1.AddCourse(course1);
