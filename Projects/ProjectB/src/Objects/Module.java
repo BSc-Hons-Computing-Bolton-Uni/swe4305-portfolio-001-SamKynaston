@@ -5,6 +5,8 @@ import Core.Repository;
 import Interfaces.ExtendedT;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Module implements ExtendedT {
     private String Code;
@@ -83,7 +85,6 @@ public class Module implements ExtendedT {
         }
 
         // Divide the average mark by how many marks there are
-        System.out.println(Marks.size());
         this.AverageMark = this.AverageMark / Marks.size();
         this.AverageGrade = Mark.GradeLetter.GetGradeForMarks(this.AverageMark);
     }
@@ -110,18 +111,6 @@ public class Module implements ExtendedT {
         return this.Marks;
     }
 
-    public Mark UpdateMark(Student student, double mark) {
-        for (Mark currentMark: Marks) { // Go through all marks in a for-each loop
-            if (currentMark.GetStudent().equals(student)) {  // If the mark's student matches the student provided, then run the following logic
-                currentMark.SetMark(mark); // Set the new mark for the student
-
-                return currentMark; // Return the mark
-            }
-        }
-
-        return null; // Return null if mark is not found
-    }
-
     public void RemoveMark(Student student) {
         for (Mark currentMark: Marks) { // Go through all marks in a for-each loop
             if (currentMark.GetStudent().equals(student)) {  // If the mark's student matches the student provided, then run the following logic
@@ -129,6 +118,28 @@ public class Module implements ExtendedT {
 
                 return;
             }
+        }
+    }
+
+    public void DisplayGradeProfile() {
+        System.out.println("Grade Statistics: ");
+        System.out.println("- Average Grade: " + GetAverageGrade());
+        System.out.println("- Average Mark: " + GetAverageMark());
+        System.out.println("- Highest Mark: " + GetHighestMark());
+        System.out.println("- Lowest Mark: " + GetLowestMark());
+
+        System.out.println(" ");
+        System.out.println("Grade Profile:");
+        Map<String, Integer> gradeProfile = new HashMap<>();
+
+        for (Mark mark: Marks) {
+            int count = gradeProfile.getOrDefault(mark.GetGrade(), 0);
+            gradeProfile.put(mark.GetGrade(), count + 1);
+        }
+
+        for (Map.Entry<String, Integer> individualGradeProfile : gradeProfile.entrySet()) {
+            double percentage = (individualGradeProfile.getValue()*100) / Marks.size();
+            System.out.println("- " + individualGradeProfile.getKey() + ": " + percentage + "% of registered marks");
         }
     }
 

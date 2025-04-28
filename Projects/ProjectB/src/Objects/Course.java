@@ -84,7 +84,7 @@ public class Course implements ExtendedT {
 
         if (module.GetMandatoryStatus()) { // If the new module is a mandatory module
             for (Student student: Students) { // Go through all students
-                module.SetMark(student, 0); // Set their default mark to 0
+                module.SetMark(student, new Random().nextInt(0, 100)); // Set their default mark to 0
             }
         }
 

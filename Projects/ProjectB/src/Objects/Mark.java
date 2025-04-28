@@ -44,7 +44,7 @@ public class Mark implements ExtendedT {
 
     // Functions to set class attributes
     public boolean SetMark(double mark) {
-        if (mark <= 0 || mark >= 100) { return false; } // If a value less than 0 or greater than 100 is submitted, then end the function and return false
+        if (mark < 0 || mark > 100) { return false; } // If a value less than 0 or greater than 100 is submitted, then end the function and return false
 
         this.Mark = mark; // Set the student's mark
         this.Grade = GradeLetter.GetGradeForMarks(mark); // Set the student's grade
@@ -69,7 +69,11 @@ public class Mark implements ExtendedT {
         return true; // Return true to signify completion
     }
 
-    public String GetGrade() { return this.Grade; }
+    public String GetGrade() {
+        if (this.Grade == null) { this.Grade = GradeLetter.GetGradeForMarks(Mark); }
+
+        return this.Grade;
+    }
 
     public Student GetStudent() {
         return this.Student; // Return the associated student

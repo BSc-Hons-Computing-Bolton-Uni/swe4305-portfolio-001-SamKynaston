@@ -138,11 +138,8 @@ public class MainMenu extends OptionMenu<Action> {
                 OptionMenu<Action> moduleMenu = new OptionMenu<>("Manage " + chosenModule.GetCode());
 
                 chosenModule.UpdateGradeStatistics();
-
-                System.out.println("- Average Grade: " + chosenModule.GetAverageGrade());
-                System.out.println("- Average Mark: " + chosenModule.GetAverageMark());
-                System.out.println("- Highest Mark: " + chosenModule.GetHighestMark());
-                System.out.println("- Lowest Mark: " + chosenModule.GetLowestMark());
+                chosenModule.DisplayGradeProfile();
+                System.out.println(" ");
 
                 moduleMenu.AddAction(new Action("Set a Mark", () -> {
                     Student chosenStudent = new StudentSelection(chosenCourse.GetStudents()).Execute();
