@@ -16,7 +16,7 @@ public class MainMenu extends OptionMenu<Action> {
 
             CreationPrompt.AddAction(new Action("Create a New Student", () -> {
                 String forename = Input.ReadStringWithLength("First Name: ", 0, 32);
-                String surname = Input.ReadStringWithLength("Surname Name: ", 0, 32);
+                String surname = Input.ReadStringWithLength("Surname: ", 0, 32);
 
                 Student newStudent = new Student();
                 newStudent.SetForename(forename);
@@ -54,7 +54,7 @@ public class MainMenu extends OptionMenu<Action> {
 
             studentMenu.AddAction(new Action("Change Name", () -> {
                 String forename = Input.ReadStringWithLength("First Name: ", 0, 32);
-                String surname = Input.ReadStringWithLength("Surname Name: ", 0, 32);
+                String surname = Input.ReadStringWithLength("Surname: ", 0, 32);
 
                 chosenStudent.SetForename(forename);
                 chosenStudent.SetSurname(surname);

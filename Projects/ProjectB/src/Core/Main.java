@@ -4,9 +4,6 @@ import Menus.MainMenu;
 import Objects.*;
 import Objects.Module;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Main {
     public static void ClearScreen() {
         for (int i = 0; i < 50; i++) {
