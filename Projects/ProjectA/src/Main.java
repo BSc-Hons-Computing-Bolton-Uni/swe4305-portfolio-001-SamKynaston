@@ -1,3 +1,5 @@
+import Objects.Input;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -151,6 +153,92 @@ public class Main {
         }
     }
 
+    public static Artist GetArtist() {
+        boolean executeMenu = true;
+
+        while (executeMenu) {
+            for (int index = 1; index < Artists.size(); index++) {
+                Artist currentArtist = Artists.get(index);
+
+                System.out.println(index + ". " + currentArtist.GetName());
+            }
+
+            int choice = Input.ReadIntInRange("Select an Artist: ", 0, Artists.size());
+
+            return Artists.get(choice);
+        }
+
+        return null;
+    }
+
+    public static Song GetSong() {
+        boolean executeMenu = true;
+
+        while (executeMenu) {
+            for (int index = 1; index < Songs.size(); index++) {
+                Song currentSong = Songs.get(index);
+
+                System.out.println(index + ". " + currentSong.GetName());
+            }
+
+            int choice = Input.ReadIntInRange("Select an Artist: ", 0, Artists.size());
+
+            return Songs.get(choice);
+        }
+
+        return null;
+    }
+
+    public static void AddSong() {
+        boolean executeMenu = true;
+
+        while (executeMenu) {
+            String songName = Input.ReadStringWithLength("Enter a name: ", 0, 64);
+            Artist selectedArtist = GetArtist();
+            int plays = Input.ReadInt("Song Listens: ");
+
+            Songs.add(new Song(Songs.getLast().GetID() + 1, songName, selectedArtist, plays));
+
+            executeMenu = false;
+        }
+    }
+
+    public static void RemoveSong() {
+        boolean executeMenu = true;
+
+        while (executeMenu) {
+            Song selectedSong = GetSong();
+
+            Songs.remove(selectedSong);
+
+            executeMenu = false;
+        }
+    }
+
+    public static void AddArtist() {
+        boolean executeMenu = true;
+
+        while (executeMenu) {
+            String artistName = Input.ReadStringWithLength("Enter a name: ", 0, 64);
+
+            Artists.add(new Artist(Artists.getLast().GetID() + 1, artistName));
+
+            executeMenu = false;
+        }
+    }
+
+    public static void RemoveArtist() {
+        boolean executeMenu = true;
+
+        while (executeMenu) {
+            Artist selectedArtist = GetArtist();
+
+            Artists.remove(selectedArtist);
+
+            executeMenu = false;
+        }
+    }
+
     public static void main(String[] args) {
         GenerateSampleArtists();
         GenerateSampleSongs();
@@ -166,6 +254,10 @@ public class Main {
 
             System.out.println("2. View All Songs");
             System.out.println("3. View Songs Based On Plays");
+            System.out.println("4. Add a Song");
+            System.out.println("5. Remove a Song");
+            System.out.println("6. Add an Artist");
+            System.out.println("7. Remove an Artist");
 
             System.out.println(Colours.RED_TEXT + "0. Terminate Program" + Colours.ANSI_RESET);
 
@@ -180,6 +272,18 @@ public class Main {
                     break;
                 case 3:
                     GetPlaysRequired();
+                    break;
+                case 4:
+                    AddSong();
+                    break;
+                case 5:
+                    RemoveSong();
+                    break;
+                case 6:
+                    AddArtist();
+                    break;
+                case 7:
+                    RemoveArtist();
                     break;
                 case 0:
                     execute = false;
