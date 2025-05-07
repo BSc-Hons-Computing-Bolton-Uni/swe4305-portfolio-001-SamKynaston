@@ -27,6 +27,7 @@ public class SelectionMenu<T extends ExtendedT> implements Menu<T> {
         System.out.println(Name);
         DisplayOptions(Options);
 
+
         return UserInput(Options);
     }
 

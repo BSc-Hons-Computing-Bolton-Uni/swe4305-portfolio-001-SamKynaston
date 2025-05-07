@@ -121,6 +121,7 @@ public class Module implements ExtendedT {
                 Marks.remove(currentMark);
 
                 return;
+                
             }
         }
     }
