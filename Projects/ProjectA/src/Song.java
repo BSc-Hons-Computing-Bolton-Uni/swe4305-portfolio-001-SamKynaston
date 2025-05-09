@@ -10,9 +10,9 @@ class Song {
     private int ID;
     private String Name;
     private Artist Artist;
-    private int Plays;
+    private long Plays;
 
-    public Song(int id, String name, Artist artist, int plays) {
+    public Song(int id, String name, Artist artist, long plays) {
         SetID(id);
         SetName(name);
         SetArtist(artist);
@@ -31,7 +31,7 @@ class Song {
         this.Artist = artist;
     }
 
-    public void SetPlays(int plays) {
+    public void SetPlays(long plays) {
         this.Plays = plays;
     }
 
@@ -47,7 +47,7 @@ class Song {
         return Artist;
     }
 
-    public int GetPlays() {
+    public long GetPlays() {
         return Plays;
     }
 

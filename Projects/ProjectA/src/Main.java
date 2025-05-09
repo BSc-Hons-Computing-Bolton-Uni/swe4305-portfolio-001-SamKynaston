@@ -11,32 +11,33 @@ public class Main {
     private static final List<Song> Songs = new ArrayList<>(); // Create an array for all sample songs to be stored in
 
     public static void GenerateSampleSongs() {
-        if (Artists.isEmpty()) {GenerateSampleArtists();}
+        if (Artists.isEmpty()) { GenerateSampleArtists(); }
 
-        Songs.add(new Song(1, "Midnight Echo", Artists.get(0), 3200));
-        Songs.add(new Song(2, "Neon Dreams", Artists.get(1), 2800));
-        Songs.add(new Song(3, "Lost in Time", Artists.get(2), 3500));
-        Songs.add(new Song(4, "Electric Pulse", Artists.get(3), 2900));
-        Songs.add(new Song(5, "Echoes of You", Artists.get(4), 3100));
-        Songs.add(new Song(6, "Shattered Illusions", Artists.get(5), 3300));
-        Songs.add(new Song(7, "Celestial Voyage", Artists.get(6), 3700));
-        Songs.add(new Song(8, "Waves of Serenity", Artists.get(7), 3000));
-        Songs.add(new Song(9, "Crimson Horizon", Artists.get(8), 3400));
-        Songs.add(new Song(10, "Starlit Reverie", Artists.get(9), 3600));
+        Songs.add(new Song(1, "Blinding Lights", Artists.get(0), 4820000000L));
+        Songs.add(new Song(2, "Shape of You", Artists.get(1), 4340000000L));
+        Songs.add(new Song(3, "Sunflower", Artists.get(2), 3800000000L));
+        Songs.add(new Song(4, "As It Was", Artists.get(3), 3860000000L));
+        Songs.add(new Song(5, "Someone You Loved", Artists.get(4), 3890000000L));
+        Songs.add(new Song(6, "Believer", Artists.get(5), 3420000000L));
+        Songs.add(new Song(7, "Stay", Artists.get(6), 3540000000L));
+        Songs.add(new Song(8, "Bad Guy", Artists.get(7), 2720000000L));
+        Songs.add(new Song(9, "One Dance", Artists.get(8), 3620000000L));
+        Songs.add(new Song(10, "Yellow", Artists.get(9), 2990000000L));
     }
 
     // Generate Sample Artists
     public static void GenerateSampleArtists() {
-        Artists.add(new Artist(1, "Luna Shadows"));
-        Artists.add(new Artist(2, "Neon Mirage"));
-        Artists.add(new Artist(3, "Echo Phantom"));
-        Artists.add(new Artist(4, "Synth Horizon"));
-        Artists.add(new Artist(5, "Velvet Echoes"));
-        Artists.add(new Artist(6, "Astral Drift"));
-        Artists.add(new Artist(7, "Celeste Nova"));
-        Artists.add(new Artist(8, "Serenity Waves"));
-        Artists.add(new Artist(9, "Crimson Tide"));
-        Artists.add(new Artist(10, "Starlight Reverie"));
+        Artists.add(new Artist(1, "The Weeknd"));
+        Artists.add(new Artist(2, "Ed Sheeran"));
+        Artists.add(new Artist(3, "Post Malone"));
+        Artists.add(new Artist(4, "Harry Styles"));
+        Artists.add(new Artist(5, "Lewis Capaldi"));
+        Artists.add(new Artist(6, "Imagine Dragons"));
+        Artists.add(new Artist(7, "Justin Bieber"));
+        Artists.add(new Artist(8, "Billie Eilish"));
+        Artists.add(new Artist(9, "Drake"));
+        Artists.add(new Artist(10, "Coldplay"));
+        Artists.add(new Artist(11, "Swae Lee"));
     }
 
     public static void InitialisePlaylist() {

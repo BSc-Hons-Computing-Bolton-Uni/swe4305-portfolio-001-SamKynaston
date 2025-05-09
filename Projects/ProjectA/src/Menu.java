@@ -17,7 +17,7 @@ class Colours {
 
 class Formatter {
     // Formatting for Large Numbers
-    public static String Number(int toFormat) {
+    public static String Number(long toFormat) {
         DecimalFormat newFormat = new DecimalFormat("###,###");
         return newFormat.format(toFormat);
     }
