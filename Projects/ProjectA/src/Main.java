@@ -46,7 +46,7 @@ public class Main {
         UserPlaylist.ShowPlaylist();
     }
 
-    public static void ViewSongs(int MinimumPlaysRequired) {
+    public static void ViewSongs(double MinimumPlaysRequired) {
         for (Song song : Songs) {
             if (song.GetPlays() < MinimumPlaysRequired) { continue; }
 
@@ -142,7 +142,7 @@ public class Main {
         while (executeMenu) {
             System.out.println("Enter the minimum number of views required to display a song:");
 
-            int inp = reader.nextInt();
+            double inp = reader.nextDouble();
 
             if (inp > 0) {
                 ViewSongs(inp);
