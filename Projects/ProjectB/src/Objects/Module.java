@@ -76,12 +76,14 @@ public class Module implements ExtendedT {
     }
 
     public void UpdateGradeStatistics() {
+        int i = 0;
+
         for (Mark mark : Marks) {
             if (mark.GetMark() > this.HighestMark) { // If the mark is higher than the highest mark
                 this.HighestMark = mark.GetMark(); // Set the highest mark to this mark
             }
 
-            if (mark.GetMark() < this.LowestMark) { // If the mark is lower than the lowest mark
+            if (mark.GetMark() < this.LowestMark || this.LowestMark == 0 && i <= 0) { // If the mark is lower than the lowest mark
                 this.LowestMark = mark.GetMark(); // Set the lowest mark to this mark
             }
 
@@ -91,6 +93,8 @@ public class Module implements ExtendedT {
         // Divide the average mark by how many marks there are
         this.AverageMark = this.AverageMark / Marks.size();
         this.AverageGrade = Mark.GradeLetter.GetGradeForMarks(this.AverageMark);
+
+        i = i + 1;
     }
 
     public boolean SetMark(Student student, double mark) {

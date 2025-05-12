@@ -8,16 +8,21 @@ public class Main {
     @Test
     void CreateStudentAndTestID() {
         Student student = new Student();
-        assertEquals(1, student.GetID());
+
+        student.SetID(1);
+
+        assertEquals(1000, student.GetID());
     }
 
     @Test
     void CreateStudentAndTestIDOverwrite() {
         Student student = new Student();
 
+        assertEquals(1002, student.GetID());
+
         student.SetID(2);
 
-        assertEquals(1, student.GetID());
+        assertEquals(1002, student.GetID());
     }
 
     @Test
@@ -65,7 +70,7 @@ public class Main {
     @Test
     void CreateCourseAndTestModuleAddition() {
         Course course = new Course("C001");
-        Module module = new Module("CM001", true);
+        Module module = new Module("CM001", "TEST", true);
 
         assertTrue(course.AddModule(module));
     }
@@ -73,7 +78,7 @@ public class Main {
     @Test
     void CreateCourseAndAddModuleAndTestItContains() {
         Course course = new Course("C001");
-        Module module = new Module("CM001", true);
+        Module module = new Module("CM001", "TEST", true);
 
         course.AddModule(module);
         assertTrue(course.GetModules().contains(module));
@@ -82,9 +87,38 @@ public class Main {
     @Test
     void CreateCourseAndTestModuleRemoval() {
         Course course = new Course("C001");
-        Module module = new Module("CM001", true);
+        Module module = new Module("CM001", "TEST", true);
 
         course.AddModule(module);
         assertTrue(course.RemoveModule(module));
+    }
+
+    @Test
+    void CreateCourseAndTestGrades() {
+        Course course = new Course("C001");
+        Module module = new Module("CM001", "TEST", true);
+        Student student = new Student();
+        Student student1 = new Student();
+        Student student2 = new Student();
+        Student student3 = new Student();
+
+        course.AddModule(module);
+
+        student.AddCourse(course);
+        student1.AddCourse(course);
+        student2.AddCourse(course);
+        student3.AddCourse(course);
+
+        module.SetMark(student, 100);
+        module.SetMark(student1, 75);
+        module.SetMark(student2, 50);
+        module.SetMark(student3, 25);
+
+        module.UpdateGradeStatistics();
+
+        assertEquals(module.GetAverageMark(), 62.5);
+        assertEquals(module.GetHighestMark(), 100);
+        assertEquals(module.GetLowestMark(), 25);
+        assertEquals(module.GetAverageGrade(), "Upper Second Class");
     }
 }
