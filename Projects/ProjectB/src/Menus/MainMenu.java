@@ -37,8 +37,8 @@ public class MainMenu extends OptionMenu<Action> {
                 int currentIndex = 1;
 
                 while(amountToLoop >= currentIndex) {
-                    String code = Input.ReadStringWithLength("Code: ", 0, 5);
-                    String name = Input.ReadStringWithLength("Course Name: ", 0, 128);
+                    String code = Input.ReadStringWithLength("Code: ", 4, 5);
+                    String name = Input.ReadStringWithLength("Course Name: ", 4, 128);
 
                     Course newCourse = new Course(code);
                     newCourse.SetName(name);

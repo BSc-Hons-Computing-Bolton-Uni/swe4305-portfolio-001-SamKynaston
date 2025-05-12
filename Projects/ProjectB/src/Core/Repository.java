@@ -1,6 +1,7 @@
 package Core;
 
 import Objects.Course;
+import Objects.Mark;
 import Objects.Module;
 import Objects.Student;
 import java.util.ArrayList;
@@ -32,6 +33,10 @@ public class Repository {
         if (!Students.contains(student)) { System.out.println("Student doesn't exist!"); return; }
 
         Students.remove(student);
+
+        for (Mark mark : student.GetMarks()) {
+            mark.GetModule().RemoveMark(student);
+        }
     }
 
     public static void RemoveModule(Module module) {
